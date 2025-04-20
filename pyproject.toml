@@ -80,6 +80,8 @@ run-generate-instruct-datasets-pipeline = "poetry run python -m tools.run --no-c
 run-generate-preference-datasets-pipeline = "poetry run python -m tools.run --no-cache --run-generate-preference-datasets"
 run-end-to-end-data-pipeline = "poetry run python -m tools.run --no-cache --run-end-to-end-data"
 
+run-video-etl-pipeline = "poetry run python -m tools.run --no-cache"
+
 # Utility pipelines
 run-export-artifact-to-json-pipeline = "poetry run python -m tools.run --no-cache --run-export-artifact-to-json"
 run-export-data-warehouse-to-json = "poetry run python -m tools.data_warehouse --export-raw-data"
