@@ -45,7 +45,6 @@ def load_huggingface_video() -> Tuple[List[np.ndarray], List[float], List[Dict]]
             img = frame.to_ndarray(format="rgb24")
             frames.append(img)
             timestamps.append(frame.time)
-            break  # Only one frame
 
         # Parse subtitles from VTT string (in memory)
         for caption in WebVTT.from_string(vtt_text):
