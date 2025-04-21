@@ -23,7 +23,7 @@ load_dotenv(dotenv_path=env_path)
 
 
 @step
-def load_huggingface_video(sample_rate: int = 60) -> Tuple[List[np.ndarray], List[float], List[Dict]]:
+def load_huggingface_video(sample_rate: int = 3) -> Tuple[List[np.ndarray], List[float], List[Dict]]:
     dataset_name = "aegean-ai/ai-lectures-spring-24"
 
     logger.info("🔑 Attempting to load Hugging Face access token...")
@@ -52,31 +52,31 @@ def load_huggingface_video(sample_rate: int = 60) -> Tuple[List[np.ndarray], Lis
         container = av.open(video_stream)
         stream = container.streams.video[0]
         time_base = stream.time_base
-        logger.info("🎞️ Stream time base: %s | Sampling every %d frames", time_base, sample_rate)
+        duration = float(stream.duration * time_base) if stream.duration else 0.0
+        fps = float(stream.average_rate)
 
-        frame_count = 0
-        used_frames = 0
+        logger.info("🎞️ Stream info - Time base: %s | Duration: %.2f sec | FPS: %.2f", time_base, duration, fps)
 
-        for i, frame in enumerate(tqdm(container.decode(video=0), desc="Decoding frames")):
-            frame_count += 1
-            if i % sample_rate != 0:
-                continue
+        if duration == 0.0:
+            logger.warning("⚠️ No duration found. Falling back to full decode...")
+            break
 
-            img = frame.to_ndarray(format="rgb24")
+        frame_interval_sec = sample_rate / fps
+        timestamps_to_seek = np.arange(0, duration, frame_interval_sec)
 
-            # Get timestamp, fallback to manual calculation
-            if frame.pts is not None and time_base is not None:
-                timestamp = float(frame.pts * time_base)
-            elif frame.time is not None:
-                timestamp = float(frame.time)
-            else:
-                timestamp = i / stream.average_rate if stream.average_rate else 0.0
+        for seek_time in tqdm(timestamps_to_seek, desc="Smart seeking frames"):
+            seek_pts = int(seek_time / time_base)
+            container.seek(seek_pts, any_frame=False, backward=True, stream=stream)
 
-            frames.append(img)
-            timestamps.append(timestamp)
-            used_frames += 1
+            for frame in container.decode(video=0):
+                frame_time = float(frame.pts * time_base) if frame.pts is not None else 0.0
+                if abs(frame_time - seek_time) < (1.0 / fps):
+                    img = frame.to_ndarray(format="rgb24")
+                    frames.append(img)
+                    timestamps.append(frame_time)
+                    break  # move to next desired timestamp
 
-        logger.info("✅ Decoded %d sampled frames out of %d total", used_frames, frame_count)
+        logger.info("✅ Sampled %d frames using smart seeking", len(frames))
 
         logger.info("📝 Parsing subtitles from VTT...")
         for caption in WebVTT.from_string(vtt_text):
