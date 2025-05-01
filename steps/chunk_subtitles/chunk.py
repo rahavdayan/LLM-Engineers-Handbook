@@ -287,7 +287,7 @@ def process_subtitles_file(
         combined_subtitles["text"] = merged_chunks  # for timestamp alignment
 
         final_chunks = separate_into_chunks(combined_subtitles, sent_lst)
-        json_path = output_dir / "subtitles_chunks_video_%d.json" % (idx + 1)
+        json_path = output_dir / "subtitles_chunks_video_{}.json".format(idx + 1)
         with Path.open(json_path, "w", encoding="utf-8") as f:
             json.dump(final_chunks, f, ensure_ascii=False, indent=2)
         logger.info("✅ Saved chunked subtitles to %s", json_path)
