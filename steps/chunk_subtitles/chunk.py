@@ -95,10 +95,12 @@ def recursive_merge_subtitles(subtitles, tolerance_ms=10):
             seen = []
             for word, ts in timestamps:
                 current_time = parse_ts(ts)
-                if all(
-                    abs(current_time - parse_ts(entry["timestamp"])) > timedelta(milliseconds=tolerance_ms)
-                    for entry in seen
-                ):
+                is_unique = True  # Assume the word is unique unless proven otherwise
+                for entry in seen:
+                    if abs(current_time - parse_ts(entry["timestamp"])) <= timedelta(milliseconds=tolerance_ms):
+                        is_unique = False  # Found a duplicate, break the loop
+                        break
+                if is_unique:
                     seen.append({"word": word, "timestamp": ts})
 
             # Build merged subtitle object
@@ -120,7 +122,7 @@ def clean_subtitle_text(subtitle_text):
     return text
 
 
-def combine_subtitles(filepath, len_markers=10):
+def combine_subtitles(filepath, len_markers=15):
     with Path.open(filepath, "r") as file:
         data = json.load(file)
 
@@ -146,12 +148,35 @@ def combine_subtitles(filepath, len_markers=10):
 def overlapping_chunks(text, chunk_size=512, overlap=50):
     chunks = []
     start = 0
+
     while start < len(text):
-        end = min(start + chunk_size, len(text))
+        # Ensure the start does not cut in the middle of a word
+        if start > 0:
+            # Find the last space before the start to avoid cutting off in the middle of a word
+            start = text.rfind(" ", 0, start) + 1
+            if start == -1:  # If no space found, start from the beginning
+                start = 0
+
+        # Determine the end of the chunk
+        end = start + chunk_size
+
+        # Ensure the end does not cut off in the middle of a word
+        if end < len(text):
+            # Find the last space before the end of the chunk
+            end = text.rfind(" ", start, end)
+            if end == -1:  # If no space found, just use the chunk size (handle edge case)
+                end = start + chunk_size
+
+        # Add the chunk
         chunks.append(text[start:end])
+
+        # If we're at the end of the text, break
         if end == len(text):
             break
+
+        # Move the start to the overlap position (next chunk starts at the last word of the previous chunk)
         start = end - overlap
+
     return chunks
 
 
@@ -172,7 +197,7 @@ def clean_decoded_text(text):
     return text
 
 
-def separate_into_chunks(combined_subtitles, sents_lst, max_chars=200, time_jump_threshold=10):
+def separate_into_chunks(combined_subtitles, sents_lst, max_chars=300, time_jump_threshold=10):
     word_timings = [
         (v["word"], convert_to_float_seconds(v["timestamp"]))
         for k, v in combined_subtitles.items()
@@ -183,14 +208,20 @@ def separate_into_chunks(combined_subtitles, sents_lst, max_chars=200, time_jump
     current_length = 0
 
     for sent_text in sents_lst:
-        if current_length + len(sent_text) <= max_chars or not current_chunk:
-            current_chunk.append(sent_text)
-            current_length += len(sent_text) + 1
-        else:
+        # Add the sentence to the current chunk
+        current_chunk.append(sent_text)
+        current_length += len(sent_text) + 1  # Adding 1 for the space between sentences
+
+        # Check if adding this sentence exceeds the max length
+        if current_length > max_chars:
+            # Add the current chunk to the chunks list
             chunks.append(" ".join(current_chunk))
-            current_chunk = [sent_text]
-            current_length = len(sent_text)
-    if current_chunk:
+            # Start a new chunk with the current sentence
+            current_chunk = []
+            current_length = 0
+
+    # Add the last chunk if it's not empty
+    if len(current_chunk) != 0:
         chunks.append(" ".join(current_chunk))
 
     subtitle_chunks = []
@@ -234,15 +265,13 @@ def process_subtitles_file(
     nlp,
     output_dir,
     logger,
-    chunk_size=512,
-    overlap=50,
     repetition_penalty=2.5,
     max_new_tokens=256,
 ):
     try:
         logger.info("Processing: %s", filepath)
         combined_subtitles = combine_subtitles(filepath)
-        chunks = overlapping_chunks(combined_subtitles["text"], chunk_size=chunk_size, overlap=overlap)
+        chunks = overlapping_chunks(combined_subtitles["text"])
 
         decoded_chunks = []
         for chunk_text in chunks:
