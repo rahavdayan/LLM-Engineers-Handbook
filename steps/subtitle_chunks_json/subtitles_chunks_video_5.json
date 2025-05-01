@@ -1,0 +1,92 @@
+[
+  {
+    "start": "00:00:02.320000",
+    "end": "00:00:30.589000",
+    "text": "in an earlier video we saw the structure of the convolutional neuron and how many of these neurons in the form of filters are you know coming together to form a layer and how the multiple layers are coming again together stacked to implement this binary classification task in this video that we have looked at on cats versus dogs now we will be using exactly the same model that we have built for that kindof task"
+  },
+  {
+    "start": "00:00:34.670000",
+    "end": "00:00:55.189000",
+    "text": "and in this specific case what we were interested now to see is to validate what we have said interestd now to see is to validate what we have said earlier about the some kind of a structure or pattern that we see in the features that the convolution un networks kindof learn so in this notebook borrowed from the book deep learning with python what we actually can see a couple of things"
+  },
+  {
+    "start": "00:01:00.470000",
+    "end": "00:01:27.190000",
+    "text": "the first is the socalled u the intermediate convolution network outputs these are effectively what are each layer kind presents to the layer above it and i think its worthwhile kind kind going through that i think its worthwhile kind of going through that first and as we said this is the sort of exactly the same architecture we have seen earlier for that specific data set and this is the input images the 100 approximately 150 by 150 pixels and natural rec col images"
+  },
+  {
+    "start": "00:01:35.069000",
+    "end": "00:02:00.590000",
+    "text": "and this is the you know first layer what it really learns and as you can see the output of the output kindof feature map it kinda presents an almost identical figure to the sort  input picture input image except that this image over here picture input image except that this image over here emphasizes the edge"
+  },
+  {
+    "start": "00:02:02.550000",
+    "end": "00:02:28.910000",
+    "text": "so these are the as we said the primitive kind of shapes that the first initial layers of the conet are actually learning and we can actually go and look at each and every layer and i think this this im figure over here shows what is really happening so the initial layers are learning i will call it a visual content the same kindof visual content as our eyes kind to see in the image"
+  },
+  {
+    "start": "00:02:37.869000",
+    "end": "00:02:53.949000",
+    "text": "lets say you can veryeyes kind of see in the image lets say you can very clearly see the shape and form of a of the cut over here but as we actually going further into the network then the representations that are actually being created are becoming more and more abstract to the point where this is the fifth layer"
+  },
+  {
+    "start": "00:02:58.550000",
+    "end": "00:03:17.949000",
+    "text": "as you can see from that point onwards we still see some of the feature maps that are being created remember the feature maps that are being created are volumes so what actually we see here are thecreated are volumes so what actually we see here are the flattened version of those volumes so we plot here the special dimensions that are coming at at the output on each image"
+  },
+  {
+    "start": "00:03:25.110000",
+    "end": "00:03:57.270000",
+    "text": "but we are effectively flattening all of the filters that we have u used allofthe depth of the feature maps that we have used to to create this volume so here you have the sixth layer the seventh layer as you can see here we from the seventh layer onwards we are not really able to see any kind of visualnot really able to see any of the sort of visual characteristics of a cut so this become a fairly abstract kind of representation"
+  },
+  {
+    "start": "00:03:59.030000",
+    "end": "00:04:24.870000",
+    "text": "here you can actually also see very clearly the impact of max pooling and how we can actually start with  a representation and what is the max pooling operator with cal of 2x two is actually doing is actually picking at the more essential kind of in features that are presented to it so if you compare this image and this image and so thats effectively at this pointthis image and so thats effectively"
+  },
+  {
+    "start": "00:04:28.390000",
+    "end": "00:04:48.790000",
+    "text": "at this point we have the representations that are going to be needed after the stochastic rated descent kind of converges and provided we dont have any overfitting and so on these representations are the ones that we are going to be flattening to and then feed them into the fully connected layers that constitute our head"
+  },
+  {
+    "start": "00:04:51.430000",
+    "end": "00:05:09.550000",
+    "text": "and if everything goes okay this head will actually see and work on those representations to actually do the binary classification okay so this isactually do the binary classification okay so this is what we have seen we can actually see in the feature maps and i think its also worthwhile understanding what we actually see now in"
+  },
+  {
+    "start": "00:05:12.270000",
+    "end": "00:05:36.029000",
+    "text": "as far as the filters what really the filters the contents of those filters are to visualize those filters what we actually do is we define a specific loss function the details are kindof outside of this course of the scope of this course but the at high level what we do is we try to find input images that maximize thedo is we try to find input images that maximize the activations that those filters produce"
+  },
+  {
+    "start": "00:05:38.510000",
+    "end": "00:06:08.830000",
+    "text": "and therefore in the process of doing so we are able to outofthis optimization process to retrieve those filter values so here we see just the first 64 filters out of the many more that we have used i think we used all the way up to 256 filters but we here we see the first 64 filters in a 8 by8 kind of pattern and as you can actually see the u this filter over here is for the various kind here is for the various kind of layers so these are effectively"
+  },
+  {
+    "start": "00:06:11.550000",
+    "end": "00:06:45.390000",
+    "text": "we have the layers going from the beginning of this fil of the the beginning of the network all the way to the u towards the just before the head of this so this is the last layer just before the head and as you can actually see here in every layer we learn effectively a collection of these filters that it will decompose the input image the input the input feature maps are being decomposed"
+  },
+  {
+    "start": "00:06:47.990000",
+    "end": "00:07:05.510000",
+    "text": "so if you go back to what we have discussed earlierso if you go back to what we have discussed earlier about the operation of the convolutional kindof neuron so imagine that you have now not only one filter but you have lets say 64 of them so the each one of those filters is one component out of the"
+  },
+  {
+    "start": "00:07:14.070000",
+    "end": "00:07:28.150000",
+    "text": "lets say 64 that the input feature map will be dec composed so you can read about this as those are the components of that decomposition so this so in the last kind of layer over here we have 64 components for those who have some background on principalcomponents for those who have some background on principal component analysis"
+  },
+  {
+    "start": "00:07:34.550000",
+    "end": "00:08:15.589000",
+    "text": "theresymbola to it along those lines but the the composition over here is definitely exactly the same as any other decomposition itre just that these components as the layers are becoming deeper and deeper are these components are are you know look quite different and this as you can see here the filters are simpler in the first layers and become more and more complicated in the subsequent kind of layers to matchcomplicated in the subsequent kind of layers to match the sort of nonv visual intuitively visual complexities that we have seen in the output activation maps or feature"
+  },
+  {
+    "start": "00:08:23.080000",
+    "end": "00:08:23.080000",
+    "text": "mapsthat we have seen earlier"
+  }
+]

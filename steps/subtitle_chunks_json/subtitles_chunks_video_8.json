@@ -1,0 +1,202 @@
+[
+  {
+    "start": "00:00:05.600000",
+    "end": "00:00:27.070000",
+    "text": "we are in the trajectory where we are going to obtain a blog diagram of our first classifier binary classifier that is but before we do so i think its worthwhile kindof thinking a bit about the two general frameworks which are present in the design of this probabilistic models that will give us the functional form of this binary classifier"
+  },
+  {
+    "start": "00:00:29.310000",
+    "end": "00:01:02.229000",
+    "text": "so in general there are two frameworks the firstone both of these frameworks involve the posterior probability but in a kind of a different way so the first frameworkin a kind of a different way so the first framework is callediscriminative and the second one is calledgenerate and the difference between the two is quite important and they are"
+  },
+  {
+    "start": "00:01:05.550000",
+    "end": "00:01:25.670000",
+    "text": "although they both effectively are modeling in a different way at the posterior let me call this posterioryofthe class small letter kgiven x which as we have seen in the probability review section this posterior is the x given jk  p of yakand divided by pthe posterior and these two frameworks as we will see kind of model it a bit differently"
+  },
+  {
+    "start": "00:01:50.230000",
+    "end": "00:02:24.190000",
+    "text": "so the discriminative framework we will be discussing in extensively in this binary classifier block diagram is the one that will involve direct modeling of the posterior so the discriminative i call it the first framework and the second framework sothe first framework somethods model thesowe get this posterior from the block diagram itself and while the generative ones are effectively model the posterior in parts in"
+  },
+  {
+    "start": "00:02:41.190000",
+    "end": "00:03:12.390000",
+    "text": "ones are effectively model the posterior in parts in its from each kind of components so well first deal with the socalled discriminative classifiers and i want to connect the earlier discussion we had about the radar problem in that kind video we have introduced a problem where we had we actually went and drew all the areas under the two probability distributions that were given raise to the probability of mistake"
+  },
+  {
+    "start": "00:03:18.030000",
+    "end": "00:03:31.270000",
+    "text": "so i want the coin now and actually h sort of discuss the probability of being actually h sort of discuss the probability of being correct not the misclassification error but the u when we when we have the socalled true positive events and trying to maximiz imize them instead of trying to minimize them is classification error"
+  },
+  {
+    "start": "00:03:36.990000",
+    "end": "00:03:51.910000",
+    "text": "so i want to kinda come up with some reasonably intuitive answer to the following question which im writing over here why theposterior p of yk given x andmetrix so if i kind of repeat this kind of discussion but from as i said from the probability ofdiscussion but from as i said from the probability of being correct in this kindof classification problem"
+  },
+  {
+    "start": "00:04:37.990000",
+    "end": "00:04:43.830000",
+    "text": "we have again this kind two integrals but these two integrals now capture the correct events this is when we have probability of y is equal to 0 dx plus another integral r1 probability of q comma y  to 1 dx these are effectively the flipped areas that from the ones we have actually drew if you want going ahead and review that kind of video that will actually be helpful"
+  },
+  {
+    "start": "00:05:03.230000",
+    "end": "00:05:16.110000",
+    "text": "video that will actually be helpful which is of course equal to a summation in general for this is now the general case where we have capital one to capital k in this specific capital k is equal to two but this formula that ime actually writing here is going to be general for capital k classes or of the integral over the regions rk of the"
+  },
+  {
+    "start": "00:05:37.029000",
+    "end": "00:06:16.629000",
+    "text": "so im replacing the joint with the posterior times themarginal and now its actually a bit more evident how maximizing p correct effectively involves maximizingmaximizing p correct effectively involves maximizing the posterior because this term over here isand independent of theassignment of q to the label jk"
+  },
+  {
+    "start": "00:06:30.909000",
+    "end": "00:06:41.189000",
+    "text": "so now we have connected the direct connection effectively that of the probability of being correct and the maximization trying to maximize the probability of being correct effectively means maximizing the posterior probability so let me write that down because its kindof important maximizing pcorrect is equivalent to maximizing p of yuk yk given zpcorrect is equivalent to maximizing p of yuk kyk given z effectively"
+  },
+  {
+    "start": "00:07:09.950000",
+    "end": "00:07:47.230000",
+    "text": "this points to the following if we are to plot the properity distribution of the posterior actually we will see here well see something like that lets plot the posterior probilitydistribution we went from we went from distributions at such as this if you remember back in the u in the discussion of the binaryclassifier something like that we have seen of q and this is the probability of q comma y this was the probability of ic x –"
+  },
+  {
+    "start": "00:08:02.510000",
+    "end": "00:08:30.869000",
+    "text": "y isxcomma i this was the probability of ycommas i equal to zer and this is a probability of xcommum isal to 1 and if we are to plot the posterior probability distribution we will be coming up with something that it will look like this in general this is a very general kind ofplot so this is one to make sure that we do not exceed the one probability of one"
+  },
+  {
+    "start": "00:08:51.630000",
+    "end": "00:09:13.509000",
+    "text": "so this is the probability of  is  to 1 given q and i is equal to 0 given  – — givenx and so the histograms that we have actually the histogrammes that the posterior hers actually have come up with for a given x0 thatis coming to us as as a lets say a new x that we would like to classify as positive or negative"
+  },
+  {
+    "start": "00:09:16.509000",
+    "end": "00:09:40.509000",
+    "text": "let said new that we have never seen before touches these two curves in this kind of two points i actually can actually see here that these two points correspond tothe discrete so this is and this is for the zeroth class and this is for the createone are for the then it isclass and this is for the lets say class one"
+  },
+  {
+    "start": "00:09:50.150000",
+    "end": "00:09:52.470000",
+    "text": "this is the the probability mass function of the posterior distribution at the output of our predictor so this is the p of y is equal to 0 given qnew and this the probability of j is equal to 1 given qnew and so what we have just recognized over here is that all we have to do is always pick the pro the class that gives us the maximum posterior probability output and rest assured if we do that we are maximizing the probability of being correctmaximizing the probability of being correct so this discussion kindof resulted into this kind intuitive conclusion"
+  },
+  {
+    "start": "00:10:25.790000",
+    "end": "00:11:01.509000",
+    "text": "but it was not really evident initially how the posteriors and the probability of being correct arelated so continuing now for the discussion we just had on thediscriminative kind of classifiers i directly model the predict the posterior probability we can actually write the posterior probability as follows"
+  },
+  {
+    "start": "00:11:20.509000",
+    "end": "00:11:20.509000",
+    "text": "they lets say is equal to one given q is the probability of x given j is 1one given x is the probability of x given y is  to 1 time the probability of y is  to 1 divided by the probability of q but we will write this probability of  given we have lets say two classes or as the probability of y is equal to zero probability of given y to 0"
+  },
+  {
+    "start": "00:11:32.110000",
+    "end": "00:11:36.990000",
+    "text": " probability of y is equal to 0 we are using here the sum rule of probability that we have reviewed plus the probability of  you divide both terms by the if we divide both terms with with a pro with the numerator we will come up with the following expression 1  1 the probabilityofx given y is equal to 1 probability of j is equal to 1 "
+  },
+  {
+    "start": "00:12:12.069000",
+    "end": "00:12:44.829000",
+    "text": "ided by probability of q given y is equal to 0 probability of y is equal to 0 to the minus1 andthis is now related to the probability of odds because the probability of odds the not the probability was the odds if we now write downthe ratiof of this divided by of divided by this so for example in a horse race where we have a horse that runs 100 races and wins 25 times and loses the other 75 times"
+  },
+  {
+    "start": "00:13:11.310000",
+    "end": "00:13:44.750000",
+    "text": "the probability of winning is 25 over 100 thats well known to us 25 but the odds are 25 over 75 or 33 so or one win to three losses so this is what we have actually defined over here in terms of our odds the probability of winning to the probability of losing so thats effectively if we can assign this to we can assign this to a positive number"
+  },
+  {
+    "start": "00:13:51.350000",
+    "end": "00:14:42.550000",
+    "text": "if we assign model it as posst number typically we use the etothe power of some kind of positive number atomodel that then we can and you know have effectively these two expressions and from these two expressions we can actually write now the form of the posterior probability distribution so that is the probability of y is equal to 1 given x is 1 1  cus a and this is a wellknown function that is actually called the sizemouseactually called the sigmoid functionbecause it is when we actually plot this function it will look something likethat"
+  },
+  {
+    "start": "00:14:52.550000",
+    "end": "00:15:31.590000",
+    "text": "so over here will be 0 and over here will be theone and it will look like a sigmoide that will give will take as input a and will provide sigma of a and all the output is going to be constrained between 0 and one so we have effectively came up with this kindof expression of the sort of a pro posterior probability distribution at the output of soutput of a sigmoidal unit with having as argument some kind input a now if and this is kind of motivates the kind"
+  },
+  {
+    "start": "00:16:00.189000",
+    "end": "00:16:37.470000",
+    "text": "ofeatures lets say a is a linear combination is w transposer fofx we have seen both of them notations in our linear regression kind of example then this model of theposterior is called logisticregression which is a well known and fairly popular way to do binary classification so effectively over here we have the assigned the to the logeffectively over here we have the assigned the to the log ods"
+  },
+  {
+    "start": "00:16:42.949000",
+    "end": "00:17:25.710000",
+    "text": "so another way actually of seeing it is that if we take here the log of theodds in other words the log of thetheprobability probability ofxcomma y is  1 divided by the probability of qcommas y is equal to 0 so this is going to be effectively a and if this a is equal to w transpose f of x this is the form of u logistic regression so"
+  },
+  {
+    "start": "00:17:34.870000",
+    "end": "00:18:00.149000",
+    "text": "over here i am followed by the is actually implemented using the following diagram as its actuallyimplemented using the following diagram as its actually indicated here first form a linear combination of features and this is the dot product in other words between the feature vector and the parameters of our model w and then pass that through  a sigmoidal unit in order to obtain a posterior probability at the output"
+  },
+  {
+    "start": "00:18:03.070000",
+    "end": "00:18:27.149000",
+    "text": "so we kindof obtain the logistic regression kind of block diagram for kind of — a first principle so the block diagram is going to be w transposer f of x where we have taken q andto be w transpose f of x where we have taken x and very similar to what we have seen in logistic regression we went through a featu riser to obtain i ofx which we have used in this kindof dot product to form scalar a and this scalar a is at the input of sigma and that y hat rest assur is going to be"
+  },
+  {
+    "start": "00:18:43.950000",
+    "end": "00:18:43.950000",
+    "text": "the probability of y is equal to 1 given x so this is our first classifier that we will be calling ageneralized linear model and we call it generalized because of the nonlineare unit which isgeneralized because of the nonlinear unit which is definitely nonlinear because the every sigmoidal unit can take any number from minus one million lets say to plus one million but it compressed that into a dynamic r between 0 and 1 we definitely want the output to be 0 and 1"
+  },
+  {
+    "start": "00:19:30.590000",
+    "end": "00:19:55.510000",
+    "text": "because we have interpreted the output as  a pro as a posterior probability but definitely there – a nonlinear unit so this kind of long nan transformation from a to the post generalized soand thats why we call it generalized but definitely its a linear model in a sense that it is you know one of the blocks of the diagram involves  a linear unit  a linear combination of the features fxso"
+  },
+  {
+    "start": "00:20:07.190000",
+    "end": "00:20:42.830000",
+    "text": "all we need to do now is to attach to it two things the first is the binary crossentropy loss which will accept also the ground truth y this binary cross entropy loss will befeeding the well known to us stochasticwith its kind of parameter gradient calculation and parameterupdate will feed the w and will update the w at every iteration"
+  },
+  {
+    "start": "00:20:50.909000",
+    "end": "00:21:12.269000",
+    "text": "so this block diagram is no surprise to us by now we have seen it so many times in both linear regression and now classification and the only thing that remains to be done over here is to come up with a expression of the cross entropy loss the binary crossentropy loss with respect to the set of parameters w"
+  },
+  {
+    "start": "00:21:16.510000",
+    "end": "00:21:23.590000",
+    "text": "and this can be shown to be u some form such as thisal to 1 to m of j ius y or perhapsbe u some form such as thisal to 1 to m of y ius ji pi and ii so now we have some expression about the gradient that we need in order for us to implement sastic grade descent and now we will see in a notebook how the stoas r descent is powering logistic regression"
+  },
+  {
+    "start": "00:21:52.110000",
+    "end": "00:22:25.789000",
+    "text": "and in fact its al also worthwhile commenting on how the name kindof logistic regression came to be attached to this kind block diagram and in fact if we treat this binary classification problem likeproblem like a regression problem and we plot over here the u socalled ixis versus the j similar to what we have seen in so many regression problems then definitely ry is discrete random variable and take values between zero lets say and one and certainly for"
+  },
+  {
+    "start": "00:22:31.909000",
+    "end": "00:22:47.909000",
+    "text": "in this kind of neighborhood well see many assignments to zero and in this neighborhood remember the radar problem high signal strength low signal strength most importantly we will get a positive prediction of our attacks and over therea positive prediction of our attacks and over here were going to have a negative prediction of our attacks"
+  },
+  {
+    "start": "00:22:53.750000",
+    "end": "00:23:23.390000",
+    "text": "here wereally plotting here the ground truths and if we are to if we are to do regression to fit this data in an very similar way as we have done earlier probably will come up with a kind of  straight line that attempts to maximize some objective kind of function so this is straight line regression is not going to be very appropriate for  or classification problem becauseclassification problem because we are expecting our predictor to produce values always between zero and one"
+  },
+  {
+    "start": "00:23:25.909000",
+    "end": "00:23:47.789000",
+    "text": "so what we do here is we are applying the sigmoidal so this is is effectively the line that generates the a when we have no features no featurization in this specific syle example and so the sigmoidal unit will match effectively the it has a linear component over here and will compress everything between zero and one"
+  },
+  {
+    "start": "00:23:52.310000",
+    "end": "00:24:19.669000",
+    "text": "so thats another way of kind of graphically remembering logisticanother way of kind graphically remembering logistic regression as an attempt to do regression but at the same time with a kindof a compressive step okay so now what we will do to conclude a little bit the topic of classification is to just in passing quote a couple things about the second framework that i have mentioned the soal generative classification frameworks in the generative classification framework"
+  },
+  {
+    "start": "00:24:24.990000",
+    "end": "00:24:42.240000",
+    "text": "were again going to be task to calculate the posterior probabilitythat we see here for in calculate the posterior probabilitythat we see here for in general kind of k glasses and thisposterior is going to be evidently given by this general kind oformula so in the generative approach we will do two steps instead of coming up with the block diagram that generates that from directly and models the posterior directly"
+  },
+  {
+    "start": "00:25:09.310000",
+    "end": "00:25:15.909000",
+    "text": "as we have done with logistic aggression we will first do two steps one is tomarginal and then come to some degree of approximation because its actually typically a very expensive forbecause its actually typically a very expensive for large dimensions for larggen this is a very expensive calculationso for we will typically involve some form of approximation for calculating"
+  },
+  {
+    "start": "00:26:10.149000",
+    "end": "00:26:10.149000",
+    "text": "this denominator over here of thebase is  a famous generative classification method and we actually going to see that when we come into language modeling and some other tasks later on in some videos so i will take  rain check to discuss it at that moment and revisit if you like the generative classification frameworkif you like the generative classification framework and the discussion of on bas is not really essential right now for us to progress"
+  }
+]

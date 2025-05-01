@@ -1,0 +1,217 @@
+[
+  {
+    "start": "00:00:02.919000",
+    "end": "00:00:26.790000",
+    "text": "in an earli video we have seen the convolutional networks and the basic operation in this video what we actually introducing here is residual networks which is to this day many years after the introduction remain one of the main used architectures for feature extraction and not only as a basic component of many more advanced cnn architectures and that are doing more complicated tasks such like object detection semantic segmentation and others that we will see in another in another video so thethat we will see in another video"
+  },
+  {
+    "start": "00:00:46.069000",
+    "end": "00:00:52.430000",
+    "text": "so the history if you like of their introduction you know started around 2015 where people realized that its not really possible to extend the socalled architectures of the time lets say the vbg architecture weve seen the viv architecture on on a different u video earlier in this in this actually topic over here"
+  },
+  {
+    "start": "00:01:18.550000",
+    "end": "00:01:35.429000",
+    "text": "where we have se we have seen the sort of architecture of the v16 network and what was actually happening then and now that we understandhappening then and now that we understand a couple of things about back propagation the gradient had a lot of problems to flow all the way to the input of the network"
+  },
+  {
+    "start": "00:01:40.670000",
+    "end": "00:02:05.670000",
+    "text": "and the u sort of bottlenecks that were actually generated created a significant problems in the training of these architectures so around 2015 he at microsoft you know found — –  a solution on how to enable that gradient to flow freely in in a much deeper architectures such as the ones that we will see inone that we will see in a moment and the this gave their the name resid"
+  },
+  {
+    "start": "00:02:11.270000",
+    "end": "00:02:33.150000",
+    "text": "because it in that architecture we implement what we call residual unit and from now on well refer to to those networks as rest nets all right so in order for us to understand what is going on with rest nets or what im going to do now is imeen going to draw a very small rest architecture just consisting of three units u"
+  },
+  {
+    "start": "00:02:45.350000",
+    "end": "00:02:45.350000",
+    "text": "and if i may draw would thatre my unit which ill abstract with the letter f1 so the inputwhich ill abstract with the letter f1 so the input to the so ill use a bit different terminology from what i was used kind of earlier so ill be calling set of z ill be calling it yz okay so the yz goes into a block that will consist of one or more convolutional kind of layers and in the residual architecture"
+  },
+  {
+    "start": "00:03:00.229000",
+    "end": "00:03:00.229000",
+    "text": "and this is why we call it residuals we take the input and add it with  gain into to the output to the output to the f1 so the i so i have the same as but in my not over herewith a unit gain into to the output to the output okay so to form what we call now ay1 the j1 is being added into again with exactly the sameoutput q2 and the y2 is similarlyfinal q3 output okay"
+  },
+  {
+    "start": "00:04:17.430000",
+    "end": "00:04:28.510000",
+    "text": "so this is the kind of a basic rest net kind of architecture in u and if you compare what we have seen earlier with the cns we had convolutional layers max pool layers and so nonlinear evidently over here but we never had this kindover connection as we call it ok then i want to just go ahead and write but not linear"
+  },
+  {
+    "start": "00:04:35.590000",
+    "end": "00:05:11.189000",
+    "text": "so that i another than  we call it okay so i want to just go ahead and write now the expression of each of these blocks with respect to the input so i hope you agree that this is exactly what each of these blocks is implement okay so we have the fi of jius one plus the yius one in each of these so if i may write down these equations for lets say the y3 is equal to f3 of yu2  yu1 and the y1 is fub1 of yu0   or even"
+  },
+  {
+    "start": "00:05:39.590000",
+    "end": "00:05:51.990000",
+    "text": "and when they are all three we need to just go ahead and writing now the word   the abequations for each of the three blocks that i have here and what i want to do now is i want to start replacing the y2 and y1 into the equation y3 because i want to write down the equation the form of the y3 as a function of only the y0 and the two functions that are involved in the blocks f1 and f2"
+  },
+  {
+    "start": "00:06:08.070000",
+    "end": "00:06:08.070000",
+    "text": "okay so all right so what im going to do now is imelling it as f3 of j2 of it y2 with it equal and now i can replacenow let me write it over here because i just need a long line to replace it to make the final replacement so it is f3 of f2 now im goingto replace the f1 with its equal to obtain the finalexpression and this is now the second squarebracket"
+  },
+  {
+    "start": "00:07:32.550000",
+    "end": "00:07:34.550000",
+    "text": "okay so it is really this bracket over here plus plus i have fs2 of s1 of yu0  yuz okay so this is my final expression with respect to the output of j3 and why i did that of y3 and why i did that i want to take this kind of architecture and write its equivalent that we just based on this equation and that kindof re plotting or redraw drawing of this kind or architecture will help me kinda understand a couple of things about the advantages of rest nets and why they solve the problem of gradient flow throughout the network"
+  },
+  {
+    "start": "00:08:25.710000",
+    "end": "00:08:25.710000",
+    "text": "okay so i am going to start so im dividing this into two parts i am going to first draw the long part over here this f3 expression here at the atpart over here this f3 expression here at the bottom so i am going to take this accepts as input y0 thats the only input in this diagram so y0 is going into the functionf1 f1"
+  },
+  {
+    "start": "00:09:03.430000",
+    "end": "00:09:27.069000",
+    "text": "we are adding now the function the yzin it okay so thatre basically this term all right so then we take the fs2 of this term so the output of this is being fed to f2 and what we do is we add for this fs2itanother block involving the functionf1 okay so this is basically this inner term over here and then finally we are taking the f3 of that"
+  },
+  {
+    "start": "00:10:19.750000",
+    "end": "00:10:22.269000",
+    "text": "so if i am acircle if i may circle this this will be lets say a this a will be available over here okay so we have now finished with the plotting of the first term so the second term is simply f2 of yunyy0  yune so im going to just take again fub1going to just take again f1 of y0  j0 and im simply going to take the f2 ofthat"
+  },
+  {
+    "start": "00:11:14.150000",
+    "end": "00:11:14.150000",
+    "text": "and this thing over here is the pointb however this so this is basically b let me throw it overhere to b now what we have is we simply add another of theseguys we add to be this and i would like to circle that over because we see here three things being involved a b and c so this isc and then b and c are added to"
+  },
+  {
+    "start": "00:12:10.069000",
+    "end": "00:12:41.629000",
+    "text": "and now that you knowhave this kind of diagram we actually can make some really nice conclusions out from it as you can see the gradient in the backward pass so the point number one i want to mention is about the gradient flowso you can see that a gradient flow in the backward pass during back propagation now has a diverse set of paths and to actually flow all the way to the input"
+  },
+  {
+    "start": "00:12:44.670000",
+    "end": "00:13:00.629000",
+    "text": "lets say it has this path that simply just follows all the way to the input yz the other path that goes through this f1 to go to the input or eventhat goes through this f1 to go to the input this path through f2 and f the concatenation f2 and and fub1 or via this skip connection to go to f0 and so on"
+  },
+  {
+    "start": "00:13:08.069000",
+    "end": "00:13:08.069000",
+    "text": "and so on so what we see here is we have a a as kind of important earlier what was we had simply f1 con with two3 in the socalconnections we had simply f1 con with two3 in the socal lets say v architecture so here we had a back propagation that it was involving just — a single trajectory – a single path through all of these gates and at some point the gradient was actually dying"
+  },
+  {
+    "start": "00:14:13.069000",
+    "end": "00:14:31.350000",
+    "text": "and of course if a dying gradient means that specific functionality of my network they are being updated the parameters are being updated very slowly or just simply seize to be updated so that is not really i mean this is one of our key observations justf1 con with 23 in the socnot really i mean this is one of the key observations that led to some kindleveling of of the performance of these earlier kind architectures"
+  },
+  {
+    "start": "00:14:36.350000",
+    "end": "00:14:57.430000",
+    "text": "as the number of layers were being added up in this kind of architecture we are effectively implement what is actually known as highway networks and those highway highways that we creating for the gradient empirically has shown that we are actually can go much much deeper so well see now some depths typical depths that we experience in we we have in a resentment"
+  },
+  {
+    "start": "00:14:59.629000",
+    "end": "00:15:26.189000",
+    "text": "depths that we experience in we have in a resent architect in a moment the second aspect of that is a bit more nuanced and it has to do with what we call an ensamplearning so in this kind of ensemble learning architecture what we see is we see u the concatenation the the combination of three predictors here three main prediction architectures"
+  },
+  {
+    "start": "00:15:34.430000",
+    "end": "00:15:46.550000",
+    "text": "each of those predictors has varying kindof functionality so we see – a fairly involved predict or b and another predict which we call a our own a we see — we i knowwe call a we see another predictor which call b and another predictor that we call c and what we see at the output are the kind of combination of those"
+  },
+  {
+    "start": "00:15:53.550000",
+    "end": "00:16:09.230000",
+    "text": "simply i mean if you are familiar with ample kind of methods which ill provide some kindof background in a moment we are adding the individual prediction results given the input jz at the to to obtain our final prediction output the socalled y3 hat okay and so thats ample methods have proven in the field to be a very powerful approach in solving"
+  },
+  {
+    "start": "00:16:28.710000",
+    "end": "00:16:33.470000",
+    "text": "you know complex kind of tasks and in fact some methods are being used both for structure and unstructured data and in the structure kindoftheart results today so a few words about ample methods is arguably a parenthesis but i think its a kind of worthwhile sort of discussing a little bit about ensemple methodso there are various asample methods butensample"
+  },
+  {
+    "start": "00:17:02.720000",
+    "end": "00:17:10.110000",
+    "text": "methodso there are various asample methods but i think a common denominator for many of them is that the prediction why hat that we get from the socalled enseau also known as committeemethods where we for form – a group of experts or weak learners as we call them is let me call it why hat committee is simply the average"
+  },
+  {
+    "start": "00:17:46.789000",
+    "end": "00:18:01.789000",
+    "text": "let me call it 1  capital k of the summation from small letter k is equal to 1 to capitalnumber of predictors that we have here we had three in the rest net architecture of yhat subk so the premise of emme method is that we dont necessarily to have the single server bullet that will solve the very complicated kind of task of us that we have in front of us"
+  },
+  {
+    "start": "00:18:16.320000",
+    "end": "00:18:36.510000",
+    "text": "but a number of what we call the socalled weakpredictors that it will u not perform individually very well but on aggregate they will actually perform much better that and that is really the premise of that and you know one parallelreally the premise of that and you know one parallel architecture with have in the earlier method that we call the rest net is kind of resembles that kindof architecture because we have some kind"
+  },
+  {
+    "start": "00:18:38.990000",
+    "end": "00:19:00.270000",
+    "text": "of a summation combination of these weak predictions the socalled abs and cs that i have explained earlier so the in sample methods in general we have we can consider performance wise to consist of in somewhere in between two bounds so the lower bound the socal lower performance bound is obtained evidentlysocal lower performance bound is obtained evidently"
+  },
+  {
+    "start": "00:19:07.149000",
+    "end": "00:19:28.710000",
+    "text": "when youre you have very correlated predictions and if you are not able to randomize the operation of each of these predictors somehow we are going to exhibit this kind of lower bound where either you form a committee or not you get exactly the same performance its just like the analogy or the equivalent analogy i would like to sort of share"
+  },
+  {
+    "start": "00:19:33.990000",
+    "end": "00:19:48.630000",
+    "text": "sh is you have a committee of let us say a human committee of human expertsof human experts but each expert went to exactly the same school studied exactly the same field had exactly the same university professors and they are actually now called to solve the problem and guess what each one of them is actually offering exactly the same view"
+  },
+  {
+    "start": "00:19:52.470000",
+    "end": "00:19:56.830000",
+    "text": "well thats basically where the point where you experiencing a lower performance bound and the upper performance bound is a bit more nuanced the best performance what we can actually get i think its better understood with an analogy you dont expect every committee member to not make mistakes they will make mistakes but what you want to do is to have a committee that they dont make the same mistake at the same time"
+  },
+  {
+    "start": "00:20:32.470000",
+    "end": "00:20:53.990000",
+    "text": "so the socalled uncorrelated errors are involved in sort of show showing some kind of a performance bound that is kind of outside of the scope of this course but i think its worthwhile providing some kind of guidance asits worthwhile providing some kind of guidance as to where and how we will be ableto achieve that upper bound so the main three ways that we can achieve this kindof upper bound or try to achieve the best possible performance out of ample methods"
+  },
+  {
+    "start": "00:20:58.070000",
+    "end": "00:21:22.110000",
+    "text": "the first is the data component can we provide in some way different data to different of to the various kind of weak predictors that we have here so that we do not cause exactly the same conclusion for each one of them so the second is to somehow randomizeeach one of them so the second is to somehow randomize their operation"
+  },
+  {
+    "start": "00:21:30.640000",
+    "end": "00:21:52.750000",
+    "text": "sorandomization is the second kindof approach there and i can actually offer an example of randomization maybe we can actually offer a different set of hyperparameters sorting picked by some kind department in this architecture see over herein in in this course u in some other approaches where we have"
+  },
+  {
+    "start": "00:21:55.430000",
+    "end": "00:22:07.830000",
+    "text": "lets say decision trees involved in these predictors again for structure data im referring to then we can randomizingstructure data im referring to then we can randomize their operation by picking different features that they split their sort of trees and there are so many approaches that are you know i guess too many to quote over here"
+  },
+  {
+    "start": "00:22:14.110000",
+    "end": "00:22:25.470000",
+    "text": "but the third approach is a bit more relevant in this specific rest not architecture is to simply use differentso the weak learners that we called over here are involved in the rest net architecture and so here we have a predictor of some complexity we have here another predictorpredictor of some complexity"
+  },
+  {
+    "start": "00:22:44.029000",
+    "end": "00:23:06.950000",
+    "text": "we have here another predictor larger complexity and yet another predictor or even larger complexity we have effectively implementing you know the third approach where we have those different week learners each one is offering a view and then finally the network is deciding based on the composition of those views"
+  },
+  {
+    "start": "00:23:17.870000",
+    "end": "00:23:33.149000",
+    "text": "okay so that has been shown to sortofprovide performance advantages and and thats what we kind we kind had this discussion about and sample methods and the third kind departmentdiscussion about and sample methods and the third kind of advantage i wanted to quote here for rest n is there scalabilitysothe the scalability should be understood from the pointof view of complexity"
+  },
+  {
+    "start": "00:23:39.669000",
+    "end": "00:23:58.950000",
+    "text": "we are effectively able to have three six n or whatever number of residual blocks each one of them will actually be exactly the same as you know any other block over here and therefore we are able to accommodate architectures that are have various various number of these blocks lets say we see resets with 18number of these blocks"
+  },
+  {
+    "start": "00:24:06.470000",
+    "end": "00:24:36.590000",
+    "text": "lets say we see resets with 18 layers 34 layers you know 50 layers 150  102 layers even 150 layers these are the numbers that we have defined already existing architectures and this is kinda important when you have perception systems that need to comply to some realtime latency requirement evidently the larger the number of layers you have the longer the latencies that you are going to experience taking an image through this kind de pipeline"
+  },
+  {
+    "start": "00:24:40.149000",
+    "end": "00:25:08.149000",
+    "text": "so if we have letsthrough this kind of pipeline so if we have lets say a latency of lets say 80 mcs we can and therefore we are not able to accommodate 102 102 layers where definitely going to be accommodating let said 50 layers and the exactly the same technology exactly the same thinking and behavior of rest nets will be in either of the numbers quoted here in terms of number of layers"
+  },
+  {
+    "start": "00:25:09.909000",
+    "end": "00:25:34.679000",
+    "text": "so all of these three advantages are coming together to provide a fairly robust architecture has actually proven in the field inrobust architecture has actually proven in the field in both realtime and unreal time applications and able to extract features provide if you like representations on visual imagery that we have the images that we are feeding into them"
+  }
+]

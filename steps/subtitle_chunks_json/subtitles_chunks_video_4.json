@@ -1,0 +1,152 @@
+[
+  {
+    "start": "00:00:07.550000",
+    "end": "00:00:39.430000",
+    "text": "in this example the notebook is quite instructive because it refers to a small data set and i think working with small data sets are actually handy in the beginning when you are trying to understand what is going on here we have the classic case of dogs versus cats we have also the simplest possible task in machine learning which is classification image classification in this case and we are going to be using convolutional layers in order for detect no no sorry to detect to classify the presence of a dog orsorry to detect"
+  },
+  {
+    "start": "00:00:42.910000",
+    "end": "00:01:03.750000",
+    "text": "to classify the presence of a dog or a cat on in in an image okay or cats in this case all right so the data set is available in kagle the original data set contained 25000 images but we have cut down to 1000 images per class and we have  split the data set into train and validation and test data set okay"
+  },
+  {
+    "start": "00:01:07.429000",
+    "end": "00:01:30.030000",
+    "text": "all right so we are going to obviously use train and validation to create if you like our model and of course we are going to exercise some kind de prediction api using our test dataexercise some kind of prediction api using our test data set after a model is created so the architecture were going to be using here is an architecture that we have kindof developed specifically for this example"
+  },
+  {
+    "start": "00:01:33.910000",
+    "end": "00:01:57.109000",
+    "text": "is consist evidently of convolutional andor interleaded with max pulling layers and probably you recognize the api here in this case is a kind of a caras api similar architectures can be develop for python the first layer over here is py the there is input images 150 by 150convolutional layer the there is input images of 150 by 150 pixels"
+  },
+  {
+    "start": "00:02:00.029000",
+    "end": "00:02:28.670000",
+    "text": "this is what the imag that we have transformed now are and each image is a naturally colored image of three channels red green and blue we have u 3x3 kernels and we have the 32 here indicates the number of filters okay or convolutional neurons and we are going to be using a rectified linear unit they exactly the same nonlinearity that they have used in the fully connected layers"
+  },
+  {
+    "start": "00:02:32.309000",
+    "end": "00:03:00.869000",
+    "text": "then we are passing the output feature map produced here and bypassing the output feature map produced here and by the way this is where you can actually see the usage of that kindof formula which i was pointing out regarding the output feature maps dimensions in an earlier video the max pooling layer in this case is 2x two and it will further shrink the output feat m produced by the first layer selecting the most important features out of it passing it over to a convolutional layer with 64 filters"
+  },
+  {
+    "start": "00:03:06.430000",
+    "end": "00:03:33.990000",
+    "text": "here you see now the pattern of increasing the number ofyou see now the pattern of increasing the number of filters as the network becomes deeper and deeper and at some point after one two three four layers four convolutional layers we are going to have the head and i think its worthwhile going back into this vgg kind of architecture and look exactly where that head was in that architecture and and couple it with with this code"
+  },
+  {
+    "start": "00:03:36.589000",
+    "end": "00:03:53.350000",
+    "text": "so here is the point where the head starts and the head in this case is a concatenation of fully connected layers why we have thisconcatenation of fully connected layers why we have this kind concatenation and want do just a single layer is you know gradually even within the head we need to gradually reach this point of desired number of classes"
+  },
+  {
+    "start": "00:03:59.949000",
+    "end": "00:04:13.429000",
+    "text": "we have a classification use case here this is a thousand classes that are needing to be present in at the top of the atthe end of this u network and this is basically the dimensionality of our posterior probability distribution were going to have the ayhat if you like that consistgoing to have the ayhat"
+  },
+  {
+    "start": "00:04:19.030000",
+    "end": "00:04:43.909000",
+    "text": "if you like that consist of a thousand numbers a thousand are also the are the number of classes in the image net data set so this this dimensions correspond to the image net classifier data set and so thats basically our head there is also seen over here in this code with this portion of the model so we have whatever we have produced in terms of convolutions over here"
+  },
+  {
+    "start": "00:04:49.749000",
+    "end": "00:05:09.510000",
+    "text": "and then we flatten the network so we flatten oh sorry flatten the output feature map there byflatten the output feature map there by flattening the output f map we are creating effectively a volume were taking a volume at the input and this vector then is passed as input to two dense layers the first dense layer is has 512 neurons"
+  },
+  {
+    "start": "00:05:21.590000",
+    "end": "00:05:32.670000",
+    "text": "it takes whatever dimensionality and well see now the dimensions in  a moment the flatten layer provided and reduces that just like any fully connected layer we have seen in  or earlier intocorresponding video in a different video earlier into 512 dimensions and we use the rectified linear unit for that"
+  },
+  {
+    "start": "00:05:35.830000",
+    "end": "00:05:57.710000",
+    "text": "and then with the subsequent layer takes 512 dimensions and reduces it further into gas into a single dimension because as we have seen in the binary classification we have  either were going to have — a cats or dogs we have just – scaler that we need because that is the probability of the positive glass"
+  },
+  {
+    "start": "00:05:59.670000",
+    "end": "00:06:14.350000",
+    "text": "whatever that positive classes probably the dogs herewhatever that positive classes probably the dogs here and we are of course going to be using sigmoid because only at the output of the sigmoid is actually getting this form of the posterior probability as we had discussed in the fully connected layers"
+  },
+  {
+    "start": "00:06:19.589000",
+    "end": "00:06:31.870000",
+    "text": "and in that lecture all right so this is basically our architecture very simple architecture the convolution portions the flatten and the fully connected or dense portion to provide the binary classification result at the output and here is the uclassification result at the output and here is the u details of our cnn"
+  },
+  {
+    "start": "00:06:43.309000",
+    "end": "00:06:57.749000",
+    "text": "so we can see the input images that are actually we coming in the first we have 32 filters as we discussed in terms of number of parameters 896 1800073000 147000 so all of these are parameters that you see being quoted herein the next to the convolutional layers but the most striking thing over here is this look at the number of parameters which are involved in the fully connected in one fullyconnected or dense layer 32connected in one fully connected or dense layer 32 million parameters"
+  },
+  {
+    "start": "00:07:22.990000",
+    "end": "00:07:22.990000",
+    "text": "so out of the total 3 and a2 million parameters that we have 32 million are associated with a fully connected layer and here is the kindof striking example of why it would make sense to actually use cnn for image classification if we didnt have the cnn and the associated advantage of that cnn provide which was actually also shown in this kind of snapshot architecture as you can see only the locpixels the ones which are which areonly the locpixels the one which are local to the special dimensions of the filter are socalled firing in order for that kind scaler"
+  },
+  {
+    "start": "00:08:17.589000",
+    "end": "00:08:50.190000",
+    "text": "okay as compared to a fully connected architecture where everything that we have here is going to be connected to the layer to to form if you like the output scaler z the convolutions are operation is actually helping us to significantly reduce the number of parameters so at the end of the day we have u u the scalar that indicates the posteriorwe have u u the scalar that indicates the posterior probability of the positive class as we discussed and then the architecture is seems to be valid"
+  },
+  {
+    "start": "00:08:54.310000",
+    "end": "00:09:16.269000",
+    "text": "we are going to evidently going to use binary crossentropy just like what we have done earlier in that other video where we looked at dense layers only for binary classification or multiclass classification and we are going to have here well here the author selected the rms prop which is one of the cousins of stochastic gr descent"
+  },
+  {
+    "start": "00:09:19.069000",
+    "end": "00:09:33.350000",
+    "text": "we havent really got anyof stochastic gr descent we havent really got any discussion specifically on enhancements of stocheastic gren descent but if you do replace it with sgd i think you will be getting very similar performance with the corresponding learning parameter and then of course the metric is our accuracy"
+  },
+  {
+    "start": "00:09:35.550000",
+    "end": "00:09:53.870000",
+    "text": "and one of the things that we would like to point out in u in this kindof convolution and networks is that we will need must do to be careful when we first take a data set and we try to process images as they have seenset and we try to process the images as we have seen the images are typically given to us as with pixels corresponds to integer numbers"
+  },
+  {
+    "start": "00:09:59.069000",
+    "end": "00:10:26.509000",
+    "text": "so we have to definitely normalize them we have to b them we have to do a lot of this kindof transformations in order for our network so after a training process that involves multiple epochs as we would expect we have  or actually plot the training and validation loss as well also the corresponding kind of change"
+  },
+  {
+    "start": "00:10:29.310000",
+    "end": "00:10:49.190000",
+    "text": "validation loss as well also the corresponding kind of accuracy and look at the corresp responding loss over here plot as the number of epochs and remember what we have said in at the another video regarding the condition of overfitting and at that time the discussion was an example of a linear model on the regression task over here"
+  },
+  {
+    "start": "00:10:51.990000",
+    "end": "00:11:08.910000",
+    "text": "we have a classification task but the sort of problem of overfitting is present in across tasks in inin machine learning so we see some quite significant differencelearning so we see some quite significant difference between training and validation as the accuracy is improving and that is really what we have said earlier"
+  },
+  {
+    "start": "00:11:12.470000",
+    "end": "00:11:49.230000",
+    "text": "as an a good indicator of overfitting okay so it seems that the network that we have designed over here overfits the data set we are given and it shouldnt be a complete surprise to us given the fact that we are throwing  a significant number of parameters in in  in  network in  a data set which only has 000 labels per class but also because they can actuallyhas a th000 labels per class and so we can actually engage any of the techniques that we have seen in overfitting to address overfitting such as weight decay any of the regularization techniques that we have seen also in neuron networks to to address it"
+  },
+  {
+    "start": "00:11:51.030000",
+    "end": "00:12:09.470000",
+    "text": "but in computer vision we have something else that could actually help us and this is actually called the documentation so i think its worthwhile going through the data augmentation because it is really a fairly straightforward and widely used approach to avoid the situation such as this where we have overfeeding"
+  },
+  {
+    "start": "00:12:11.790000",
+    "end": "00:12:25.990000",
+    "text": "so in that augmentation what we actually do we are taking the input images and given the fact that we have the knowledge of the class we tryto transform these input images in creating more data so thats the an artificial way of increasing the number of labels we have in our data set we also have various kind of transformations"
+  },
+  {
+    "start": "00:12:34.670000",
+    "end": "00:13:05.990000",
+    "text": "we may be shifting rotating images we may sharing the image we have rotating images we may sharing the image we have we are zooming in zooming out and flipping and so on we are definitely going to be creating some nasty cats or dogs but definitely this helps our network to not overfit and so if you are to just keep the exactly same networkchitecture as we have seen earlier not touch at all the model but definitely train the model with this additional kind of data set"
+  },
+  {
+    "start": "00:13:13.509000",
+    "end": "00:13:29.949000",
+    "text": "then look what happened we have a training and validation loss which are very close to each other validation loss which are very close to each other so we actually have solved the overfeeding problem and our accuracy is both in terms of training and validation are also very close and close to some something like 85"
+  },
+  {
+    "start": "00:13:32.189000",
+    "end": "00:14:03.920000",
+    "text": "okay so i think this is a good example to showcase the u cnn models as  working for the simple task of image classification and what we actually would like to understand now next is what we have said earlier about hey what how can we have some kind de visualization into thehow can we have some kind of visualization into the internals of the cnn to understand what is what is actually learning and that is what we will be discussing next"
+  }
+]
