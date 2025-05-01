@@ -1,0 +1,1017 @@
+[
+  {
+    "start": "00:00:01.919000",
+    "end": "00:00:11.350000",
+    "text": "we have seen earlier the regression problem where we have effectively to model a conditional probability distribution at the output of our predictor now we actually switching to a new task"
+  },
+  {
+    "start": "00:00:16.189000",
+    "end": "00:00:22.470000",
+    "text": "its  a classification task where again we will solve this task using the vaping block diagram again we will need to model our predictor with  a conditional probability distribution"
+  },
+  {
+    "start": "00:00:24.990000",
+    "end": "00:00:32.670000",
+    "text": "but in classification our target variables are distinct and discrete random variables rather than continues so in this kind of setting ill mottthan continues"
+  },
+  {
+    "start": "00:00:35.910000",
+    "end": "00:00:44.709000",
+    "text": "so in this kind of setting ill motivate the classification task with a simple use case is actually going to be called the radar problem and well thats what we will start withnext"
+  },
+  {
+    "start": "00:00:48.110000",
+    "end": "00:00:54.349000",
+    "text": "in this setting the use case the application we will see is a wellknown application back in the second world war the battle of england was w primarily from the erection of these towers"
+  },
+  {
+    "start": "00:01:09.070000",
+    "end": "00:01:42.670000",
+    "text": "this was actually called the radar towers whose job is was to transmittowards the france where from france the nazi airplanes were coming in to bomb london and the every time that this waveform was impinging into some large object on the sky like a plane"
+  },
+  {
+    "start": "00:01:45.399000",
+    "end": "00:01:58.670000",
+    "text": "it was returning back into what we call the radareceiver and there was kind of an human operator over therein on each kind of tower with an access to a kind of a telephone device over there"
+  },
+  {
+    "start": "00:02:00.749000",
+    "end": "00:02:05.230000",
+    "text": "and every time that there was  strong return of  — a strong signal thatreceived in the radar kind of a receiver antenna"
+  },
+  {
+    "start": "00:02:12.070000",
+    "end": "00:02:19.670000",
+    "text": "it was he was calling london and millions were well the sirens were sounding and millions of people were actually running to the tubes stations to tube stations to save their lives"
+  },
+  {
+    "start": "00:02:23.110000",
+    "end": "00:02:52.949000",
+    "text": "that was the application and this application is evidently present in any modern car today that has exactly the same ability to have raiders located in the lets say in the front of the car to send exactly the same signals and every time that you have yoglamours and every time that you have a feature in your car that its automatic"
+  },
+  {
+    "start": "00:17:50.789000",
+    "end": "00:17:50.789000",
+    "text": "what is called automatic distancekeeping to the vehicle in front of you that is exactly the same thing"
+  },
+  {
+    "start": "00:51:35.270000",
+    "end": "00:51:35.270000",
+    "text": "it was returning back that reflection from the car in front and controller is actually trying to keep the velocities between your car and the car in front of you constant and therefore maintain a desired distance between the two cars"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "but anyway i would motivate it with this sort of application which is the world war ii applicrt of application which is the world war ii application"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "because also back then a lot of the terminology that we will cover today it was also first invented and just to see exactly what is actually happening here we have some kindof a time plot of a quantity that will be calling x and it will be designating for us the socall signalstrength of or received signal strength or power"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and very simplistically we have some you know some fluctuation received power when we havewhen we have a return"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "a strong return from a plane and in nights where we dont the attacks were usually during the night that when we have no return we still have some fluctuating signal power much smaller than that"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and okay our receiver is going to have just one knob that knob is going to be called the threshold will symbolize it with w its  a scalar value that it is anything that exceeds it is going"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "lets assume that this threshold values are set to this kind of level everything that overstatedkind of level everything that exceeds it is going to be called the predicted that is well not predicted"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "is were going to sound the alarm and anything that it is not exceeding it we are going to not alarm anyone alert anyone and we will call that the noattack case"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so our problem is a binary classification problem what we call binary because our now target variable as compared to that regression can only take two values"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "one we will call this the socalled positive condition the attack is going on and zeroositive condition"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the attack is going on and zero we will be calling this the socal negative condition and our job here"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "now that we are in the 2020s we are going to solve this problem of determining the value of that kind of threshold using kinda machine learning approaches"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so we have what we will do is we will task a military person over here to sit and observe what is really happening every single day so first night records signal strength x1 and records also whether attack has happened or notrecords also whether attack has happened or not x2 the same way and so on"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "if they survive we will keep them if they not we have to replace them with somebody else so ym ym thats our"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "lets say we have aggregated m examples of what is has happened at our receiver and as before we progress into specifying what is really the problem statement i just want to u convey some kind of an intuitive fashion of what is happening"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so this was the soal attack signal strength and this wasth and this was the noattack signal strength"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the sort of time series of all these kindof observations night after night and we have the problem to solve is to come up with an optimal value for the threshold"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "you can understand that the threshold is quite critical in determining whether how the system operates"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "if you set the threshold too high this means that we will be missing quite a lot of attacks and evidently people will die"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "if we set the threshold too low this means that we will be waking up everyone unw this means that we will be waking up everyone unnecessarily the first night"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "they will believe us and you know return to their beds disappointed somehow or relieved the second night they will still believe us"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "they will go down to the tube but after the third night they will stop believing us and when a real att happens people will also die so the system will lose complete credibility"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so our predictor the yhat that we have to predict at this moment in time we wiat this moment in time we will treat this as a one and zero later will become a number between zero and one"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "is also goingto return our prediction predictor is going also to return one or zero for the positive and negative condition respectively okay so that is the problem statement"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "how to set up this w optimally and as you can understand i can just after just before in the regression kind of problem we had introduced the probabilistic nature of every predictor"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so what about our next nature of every predictor so what what we will do now is wedraw two probability distributions and let me just draw this probability distribution lets saythis"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so this is a probability distribution of q we have here on the xaxises our signal strength and one of them is going to be called the probability of z"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and when no attack is happening and this is the probability of o when the attack is happening and as you can see these two prob distributions can be easily obtained u as histograms by just going back to ayu obtained u as histograms by just going back to our data tape the data set that we have created and recorded"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and select all the rows where the y target variable is zero and obtain this histogramm and visit all the corresponding rows where the y is equal to one and plot this corresponding histogram"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so in terms of plotting the histages this is definitely a  a very i will call it an easy exercise"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and as you probably notice from the shape of these histatiseshave not really made any assumption with respect to ugaussianity or nothing like that"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "they are definitely plotted as nongaussian type of probability distributions and the moment i have and also another sort of evident"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "that thing that is actually going on with this problem is that there is a very strong overlap between the two histograms when we have the signal strength between no attacks and attacks"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "as you can see also here from the time series plot theresemisignificant overlap between thet theres a quite significant overlap between the two and thats of course due to properties of radio wave propagation"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the waveform emitted from this kindof radar station can be pinched on the sea surface and go into some kind of other transverse other kind of paths the socall multipath fading situation"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "some of you may have observed fading while lening to analog radio stations such as am and fm back in the old days"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "this were the only radio stations that we had access to also there was an had access to and also you may have sort of experienced exactly the same situation where you are going in and out of coverage holes using your cellular devices"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the important thing about the sort uu overlap is that lets assume that i have selected here a value for my threshold w and the moment i have if you like a threshold w i can start clear defining certain areas under those probability distributions"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "that will be of great interest to me so i want to shade the first probability tail which isshade the first probability tail which is this one"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "i want also to shade thisand area and also want to say with horizontal stripes this area so these three areas are i think will be quite important"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "now the overlap means that since theres no absolutely clear separation between the two prob distributions we are always going to make some form of mistake we always going to have mistakes"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and in fact we can clearly distinguish four fourconditions and we will tabulate them with with what we call the confusion matrate them with"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "with what we call the confusion matrix on the oneaxis of the confusion matrix well be assigning this axe to the socall ground truth and the other to the prediction"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the yut and when the jhat is positive and negative and this positive and negative agrees to the with the ground truth then we will be calling this correspondingly true positive and truenegative"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in fact its actually quite common to write first the letter the second letter as a pneumonic rule write first the pneumatical rule write first the third letters and puneumonic rule write first the second letter and put a word"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the letter t in front every time that you have agreement with ground truth"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in the case where you predict there is an attack going on but you are wrong you are prepending it with the letter f stands for false so we have false positive here and here we have also false negative"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we are predicting negative but we are wrong"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and therefore we have the socalled false negative events the overlap as compared to the case which isquite unrealistic in prattoed to the case which isquite unrealistic in practice"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "where we have some form of significant separation between the two histograms like this and this and therefore its easy to select something of a threshold w that will separate the two conditions perfectly"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the socal linearly separable case is not present here so we are going to"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so let me just delete it to avoid any confusion is not present here so we always going to have in other words these two type of events present in our problem and before i describe"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "ents present in our problem and before i describe what was actually happening every time we get this threshold w to not be set optimally"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "when the threshold w is set too high then we are missing the events that are actually attacks that are actually going will happen"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and therefore we are predicting that no attacks is happening while in fact they are"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and if the w is set too low we are going to be increasing the false positive rate and in fact we will being the false positive rate and in fact we will be alerting sort of the people to go down to the cube"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "but unfortunately no attack is actually goingon"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "now that we have recognized that we always going to make mistake as manifested by this confusion matrixwe are interested to just qualify these mistakes and quantify those mistakes by just understanding the probability of making a mistake"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "this is definitely the probability of when we make where our prediction why hat is not equal to the ground ruth yu and this iya hat is not equal to the ground ruth yu and this is happens in two instances"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the first instance is when we have the probability when we make the prediction that no attack is happening plus the events when we are making the oppositeclaim"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and i think its worthwhile now trying to understand what is happening in this what are those probabilities and how they related to these histan"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we have plotted the moment we have specified the threshold location over here wwehspent the threshold location over here w we have split the region into two parts"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the first region is called r0 and the second region is calledr1"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and now that we have this region names i think the region names are also intuitively kind of understood because this zero index here corresponds to the case where we declare anything as we said below the threshold w is"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "theres no attack so that  what the zero is here and anything above the w we have we predicting attack is happg above the w we have we predicting attack is happening and thats why the one is there"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we can actually start putting this probabilities quantifying these probabilities based on the area under the those those cures"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and we i hope you all remember that probability for continuous random variables such as a signal strength over here is sort of manifested by such kindof areas"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so what im going to do now is im goingto declare that this probability the first probability over here is equal to the probability that i am making a prediction such as my q belongs to the region r0"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "when in fact the ground truth is one so i converted the q is equal to zero to all the events which are to the left of w"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so all the events where z belongs to this kind of region are zero and the dothe same belong to the region r1"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "when j is equal toz all events of g greater than w in other words all xs which are belonging to the region r1exactly equivalent to those convention that i had about what is yhat is equal to one and what yhat is equal to zero"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so this one the probability that q belongs to the region r0 when y is one corresponds to the left tail of this probability distribution so this probability distribution but only the left tail"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so you can see here that the whole probability distribution here the whole histogram is p of xcomm  to 1"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "but here im interesting only for the x equal to r0equal to r0 so its the summation of this vertically ststriped and this bubbly kinda area over there"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so i am going to write it as an integralprobability of x commas y is  to 1 dx and im goingto take this and actually do exactly the same for the r1 probability of x commata yasal to 0"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "dx and now if i actually start relating what i actually wrote here with the counts that i have count it through"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "nd ofa looking at the predictor output and looking at the ground truth over here i can understand that this is corresponds to the false negative rate"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and definitely this is the false positive because i am actually predicting that no attack is happening and in fact im wrong and the corresponding here case where ime predicting that the attack is happening and in fact im also wrong so the falsepositive and the falsenegative and the falseposi ar"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "false neg the false negative and the false posi are related to the entries of the confusion matrix here that are definitely present and countable using this kindof histograms"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and as we discussed our role here is to find the optimal w and i just want you to understand how visually we can be persuaded"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "that is in fact there is an optimal w and that optimal w will minimize the probability of making the mistakes you cannot make"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "make it zero because as we discussed we do not face in this situation linearly separed we do not face in this situation linearly separable data set"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "but at the very least we can minimize the summation of false positives and false negative events and imagine that that you are moving that w in the left side over here so trying to move this line to the left and look whats happening as youre moving into the left gradually"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "you will comeso maybe two snapshots are enough to see what is happening so in the first value of this w to the left of the previous kind of w what"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": " we don’t face in this scenario livynec previous kind of w what we are actually achieving is we are going to whatever we are losing in terms of area out of our this verticallystriped area"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we will be gaining in terms of the horizontallystriped area having said that we actually start seeing reduction of this bubbly area and this area will start to be reduced and reduced and reduced up to the point where we reach what will be calling the w star the optimal w and thus optimal w is the w that minimized this probability of mistake simply because in ted this probability of mistake simply because in that location the bubbly area got eliminated completely and the summation of the therefore of the false positives and false negatives that included"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "it is the minimum possible"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so actually we can write that sort of optimizingthe w towards w star will bedone using thealgorithm thatminimizes the probability of making a mistake so the misclassification error or also calledmisclassification error eight so this will be done now that we have soror eight"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so this will be done now that we have some kind of a visual motivation of what were trying to achieve here"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we now need to understand how we can also motivate in the next discussion an objective function and that it is going to be suitable for our problem here"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "which is the classification problem in a similar way as we have done with the u earlier loss function we have used initially was called mean square error and then it was also called crossentropy"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so well do that next the come up mit this o roe 8 so you are not justtroy so well do that next the come up with this objective function before we go and discuss that"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "lets review the socalled classification metrics the classification metrics that there a couple of classification metrics will be of interest to us"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "they will be entirely based of course on the previously described confusion matrix and the first matric i want to address is called the true positive rate the second metric is well"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the dr postive rate is comes with many names and many of them have been sortinglyith many names and many of them have been sortof originating from various kind"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "of domains electrical engineering computer science and others so in computer science this also is called recall"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in electrical engineering this is also called probability of detection and many other domains quote it as sensitivity itsone and the same thing and i just want to mention all of them"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "just in case you come up with come across one of the of the many so this is the ratio between true positive and true negative plus falses"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "between true positive and truepositive plus false negative so this is a a ratio that is definitely going to be of concern to us andor of interest to us"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "every time we have to evaluate a classifier and the second metrix that i want to quote and have some discussion about those metrics a bit later is — a socalled precision"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and this precision is another ratio of truepositive ide by truepositive plus falsepositive"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and if you follow the this video where we have plotted these histograms in the binary clasese have plotted these histograms in the binary classifier when the socalled radar problem and you probably understood the tradeoff that exists between false positives and false negatives as we were moving"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in fact the as we were moving the value of the threshold w we were changing the areas under those two histogrammes  of course here we are"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we were trading all false positive or false negatives in our attempt to find this optimal kind of w in a very similar way"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we can actually claim that nowway we can actually claim that now that we have the those metrics"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the tradeoff between false positives and false negatives is evident over here u inin in the following trade off"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so let me write it this down so i can say that because as wfalse positives and false negatives we can actually claim that there is abetween recall and precision"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "because recall and precision everything is exactly the same in terms of numerator and portion of the denominator but only the false poi and false negatives are present thethe false pos and false negatives are present there so this is actually an important tradeoff that will be of great interest to us"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "as we will always finding ourselves making that kindof tradeoff for classif classification architectures we will be designing soon the other metric its not really a different metric"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "but its a way to present performance metrics classification metrix"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "is this what we call the socal receiver operating characteristic and we actually call it receiver operating characteristic ftually call it receiver operating characteristic from those days in the 40s when they were deploying this kind of radars"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and i will describe it as the curve that we can plot by changing the threshold w in the xaxis over here it is the false positive rate also known as a false alarm from those days"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the probab ility of the probability of false alarm pfa and the j ais is called recall"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "evidently the same thing as a true positive rate and definitely we haveobability of false positive rate that goes from one from 0 to one and the probability of recall true negative rate that goes again from 0"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "to one because there are probabilities and therefore well find this cur of constraint by those valuesand the u as we change the threshold we will be abletodraw such cures"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "some of these curves are going to be like this let me plot threecases so case lets say a case b and case c"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and i think itd reasonable to understand now what is the best possible classifier werstand now what is the best possible classifier we can ever design which is of course not achievable right now"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and its not achievable"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in any case we have such cases of overlap between positive and negative classes and that point over here is this is the sort of go of ideal and unrealistic operating pointhis care as we discussed is called receiverr and every and each and every curve is being plotted by having a classifier and tuning"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "if you like itspar ameters adjusting its parameters the threshold more sp now where are theyerrors adjusting its parameters the threshold more specifically and same"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "here this is supposed to be a diagonal line 45° and lets compare between three different classifiers which one do we believe that is actually the best one"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and itd actually a very straightforward kind of answer if we draw let say a horizontal kindof l line"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the classifier a is offering exactly the same performance as the recall but at — – a much reduced probability of false alarm or negative rate as compared with classifier b and coositive rate as compared to classifier b and of course much better than classifier c and therefore either we draw a horizontal line or actually you can actually draw a vertical line"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we can make the same argument a is offered  a much better probability of true positive as compared with b and as comparing to c for the same false positive rate"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and therefore we can actually write this kind of preference relationship in this specific case so recall the recall and force positive are involved in plotting this kindforce positive are involved in plotting this kind of curve to give us a"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "if you like graphical view how the classifier is is behaving in various kind and type of operating conditions"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and when we tune this classifier and we choosing the w the specific w start that we have seen earlier we effectively operate at a specific operating point"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "at that point we will be sort of constantly operating and we will in many senses we will need to make different tradeoffs between positives or false negatives positive gewand for an"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we would rather than falsefortuneden positives and false negatives and true positives in various applications"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so let me write this down that eachpoint in the rocunique setting of the thresholdw so that is you know as kindofa short summary of a couple of classification metrics that will be of interest to us and the receiver operating curve"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and we will also have another curve called recall versus precision this curve will be introduced in another video and well be discussed then"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in an early video we saw how maximum likelihood was motivatinvideo"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we saw how maximum likelihood was motivating every the underlying you like objective function of of every prediction problem and so binary classification will not be an exception"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and we started with the regression problem and we saw how maximal probability and crossentropy are ultimately connected"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "now we recognize the functional form of the socall binary cross–entropy loss function which is for spe specifically for our binary classification problem and we will be motivating this by recognizing that id"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we will be motivating this by recognizing that in regression we had amode which actually was gausian in binary classification"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we going to need to actually have a probabilistic model a probability distribution which is really appropriate for our discrete random variables that are the are wise"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so our form of myp model of lets say yu given an xcommadiscrete and in fact binary so i have seen already in the discussion of the entropy video coing and i know that at that point i have quoted beri distribution aat that point i have quoted beri distribution as the appropriate propability distribution for our model and the beri distribution"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "let me write it with all words overhere is given as yhat to the power of yu 1  y the of 1  y lets spend some time kinding understanding this"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "if my ground truth is one this pmodel of zhad of jsorry given xcomma wis simply ya because the yis are zero and therefore this term hole is one so the only thing that remains is so but in fact this is the only thing that remains is remains is y and in fact this is a very important conclusion"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in a sense that from now on in binary classification all i need to produce at the output is this  a single floating point number between zero and one so its — a probability so its going to be zero between z and one"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "for sure ill be calling this probability when j is equal to 1 the probability of q is equal to 1 given x comma w in factlled theposterior probability and we recognize the term posterior already"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we recognized it when our had this probability review lecture and in that kind of video we have actually seen that posterior it means after we get to observe the ais our data"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "what can we say about our target variable y"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in this case so the posterior probability distribution is going to be called yck so thats what our classifier is going to from now on going to be producing and that this posterior being a probability means thathat this posterior being a probability means that we are have inherent the ability to provide an uncertainty about our pred prediction"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we are going to lets say report the 082 as lets say the output of the positive class and this means that we are going to be 82 certain that we have  a positive event at the output of our classif fire and if we have already reported the output of a positive event then when we are dealing with the negative case our p model over here that we have selected of j given q comma"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "this is becausever here that we have selected of y given qcomma w will be simply be 1 minus y because with y is equal to zero then this becomes one and this becomes one minus yhat"
+  },
+  {
+    "start": "00:51:43.480000",
+    "end": "00:51:43.480000",
+    "text": "so immediately we can actually get the corresponding p model for the c of the negative case in fact i dont need any other in this point"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "maybe i can do maybe i can write p model of y is equal to z given acommas w and this was shown to be 1  so i don’t even need to produce  w"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "m  1  or in the output of my binary classifier just with one value from that value i can deterministically obtain the other for the negative class"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so if i have produced 08 for the positive class then the probability of the negative class is 002"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "okay so thats kindof an important conclusion of this kind of discussion and the beri distribution which is obviously very appropriate for binary events at the 0o one or the socal coin dossing distribution of heads versus tales"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and if i remember the maximum lack kins tales and if i remember the maximum lack kind of discussion and the socalled cross entropy in that kind of cross entropy i had the following formula which is equally applicable to any predictor"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "i had ay cat comma y is minus the expectation of q commas y my examples according to the socall p data high distribution log pmodel of y given z comma w and this is definitely the result that we have seen earlier and just want to contrast that against you know what we have see before but simply want to compare that with your example"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "andknow what we have seen earlier we had an underlying probability distribution where our data is and definitely this p data had distribution is effectively the table that we have seen earlier"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the distribution that governs the training data or the data that we have recorded with all our kind of ground truths so the bet data high distribution is present in here so no changes"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "what we have seen earlier"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "its just a different type of data and im actually interested to go ahead and calculate this term over herested to go ahead and calculate this term over here and this term can be trivially calculated as log of my p model"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "is why to of y  1  y the 1  y or log y to the of y plus log of 1  y to the of 1  y and this is u of course making the use of the log of the product is the summation of the logs identity"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and this is uses another identity this is ya log of the entropy 1  yu  a sort of identical kind of term in the presentation of the binary kind of entropy"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "graph the coin tossesing during the the coin tossing experiment so lets plug this in into this formula and at the same time we will replace the expectation with a sample mean"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so from these two we can conclude that the crossentropy is the binary crossepochry"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so im just going to put yhat commas yminus 1 m summe an equal to 1a yminus 1 m summation from i is equal to 1 to m ofyi log of yi hat plus 1  yat definitely"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "this is definitely an a scaler which is indicates to me whether how well am i doing and this is the loss function that is going to govern from now on our binary classification problem and we are needing to use it as an objective function and when we minimize it equivalently we will be reducing the probabilistic distance between the p data hack that is present in my data set that is act"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "y1  m  1  – log of yi hata hack that is present in my data set that is actually given to me and the p model which as we discussed here is of the beri distribution"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and now we can just go ahead and plot that in fact let i just go and plot thisterm and this term can be plotted overhere so the xaxis im going to plot it against the yhat"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the y is for the probability of the positive and this is my binary cross entropy"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in fact i will call this term the socalled inner term to avoid confusion with something that involves an averaging ofusion with something that involves an averaging over many of those inner terms for each of the examples and each of my predictions"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "i have obviously a term over here a real number i can trivially calculate"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so let me call it the inner term over here in the yais and if i plot this term then i will get something that is going to look likethis"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so the probability lets interpret this graph when the y height is one means that i am 100 certain that this is  or positive event that has happened"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and this means that ttinte event that has happened and this means that the probability so this curve corresponds with i forgot to mention that"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "this curve corresponds is plotted when y is equal to 1 for the specific ground truth when my ground truth agrees with me then im expected to get the inner term to be zero as intuitively understood"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "im 100 in agreement with the ground truth here the on the other hand when imepredicting the y had to be 0"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "point lets say 05 over herehis means that im predicting the positive to be 005 and in other words is predicting the negative to be 095 ime predicting that a noattack has happened with 95 confidence"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "then im actually going to and my ground ruth disagrees with me"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "i am going to incure a huge loss so i can actually sufficient enough to say here that bcdecisions such as 095 but wrongdecisions and actually can draw also the kind of corresponding carezero obviously in the handwritten kind i is  and it should be symmetric obviously in the handwriting kind of way this is they are nin the handwritten kind of way this is"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "they are not symmetric here but this is kindofquite important to realize the behavior of binary cross penalizing confident wrong decisionso"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "now we have everything that we need to draw a block diagram and this block diagram is applicable in fact to all sorts of predictors"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and we have already seen regression now in classification so let me just throw the predictor as this box overhere"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "we have seen that in the regression setting a linear model a dot product in other won setting a linear model a dot product in other words between the parameter vector and features"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and we also seeing here  a classifier but we have not really discussed yet"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the functional form of what this classifier is going to so this is either for aggression orclassification and input q is going to come in in general it has many dimensions"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "a y height is goingto be produced at the output and over here were going to have the lets assume that this is now for ung to have the lets assume that this is now for u"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "i mean lets call it a loss function and the loss function will be the mean square error or the crossentropy"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "in fact the we will show that the cross entropy is able to accommodate both mean square error as well and as so also the binary concenter we are just seen"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so the output of this kind of loss function so this loss function should have some knowledge of the ground ruths j and we are going to obtain"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "o obtain a scalar number of theloss for and then the scalar number is going to be effectively fed into a block that it will calculate the values of the gradient of the loss with respect to the parameter vectorw"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "and this is part of the stochastic gr descent algorithm we have seen and the output of this block is going to be called the param parameter"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "updatethat we will accept  a learning rate that we actually call ea this will also accept as high paramume mini batch that we have actually called mb and it will"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "the parameter update formula will provide for us and will update for us the vector w of all the parameters involved inside this predictor"
+  },
+  {
+    "start": "-1:59:59.000000",
+    "end": "-1:59:59.000000",
+    "text": "so this is a very generic block diagram that we allow us to train and thereforeoptimize any machine any prediction machine we have seen up until this point"
+  }
+]

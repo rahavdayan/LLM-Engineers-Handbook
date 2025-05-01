@@ -1,0 +1,107 @@
+[
+  {
+    "start": "00:00:03.000000",
+    "end": "00:00:04.870000",
+    "text": "in this video i would like to start the discussion about convolutional new networks"
+  },
+  {
+    "start": "00:00:07.389000",
+    "end": "00:00:15.869000",
+    "text": "which is another architecture of neural networks that we are going to see specifically kindof engineered to address problems that we are facing in computer vision"
+  },
+  {
+    "start": "00:00:20.269000",
+    "end": "00:00:54.790000",
+    "text": "i want to start this discussion with just showing you a picture and if i ask you to tell me what would actually be the first object that you pay attention to then most people will probably respond to with yellow cab and its not really accident that lot of cabs inb and its not really accident that lot of cabs in a lotofcapitals are painted yellow u"
+  },
+  {
+    "start": "00:00:56.990000",
+    "end": "00:01:06.590000",
+    "text": "and of course that attention to bright colors originates from thousands of years of evolution where people are of course trained to pay attention to bright colors which are typically sources of food such as fruits or in some instances sources of danger such like the yellow tiger that is coming towards us so kind of joking aside"
+  },
+  {
+    "start": "00:01:15.149000",
+    "end": "00:01:17.310000",
+    "text": "i think you can associate this kind image with the following kind of processing of various"
+  },
+  {
+    "start": "00:01:22.910000",
+    "end": "00:01:28.910000",
+    "text": "with the following kind of processing of various kindof stage processing that is been going on in your brain trying to from the kind of perception system that embeds into it that we have embedded into it"
+  },
+  {
+    "start": "00:01:34.149000",
+    "end": "00:01:44.429000",
+    "text": "so if you can imagine the process then the first thing that you open your eyes soon that you have your eyes closed and you see an image like this then the brain is actually in a first few milliseconds"
+  },
+  {
+    "start": "00:01:47.270000",
+    "end": "00:02:06.109000",
+    "text": "is sampling this image in a course kind of way and determines whether we have situations as an imdetermines whether we have situations as an immediate kind of threat or a source of food and then very quickly the brain switches softly into objects paying attention to objects which are associated with the task that we have"
+  },
+  {
+    "start": "00:02:12.630000",
+    "end": "00:02:23.350000",
+    "text": "we we have to execute so we have the for example if youre waiting for someone in this kindof scene then you start paying more attention to people coming towards you people getting out of vehicles and so on"
+  },
+  {
+    "start": "00:02:27.270000",
+    "end": "00:02:31.790000",
+    "text": "so now what i like to start getting into is the mechanics of  a litke to start getting into is the mechanics of a little bit of computer vision some kind of basic principles and i wanted"
+  },
+  {
+    "start": "00:02:39.910000",
+    "end": "00:02:43.990000",
+    "text": "to cover a little bit you know the question as to okay what is an image that like the one weve seen earlier and how were going to represent it and evidently an image is  a matrix"
+  },
+  {
+    "start": "00:02:49.350000",
+    "end": "00:02:55.070000",
+    "text": "and i think we had some discussion about images before and if a black white imag is or — – a grayscale image as you actually see over here is  the ma which includes integer numbers and this integerhose elements are integer numbers and this integer numbers typically we are"
+  },
+  {
+    "start": "00:03:10.430000",
+    "end": "00:03:22.949000",
+    "text": "you know each element corresponds to a pixel and the dynamic range that we associate with typically for in computer vision with those pixels is 8 bits so we represent the information at each pixel and codes as 8 bits which means that these integer numbers are zero from 0"
+  },
+  {
+    "start": "00:03:34.470000",
+    "end": "00:03:36.670000",
+    "text": "to 255 and so when we go to color im ese we need more than one of those matrices in fact we need three matricels"
+  },
+  {
+    "start": "00:03:38.869000",
+    "end": "00:03:41.429000",
+    "text": "typically again there are sensorspically again there are sensors which are of course encode the information to far more than three matrices"
+  },
+  {
+    "start": "00:03:46.710000",
+    "end": "00:03:53.509000",
+    "text": "but those three matricels are corresponds to the fundamental colors typically of red green and blue and this which is actually what you see here"
+  },
+  {
+    "start": "00:03:57.470000",
+    "end": "00:03:57.470000",
+    "text": "and also probably you notice that these numbers are now floating point numbers"
+  },
+  {
+    "start": "00:04:02.309000",
+    "end": "00:04:17.990000",
+    "text": "lets say from 0 to one and this results from normalizing these pixels numbers to with a number 255 because 2 to the power of 8 is 256 and therefore all our numbers will be from 06 and therefore all our numbers will be from 0 to 255 in those matrices"
+  },
+  {
+    "start": "00:04:20.110000",
+    "end": "00:04:20.110000",
+    "text": "if we start dividing every element with 255 we get numbers between 0 and 1"
+  },
+  {
+    "start": "00:04:29.749000",
+    "end": "00:04:33.270000",
+    "text": "and this is basically what we needto do in order of process the images in with with our new neural networks that we will introduce now called the convolutional neural networks"
+  },
+  {
+    "start": "00:04:39.150000",
+    "end": "00:04:46.680000",
+    "text": "so with convolutional neural networks we need to start the discussion on what is a convolution and this is whats coming next"
+  }
+]

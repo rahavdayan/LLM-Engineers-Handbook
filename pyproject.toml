@@ -67,8 +67,8 @@ build-backend = "poetry.core.masonry.api"
 # ----------------------------------
 
 [tool.poe.tasks]
-# Data pipelines
-run-video-etl-pipeline = "poetry run python -m tools.run --no-cache"
+download-huggingface-video = "poetry run python -m tools.run_download_huggingface_video --no-cache"
+chunk-subtitles = "poetry run python -m tools.run_chunk_subtitles --no-cache"
 
 # Utility pipelines
 run-export-artifact-to-json-pipeline = "poetry run python -m tools.run --no-cache --run-export-artifact-to-json"
