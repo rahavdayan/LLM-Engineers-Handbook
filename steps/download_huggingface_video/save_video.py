@@ -81,7 +81,7 @@ def save_video():
 
         logger.info("📚 Parsed %d subtitle entries", len(subtitles))
 
-        json_path = output_dir / "subtitles_video_%d.json" % idx
+        json_path = output_dir / f"subtitles_video_{idx}.json"  # or .format() if preferred
         with Path.open(json_path, "w", encoding="utf-8") as f:
             json.dump(subtitles, f, ensure_ascii=False, indent=2)
         logger.info("💾 Saved subtitles to %s", json_path)
