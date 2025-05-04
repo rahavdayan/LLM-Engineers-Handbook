@@ -48,6 +48,7 @@ opik = "^0.2.2"
 ruff = "^0.4.9"
 pre-commit = "^3.7.1"
 pytest = "^8.2.2"
+ipykernel = "^6.29.5"
 
 
 [tool.poetry.group.aws.dependencies]

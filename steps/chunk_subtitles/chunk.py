@@ -1,5 +1,4 @@
 import json
-import os
 import re
 import shutil
 import string
@@ -8,32 +7,36 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 import spacy
+from bertopic import BERTopic
+from sentence_transformers import SentenceTransformer
 from transformers import T5Tokenizer, TFT5ForConditionalGeneration
 from zenml import step
 from zenml.logger import get_logger
 
 
-def convert_to_float_seconds(timestamp):
-    hours, minutes, rest = timestamp.split(":")
-    if "." in rest:
-        seconds, milliseconds = rest.split(".")
-    else:
-        seconds, milliseconds = rest, "0"
-
-    total_seconds = (
-        int(hours) * 3600
-        + int(minutes) * 60
-        + int(seconds)
-        + int(milliseconds) / (10 ** len(milliseconds))  # Handles .1, .12, .123, etc.
+def convert_to_timedelta(timestamp):
+    """Converts a timestamp string (HH:MM:SS.ssssss) to timedelta."""
+    time_obj = datetime.strptime(timestamp, "%H:%M:%S.%f")
+    return timedelta(
+        hours=time_obj.hour, minutes=time_obj.minute, seconds=time_obj.second, microseconds=time_obj.microsecond
     )
-    return float(total_seconds)
 
 
-def float_to_timestamp_str(seconds: float) -> str:
-    hours = int(seconds // 3600)
-    minutes = int((seconds % 3600) // 60)
-    secs = seconds % 60
-    return "%02d:%02d:%09.6f" % (hours, minutes, secs)
+def timedelta_to_str(td):
+    total_seconds = td.total_seconds()
+    hours = int(total_seconds // 3600)
+    minutes = int((total_seconds % 3600) // 60)
+    seconds = total_seconds % 60
+    return "%02d:%02d:%09.6f" % (hours, minutes, seconds)
+
+
+def get_non_overlapping_part(str1, str2):
+    max_overlap = 0
+    min_len = min(len(str1), len(str2))
+    for i in range(1, min_len + 1):
+        if str1[-i:] == str2[:i]:
+            max_overlap = i
+    return str2[max_overlap:].strip()
 
 
 def merge_strings(str1, str2):
@@ -43,10 +46,6 @@ def merge_strings(str1, str2):
         if str1[-i:] == str2[:i]:
             max_overlap = i
     return str1 + str2[max_overlap:]
-
-
-def parse_ts(ts):
-    return datetime.strptime(ts, "%H:%M:%S.%f") - datetime.strptime("0:00:00.000000", "%H:%M:%S.%f")
 
 
 def recursive_merge_subtitle_texts(subtitle_texts):
@@ -66,51 +65,46 @@ def recursive_merge_subtitle_texts(subtitle_texts):
     return recursive_merge_subtitle_texts(merged)
 
 
-def recursive_merge_subtitles(subtitles, tolerance_ms=10):
-    if not subtitles:
-        return {}
-    if len(subtitles) == 1:
-        return subtitles[0]
+def group_subtitles_by_char_limit(subtitles, max_chars=512):
+    """
+    Groups subtitles into chunks based on a maximum character limit.
+    Tracks original subtitle data for each chunk. Timestamps are now stored as timedeltas.
+    """
+    chunks = []
+    current_chunk = {
+        "text": "",  # Accumulated chunk text
+        "start": timedelta.max,  # Start time of the chunk (earliest) as a timedelta
+        "end": timedelta.min,  # End time of the chunk (latest) as a timedelta
+        "subtitles": [],  # List to track original subtitles in this chunk
+    }
 
-    merged = []
-    i = 0
-    while i < len(subtitles):
-        if i + 1 < len(subtitles):
-            s1 = subtitles[i]
-            s2 = subtitles[i + 1]
+    for subtitle in subtitles:
+        subtitle_text = subtitle["text"]
+        subtitle_start = subtitle["start"]  # Already in timedelta
+        subtitle_end = subtitle["end"]  # Already in timedelta
 
-            # Merge text with overlap handling
-            merged_text = merge_strings(s1["text"], s2["text"])
-
-            # Extract all word/timestamp pairs
-            timestamps = []
-            for key in s1:
-                if key.startswith("T") and isinstance(s1[key], dict):
-                    timestamps.append((s1[key]["word"], s1[key]["timestamp"]))
-            for key in s2:
-                if key.startswith("T") and isinstance(s2[key], dict):
-                    timestamps.append((s2[key]["word"], s2[key]["timestamp"]))
-
-            # Deduplicate using time tolerance
-            seen = []
-            for word, ts in timestamps:
-                current_time = parse_ts(ts)
-                is_unique = True  # Assume the word is unique unless proven otherwise
-                for entry in seen:
-                    if abs(current_time - parse_ts(entry["timestamp"])) <= timedelta(milliseconds=tolerance_ms):
-                        is_unique = False  # Found a duplicate, break the loop
-                        break
-                if is_unique:
-                    seen.append({"word": word, "timestamp": ts})
-
-            # Build merged subtitle object
-            merged_sub = {"T%d" % j: entry for j, entry in enumerate(seen)}
-            merged_sub["text"] = merged_text
-            merged.append(merged_sub)
+        # Check if adding this subtitle exceeds the character limit
+        if len(current_chunk["text"]) > max_chars:
+            # Save current chunk and start a new one
+            chunks.append(current_chunk)
+            current_chunk = {
+                "text": get_non_overlapping_part(current_chunk["text"], subtitle_text),
+                "start": subtitle_start,
+                "end": subtitle_end,
+                "subtitles": [subtitle],
+            }
         else:
-            merged.append(subtitles[i])
-        i += 2
-    return recursive_merge_subtitles(merged, tolerance_ms=tolerance_ms)
+            # Add to current chunk
+            current_chunk["text"] = merge_strings(current_chunk["text"], subtitle_text)
+            current_chunk["start"] = min(current_chunk["start"], subtitle_start)
+            current_chunk["end"] = max(current_chunk["end"], subtitle_end)
+            current_chunk["subtitles"].append(subtitle)
+
+    # Add the last chunk
+    if current_chunk["text"]:
+        chunks.append(current_chunk)
+
+    return chunks
 
 
 def clean_subtitle_text(subtitle_text):
@@ -119,72 +113,29 @@ def clean_subtitle_text(subtitle_text):
     text = subtitle_text.replace("\n", " ")
     text = filler_pattern.sub("", text)
     text = re.sub(r"\s+", " ", text).strip()
-    return text
+    return text.lower()
 
 
-def combine_subtitles(filepath, len_markers=15):
+def combine_subtitles(filepath):
     with Path.open(filepath, "r") as file:
         data = json.load(file)
 
+    # Convert the timestamps from string to timedelta
     for item in data:
+        item["start"] = convert_to_timedelta(item["start"])  # Convert to timedelta
+        item["end"] = convert_to_timedelta(item["end"])  # Convert to timedelta
         item["text"] = clean_subtitle_text(item["text"])
-        item["T0"] = {
-            "word": item["text"][:len_markers],  # First `len_markers` characters
-            "timestamp": item["start"],
-        }
-        item["T1"] = {
-            "word": item["text"][-len_markers:],  # Last `len_markers` characters
-            "timestamp": item["end"],
-        }
 
-        # Remove "start" and "end" from each item
-        del item["start"]
-        del item["end"]
-
-    merged_subtitles = recursive_merge_subtitles(data)
-    return merged_subtitles
-
-
-def overlapping_chunks(text, chunk_size=512, overlap=50):
-    chunks = []
-    start = 0
-
-    while start < len(text):
-        # Ensure the start does not cut in the middle of a word
-        if start > 0:
-            # Find the last space before the start to avoid cutting off in the middle of a word
-            start = text.rfind(" ", 0, start) + 1
-            if start == -1:  # If no space found, start from the beginning
-                start = 0
-
-        # Determine the end of the chunk
-        end = start + chunk_size
-
-        # Ensure the end does not cut off in the middle of a word
-        if end < len(text):
-            # Find the last space before the end of the chunk
-            end = text.rfind(" ", start, end)
-            if end == -1:  # If no space found, just use the chunk size (handle edge case)
-                end = start + chunk_size
-
-        # Add the chunk
-        chunks.append(text[start:end])
-
-        # If we're at the end of the text, break
-        if end == len(text):
-            break
-
-        # Move the start to the overlap position (next chunk starts at the last word of the previous chunk)
-        start = end - overlap
-
-    return chunks
+    # Group subtitles by character limit, now with correct timedelta timestamps
+    combined_subtitles = group_subtitles_by_char_limit(data)
+    return combined_subtitles
 
 
 def clean_sentences(sent_lst):
     cleaned = []
     for sentence in sent_lst:
         # Remove punctuation using str.translate
-        no_punct = sentence.translate(str.maketrans("", "", string.punctuation))
+        no_punct = sentence.translate(str.maketrans("", "", string.punctuation)).strip().lower()
         cleaned.append(no_punct)
     return cleaned
 
@@ -197,50 +148,73 @@ def clean_decoded_text(text):
     return text
 
 
-def separate_into_chunks(combined_subtitles, sents_lst, max_chars=300, time_jump_threshold=10):
-    word_timings = [
-        (v["word"], convert_to_float_seconds(v["timestamp"]))
-        for k, v in combined_subtitles.items()
-        if k.startswith("T")
-    ]
+def get_word_timings(subtitle, marker_length=10):
+    word_timings = []
+    for entry in subtitle:
+        word_timings.append({"word": entry["text"][:marker_length], "timestamp": entry["start"]})
+        word_timings.append({"word": entry["text"][-marker_length:], "timestamp": entry["end"]})
+    return word_timings
+
+
+def separate_into_chunks(
+    combined_subtitles, sents_lst, topic_model, embedding_model, max_chars=150, time_jump_threshold=10
+):
     chunks = []
     current_chunk = []
     current_length = 0
+    prev_topic = None
 
-    for sent_text in sents_lst:
-        # Add the sentence to the current chunk
-        current_chunk.append(sent_text)
-        current_length += len(sent_text) + 1  # Adding 1 for the space between sentences
+    # Get embeddings and topics for all sentences first
+    embeddings = embedding_model.encode(sents_lst)
+    topics, _ = topic_model.transform(sents_lst, embeddings)
 
-        # Check if adding this sentence exceeds the max length
-        if current_length > max_chars:
-            # Add the current chunk to the chunks list
-            chunks.append(" ".join(current_chunk))
-            # Start a new chunk with the current sentence
+    for i, sent_text in enumerate(sents_lst):
+        current_topic = topics[i]
+
+        # Decide whether to start a new chunk
+        if (current_length + len(sent_text) + 1 > max_chars) or (
+            prev_topic is not None and current_topic != prev_topic
+        ):
+            if current_chunk:
+                chunks.append(" ".join(current_chunk))
             current_chunk = []
             current_length = 0
 
-    # Add the last chunk if it's not empty
-    if len(current_chunk) != 0:
+        # Add current sentence to chunk
+        current_chunk.append(sent_text)
+        current_length += len(sent_text) + 1
+        prev_topic = current_topic
+
+    # Add the final chunk
+    if current_chunk:
         chunks.append(" ".join(current_chunk))
 
+    current_subtitle_idx = 0
+    word_timings = get_word_timings(combined_subtitles[current_subtitle_idx]["subtitles"])
     subtitle_chunks = []
-    last_used_ts = 0  # Initial starting point (0:00)
+    last_used_ts = timedelta(seconds=0)  # Initial starting point (0:00)
 
     for chunk in chunks:
         last_seen_ts = None
-        matching = [(word, ts) for word, ts in word_timings if word in chunk and ts > last_used_ts]
+        matching = [entry for entry in word_timings if entry["word"] in chunk and entry["timestamp"] > last_used_ts]
 
-        if matching:
-            start_ts = min(ts for _, ts in matching)
+        if len(matching) == 0:
+            current_subtitle_idx += 1
+            word_timings = get_word_timings(combined_subtitles[current_subtitle_idx]["subtitles"])
+            matching = [entry for entry in word_timings if entry["word"] in chunk and entry["timestamp"] > last_used_ts]
 
+        if len(matching) > 0:
+            start_ts = min(min(entry["timestamp"] for entry in matching), last_used_ts)
+            if len(subtitle_chunks) > 0 and subtitle_chunks[-1]["end"] is None:
+                subtitle_chunks[-1]["end"] = start_ts
+            end_ts = max(entry["timestamp"] for entry in word_timings)
             for match in matching:
-                candidate_ts = match[1]
+                candidate_ts = match["timestamp"]
 
                 if last_seen_ts is None:
                     last_seen_ts = candidate_ts
                     best_end_ts = candidate_ts
-                elif candidate_ts - last_seen_ts <= time_jump_threshold:
+                elif candidate_ts - last_seen_ts <= timedelta(seconds=time_jump_threshold):
                     last_seen_ts = candidate_ts
                     best_end_ts = candidate_ts
                 # else: skip this timestamp, don't update best_end_ts
@@ -248,12 +222,12 @@ def separate_into_chunks(combined_subtitles, sents_lst, max_chars=300, time_jump
             end_ts = best_end_ts
             last_used_ts = end_ts if end_ts is not None else last_used_ts
         else:
-            start_ts = -1
-            end_ts = -1
+            start_ts = end_ts
+            end_ts = None
 
-        subtitle_chunks.append(
-            {"start": float_to_timestamp_str(start_ts), "end": float_to_timestamp_str(end_ts), "text": chunk}
-        )
+        subtitle_chunks.append({"start": start_ts, "end": end_ts, "text": chunk})
+    if len(subtitle_chunks) > 0 and subtitle_chunks[-1]["end"] is None:
+        subtitle_chunks[-1]["end"] = max(entry["timestamp"] for entry in word_timings)
     return subtitle_chunks
 
 
@@ -263,6 +237,8 @@ def process_subtitles_file(
     tokenizer,
     model,
     nlp,
+    topic_model,
+    embedding_model,
     output_dir,
     logger,
     repetition_penalty=2.5,
@@ -270,26 +246,46 @@ def process_subtitles_file(
 ):
     try:
         logger.info("Processing: %s", filepath)
-        combined_subtitles = combine_subtitles(filepath)
-        chunks = overlapping_chunks(combined_subtitles["text"])
 
+        # Combine subtitles based on char limit logic
+        combined_subtitles = combine_subtitles(filepath)
+
+        # 1. Loop through each combined chunk and apply punctuation restoration
         decoded_chunks = []
-        for chunk_text in chunks:
+        for chunk in combined_subtitles:
+            chunk_text = chunk["text"]
+
+            # Add punctuation using your model
             inputs = tokenizer.encode("punctuate: " + chunk_text, return_tensors="tf", truncation=True)
             result = model.generate(inputs, repetition_penalty=repetition_penalty, max_new_tokens=max_new_tokens)
             decoded = tokenizer.decode(result[0], skip_special_tokens=True)
+
+            # Clean the decoded text (you can modify this based on your needs)
             cleaned = clean_decoded_text(decoded)
+
+            # Append the cleaned, punctuated chunk to the list
             decoded_chunks.append(cleaned)
 
+        # Merge all decoded chunks into a single text blob
         merged_chunks = recursive_merge_subtitle_texts(decoded_chunks)
-        doc = nlp(merged_chunks)
-        sent_lst = clean_sentences([sent.text.strip().lower() for sent in doc.sents])
-        combined_subtitles["text"] = merged_chunks  # for timestamp alignment
 
-        final_chunks = separate_into_chunks(combined_subtitles, sent_lst)
-        json_path = output_dir / "subtitles_chunks_video_{}.json".format(idx + 1)
+        # 2. Use NLP model to clean up sentence structure
+        doc = nlp(merged_chunks)
+
+        # Clean and split sentences
+        sent_lst = clean_sentences([sent.text for sent in doc.sents])
+
+        # 3. Separate into final chunks based on sentences, topic modeling, and embeddings
+        final_chunks = separate_into_chunks(combined_subtitles, sent_lst, topic_model, embedding_model)
+        for chunk in final_chunks:
+            chunk["start"] = timedelta_to_str(chunk["start"])
+            chunk["end"] = timedelta_to_str(chunk["end"])
+
+        # 4. Save the final chunks to a JSON file
+        json_path = output_dir / f"subtitles_chunks_video_{idx + 1}.json"
         with Path.open(json_path, "w", encoding="utf-8") as f:
             json.dump(final_chunks, f, ensure_ascii=False, indent=2)
+
         logger.info("✅ Saved chunked subtitles to %s", json_path)
 
     except Exception as e:
@@ -299,11 +295,6 @@ def process_subtitles_file(
 @step
 def chunk():
     logger = get_logger(__name__)
-
-    # Load models
-    tokenizer = T5Tokenizer.from_pretrained("SJ-Ray/Re-Punctuate")
-    model = TFT5ForConditionalGeneration.from_pretrained("SJ-Ray/Re-Punctuate")
-    nlp = spacy.load("en_core_web_sm")
 
     # Prepare output directory
     project_root = Path(__file__).resolve().parent.parent
@@ -315,15 +306,31 @@ def chunk():
     logger.info("📂 Subtitle_chunks_json directory created at %s", output_dir)
 
     subtitles_dir = project_root / "subtitles_json"
-    subtitle_files = [
-        subtitles_dir / filename for filename in sorted(os.listdir(subtitles_dir)) if filename.endswith(".json")
-    ]
+    subtitle_files = sorted([file for file in subtitles_dir.iterdir() if file.suffix == ".json"])
+
+    # Load models
+    tokenizer = T5Tokenizer.from_pretrained("SJ-Ray/Re-Punctuate")
+    model = TFT5ForConditionalGeneration.from_pretrained("SJ-Ray/Re-Punctuate")
+    topic_model = BERTopic.load(project_root / "topic_model")
+    embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+    nlp = spacy.load("en_core_web_sm")
 
     # Use ThreadPoolExecutor to process files concurrently
     with ThreadPoolExecutor() as executor:
         # Submit tasks for each subtitle file
         for idx, filepath in enumerate(subtitle_files):
-            executor.submit(process_subtitles_file, filepath, idx, tokenizer, model, nlp, output_dir, logger)
+            executor.submit(
+                process_subtitles_file,
+                filepath,
+                idx,
+                tokenizer,
+                model,
+                nlp,
+                topic_model,
+                embedding_model,
+                output_dir,
+                logger,
+            )
 
 
 chunk()
