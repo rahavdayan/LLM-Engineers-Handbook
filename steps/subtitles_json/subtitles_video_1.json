@@ -1,0 +1,512 @@
+[
+  {
+    "start": "00:00:03.000000",
+    "end": "00:00:04.870000",
+    "text": "in this video I would like to start the\ndiscussion about convolutional new"
+  },
+  {
+    "start": "00:00:04.880000",
+    "end": "00:00:07.389000",
+    "text": "discussion about convolutional new\nnetworks which is another architecture"
+  },
+  {
+    "start": "00:00:07.399000",
+    "end": "00:00:09.830000",
+    "text": "networks which is another architecture\nof uh neural networks that we are going"
+  },
+  {
+    "start": "00:00:09.840000",
+    "end": "00:00:12.789000",
+    "text": "of uh neural networks that we are going\nto see specifically kind of engineered"
+  },
+  {
+    "start": "00:00:12.799000",
+    "end": "00:00:15.869000",
+    "text": "to see specifically kind of engineered\nuh to um address problems that we are"
+  },
+  {
+    "start": "00:00:15.879000",
+    "end": "00:00:17.510000",
+    "text": "uh to um address problems that we are\nfacing in computer vision I want to"
+  },
+  {
+    "start": "00:00:17.520000",
+    "end": "00:00:20.269000",
+    "text": "facing in computer vision I want to\nstart this discussion with um just"
+  },
+  {
+    "start": "00:00:20.279000",
+    "end": "00:00:23.670000",
+    "text": "start this discussion with um just\nshowing you a picture and uh if I ask"
+  },
+  {
+    "start": "00:00:23.680000",
+    "end": "00:00:26.470000",
+    "text": "showing you a picture and uh if I ask\nyou uh to tell me what would actually be"
+  },
+  {
+    "start": "00:00:26.480000",
+    "end": "00:00:28.550000",
+    "text": "you uh to tell me what would actually be\nthe first object that you pay attention"
+  },
+  {
+    "start": "00:00:28.560000",
+    "end": "00:00:31.390000",
+    "text": "the first object that you pay attention\nto then most people will probably"
+  },
+  {
+    "start": "00:00:31.400000",
+    "end": "00:00:34.630000",
+    "text": "to then most people will probably\nrespond to with yellow cab and it's not"
+  },
+  {
+    "start": "00:00:34.640000",
+    "end": "00:00:38.310000",
+    "text": "respond to with yellow cab and it's not\nreally accident that lot of cabs in a"
+  },
+  {
+    "start": "00:00:38.320000",
+    "end": "00:00:42.670000",
+    "text": "really accident that lot of cabs in a\nlot of capitals are painted uh yellow U"
+  },
+  {
+    "start": "00:00:42.680000",
+    "end": "00:00:45.389000",
+    "text": "lot of capitals are painted uh yellow U\nand of course that attention uh to"
+  },
+  {
+    "start": "00:00:45.399000",
+    "end": "00:00:48.590000",
+    "text": "and of course that attention uh to\nbright colors originates from thousands"
+  },
+  {
+    "start": "00:00:48.600000",
+    "end": "00:00:51.549000",
+    "text": "bright colors originates from thousands\nof years of evolution where people are"
+  },
+  {
+    "start": "00:00:51.559000",
+    "end": "00:00:54.790000",
+    "text": "of years of evolution where people are\nof course trained to pay attention to uh"
+  },
+  {
+    "start": "00:00:54.800000",
+    "end": "00:00:56.990000",
+    "text": "of course trained to pay attention to uh\nbright colors which are typically"
+  },
+  {
+    "start": "00:00:57.000000",
+    "end": "00:01:00.110000",
+    "text": "bright colors which are typically\nsources of food such as fruits or in"
+  },
+  {
+    "start": "00:01:00.120000",
+    "end": "00:01:03.430000",
+    "text": "sources of food such as fruits or in\nsome instances sources of uh danger such"
+  },
+  {
+    "start": "00:01:03.440000",
+    "end": "00:01:06.590000",
+    "text": "some instances sources of uh danger such\nas the yellow tiger that is coming"
+  },
+  {
+    "start": "00:01:06.600000",
+    "end": "00:01:10.710000",
+    "text": "as the yellow tiger that is coming\ntowards us uh so kind of joking aside I"
+  },
+  {
+    "start": "00:01:10.720000",
+    "end": "00:01:15.149000",
+    "text": "towards us uh so kind of joking aside I\nthink you can um associate uh this kind"
+  },
+  {
+    "start": "00:01:15.159000",
+    "end": "00:01:17.310000",
+    "text": "think you can um associate uh this kind\nof image with the following kind of"
+  },
+  {
+    "start": "00:01:17.320000",
+    "end": "00:01:20.710000",
+    "text": "of image with the following kind of\nprocessing of uh various kind of stage"
+  },
+  {
+    "start": "00:01:20.720000",
+    "end": "00:01:22.910000",
+    "text": "processing of uh various kind of stage\nprocessing that that is been going on in"
+  },
+  {
+    "start": "00:01:22.920000",
+    "end": "00:01:26.109000",
+    "text": "processing that that is been going on in\nyour brain uh trying to uh from the kind"
+  },
+  {
+    "start": "00:01:26.119000",
+    "end": "00:01:28.910000",
+    "text": "your brain uh trying to uh from the kind\nof perception system that embeds uh into"
+  },
+  {
+    "start": "00:01:28.920000",
+    "end": "00:01:30.950000",
+    "text": "of perception system that embeds uh into\nit that we have embedded into it so if"
+  },
+  {
+    "start": "00:01:30.960000",
+    "end": "00:01:34.149000",
+    "text": "it that we have embedded into it so if\nyou can imagine the process um then the"
+  },
+  {
+    "start": "00:01:34.159000",
+    "end": "00:01:36.270000",
+    "text": "you can imagine the process um then the\nfirst thing that you open your eyes soon"
+  },
+  {
+    "start": "00:01:36.280000",
+    "end": "00:01:38.310000",
+    "text": "first thing that you open your eyes soon\nthat you have your eyes closed and you"
+  },
+  {
+    "start": "00:01:38.320000",
+    "end": "00:01:41.590000",
+    "text": "that you have your eyes closed and you\nsee an image like this uh then the brain"
+  },
+  {
+    "start": "00:01:41.600000",
+    "end": "00:01:44.429000",
+    "text": "see an image like this uh then the brain\nis actually in a uh first few"
+  },
+  {
+    "start": "00:01:44.439000",
+    "end": "00:01:47.270000",
+    "text": "is actually in a uh first few\nmilliseconds is uh sampling this image"
+  },
+  {
+    "start": "00:01:47.280000",
+    "end": "00:01:50.389000",
+    "text": "milliseconds is uh sampling this image\nin a course kind of way uh and uh"
+  },
+  {
+    "start": "00:01:50.399000",
+    "end": "00:01:53.709000",
+    "text": "in a course kind of way uh and uh\ndetermines whether we have uh situations"
+  },
+  {
+    "start": "00:01:53.719000",
+    "end": "00:01:55.830000",
+    "text": "determines whether we have uh situations\nas as an immediate kind of threat or a"
+  },
+  {
+    "start": "00:01:55.840000",
+    "end": "00:01:58.789000",
+    "text": "as as an immediate kind of threat or a\nsource of food and then very quickly the"
+  },
+  {
+    "start": "00:01:58.799000",
+    "end": "00:02:00.389000",
+    "text": "source of food and then very quickly the\nbrain switches"
+  },
+  {
+    "start": "00:02:00.399000",
+    "end": "00:02:04.029000",
+    "text": "brain switches\nsoftly into uh objects paying attention"
+  },
+  {
+    "start": "00:02:04.039000",
+    "end": "00:02:06.109000",
+    "text": "softly into uh objects paying attention\nto objects which are associated with the"
+  },
+  {
+    "start": "00:02:06.119000",
+    "end": "00:02:10.309000",
+    "text": "to objects which are associated with the\ntask that we have uh we we we have to to"
+  },
+  {
+    "start": "00:02:10.319000",
+    "end": "00:02:12.630000",
+    "text": "task that we have uh we we we have to to\nexecute so we have the uh for example if"
+  },
+  {
+    "start": "00:02:12.640000",
+    "end": "00:02:15.390000",
+    "text": "execute so we have the uh for example if\nyou're waiting for someone uh in this"
+  },
+  {
+    "start": "00:02:15.400000",
+    "end": "00:02:17.670000",
+    "text": "you're waiting for someone uh in this\nkind of a scene then you start paying"
+  },
+  {
+    "start": "00:02:17.680000",
+    "end": "00:02:19.550000",
+    "text": "kind of a scene then you start paying\nmore attention to people coming towards"
+  },
+  {
+    "start": "00:02:19.560000",
+    "end": "00:02:22.150000",
+    "text": "more attention to people coming towards\nyou people getting out of vehicles and"
+  },
+  {
+    "start": "00:02:22.160000",
+    "end": "00:02:23.350000",
+    "text": "you people getting out of vehicles and\nso"
+  },
+  {
+    "start": "00:02:23.360000",
+    "end": "00:02:27.270000",
+    "text": "so\non so now uh what I like to start"
+  },
+  {
+    "start": "00:02:27.280000",
+    "end": "00:02:30.070000",
+    "text": "on so now uh what I like to start\ngetting into is uh the mechanics of a"
+  },
+  {
+    "start": "00:02:30.080000",
+    "end": "00:02:31.790000",
+    "text": "getting into is uh the mechanics of a\nlittle bit of computer vision some kind"
+  },
+  {
+    "start": "00:02:31.800000",
+    "end": "00:02:34.390000",
+    "text": "little bit of computer vision some kind\nof basic principles and I wanted to"
+  },
+  {
+    "start": "00:02:34.400000",
+    "end": "00:02:36.990000",
+    "text": "of basic principles and I wanted to\ncover a little bit um you know the the"
+  },
+  {
+    "start": "00:02:37.000000",
+    "end": "00:02:39.910000",
+    "text": "cover a little bit um you know the the\nquestion as to okay what is an image"
+  },
+  {
+    "start": "00:02:39.920000",
+    "end": "00:02:41.430000",
+    "text": "question as to okay what is an image\nthat like the one that we've seen"
+  },
+  {
+    "start": "00:02:41.440000",
+    "end": "00:02:43.990000",
+    "text": "that like the one that we've seen\nearlier and how we're going to represent"
+  },
+  {
+    "start": "00:02:44.000000",
+    "end": "00:02:47.470000",
+    "text": "earlier and how we're going to represent\nit and evidently an image is a matrix"
+  },
+  {
+    "start": "00:02:47.480000",
+    "end": "00:02:49.350000",
+    "text": "it and evidently an image is a matrix\nand I think we had some discussion about"
+  },
+  {
+    "start": "00:02:49.360000",
+    "end": "00:02:52.910000",
+    "text": "and I think we had some discussion about\nimages uh before and a black white imag"
+  },
+  {
+    "start": "00:02:52.920000",
+    "end": "00:02:55.070000",
+    "text": "images uh before and a black white imag\nis or a grayscale image as you actually"
+  },
+  {
+    "start": "00:02:55.080000",
+    "end": "00:02:59.910000",
+    "text": "is or a grayscale image as you actually\nsee over here is um a matrix of um that"
+  },
+  {
+    "start": "00:02:59.920000",
+    "end": "00:03:00.869000",
+    "text": "see over here is um a matrix of um that\nwhose"
+  },
+  {
+    "start": "00:03:00.879000",
+    "end": "00:03:05.270000",
+    "text": "whose\nelements are integer numbers and um this"
+  },
+  {
+    "start": "00:03:05.280000",
+    "end": "00:03:08.030000",
+    "text": "elements are integer numbers and um this\ninteger numbers typically we are um you"
+  },
+  {
+    "start": "00:03:08.040000",
+    "end": "00:03:10.430000",
+    "text": "integer numbers typically we are um you\nknow each element corresponds to a pixel"
+  },
+  {
+    "start": "00:03:10.440000",
+    "end": "00:03:12.869000",
+    "text": "know each element corresponds to a pixel\nand the dynamic range that we associate"
+  },
+  {
+    "start": "00:03:12.879000",
+    "end": "00:03:15.949000",
+    "text": "and the dynamic range that we associate\nwith uh typically for in computer vision"
+  },
+  {
+    "start": "00:03:15.959000",
+    "end": "00:03:18.470000",
+    "text": "with uh typically for in computer vision\nwith those pixels are 8 Bits so we"
+  },
+  {
+    "start": "00:03:18.480000",
+    "end": "00:03:20.430000",
+    "text": "with those pixels are 8 Bits so we\nrepresent the information at each pixel"
+  },
+  {
+    "start": "00:03:20.440000",
+    "end": "00:03:22.949000",
+    "text": "represent the information at each pixel\nand codes as 8 Bits which means that"
+  },
+  {
+    "start": "00:03:22.959000",
+    "end": "00:03:25.750000",
+    "text": "and codes as 8 Bits which means that\nthese integer numbers are zero from 0 to"
+  },
+  {
+    "start": "00:03:25.760000",
+    "end": "00:03:30.110000",
+    "text": "these integer numbers are zero from 0 to\n255 and uh so um when we go to color IM"
+  },
+  {
+    "start": "00:03:30.120000",
+    "end": "00:03:34.470000",
+    "text": "255 and uh so um when we go to color IM\nes we need more than one of those"
+  },
+  {
+    "start": "00:03:34.480000",
+    "end": "00:03:36.670000",
+    "text": "es we need more than one of those\nmatrices in fact we need three matrices"
+  },
+  {
+    "start": "00:03:36.680000",
+    "end": "00:03:38.869000",
+    "text": "matrices in fact we need three matrices\ntypically again there are sensors which"
+  },
+  {
+    "start": "00:03:38.879000",
+    "end": "00:03:41.429000",
+    "text": "typically again there are sensors which\nare of course encode the information to"
+  },
+  {
+    "start": "00:03:41.439000",
+    "end": "00:03:44.350000",
+    "text": "are of course encode the information to\nfar more than uh three matrices uh but"
+  },
+  {
+    "start": "00:03:44.360000",
+    "end": "00:03:46.710000",
+    "text": "far more than uh three matrices uh but\nthose three matrices are corresponds to"
+  },
+  {
+    "start": "00:03:46.720000",
+    "end": "00:03:49.750000",
+    "text": "those three matrices are corresponds to\nthe fundamental colors typically of red"
+  },
+  {
+    "start": "00:03:49.760000",
+    "end": "00:03:53.509000",
+    "text": "the fundamental colors typically of red\ngreen and blue uh and this um uh which"
+  },
+  {
+    "start": "00:03:53.519000",
+    "end": "00:03:55.990000",
+    "text": "green and blue uh and this um uh which\nis actually what you see here and also"
+  },
+  {
+    "start": "00:03:56.000000",
+    "end": "00:03:57.470000",
+    "text": "is actually what you see here and also\nprobably you notice that these numbers"
+  },
+  {
+    "start": "00:03:57.480000",
+    "end": "00:03:59.270000",
+    "text": "probably you notice that these numbers\nare now floating Point numbers let's say"
+  },
+  {
+    "start": "00:03:59.280000",
+    "end": "00:04:02.309000",
+    "text": "are now floating Point numbers let's say\nfrom 0 to one and this results from"
+  },
+  {
+    "start": "00:04:02.319000",
+    "end": "00:04:06.030000",
+    "text": "from 0 to one and this results from\nnormalizing these uh uh pixel numbers uh"
+  },
+  {
+    "start": "00:04:06.040000",
+    "end": "00:04:09.509000",
+    "text": "normalizing these uh uh pixel numbers uh\nuh to uh with a number 255 because 2 to"
+  },
+  {
+    "start": "00:04:09.519000",
+    "end": "00:04:11.350000",
+    "text": "uh to uh with a number 255 because 2 to\nthe power of 8 is"
+  },
+  {
+    "start": "00:04:11.360000",
+    "end": "00:04:14.830000",
+    "text": "the power of 8 is\n256 and uh uh therefore all our numbers"
+  },
+  {
+    "start": "00:04:14.840000",
+    "end": "00:04:17.990000",
+    "text": "256 and uh uh therefore all our numbers\nwill be from 0 to 255 in those matrices"
+  },
+  {
+    "start": "00:04:18.000000",
+    "end": "00:04:20.110000",
+    "text": "will be from 0 to 255 in those matrices\nif we start dividing every element with"
+  },
+  {
+    "start": "00:04:20.120000",
+    "end": "00:04:24.430000",
+    "text": "if we start dividing every element with\n255 we get numbers between 0 and 1 and"
+  },
+  {
+    "start": "00:04:24.440000",
+    "end": "00:04:26.510000",
+    "text": "255 we get numbers between 0 and 1 and\nthis is basically what we need to do in"
+  },
+  {
+    "start": "00:04:26.520000",
+    "end": "00:04:29.749000",
+    "text": "this is basically what we need to do in\norder to process uh the images in with"
+  },
+  {
+    "start": "00:04:29.759000",
+    "end": "00:04:31.710000",
+    "text": "order to process uh the images in with\nwith our new neural networks that we"
+  },
+  {
+    "start": "00:04:31.720000",
+    "end": "00:04:33.270000",
+    "text": "with our new neural networks that we\nwill introduce now called the"
+  },
+  {
+    "start": "00:04:33.280000",
+    "end": "00:04:36.350000",
+    "text": "will introduce now called the\nconvolutional neural networks so uh with"
+  },
+  {
+    "start": "00:04:36.360000",
+    "end": "00:04:39.150000",
+    "text": "convolutional neural networks so uh with\nconvolutional neural networks we need to"
+  },
+  {
+    "start": "00:04:39.160000",
+    "end": "00:04:42.029000",
+    "text": "convolutional neural networks we need to\nstart the discussion on what is a"
+  },
+  {
+    "start": "00:04:42.039000",
+    "end": "00:04:44.310000",
+    "text": "start the discussion on what is a\nconvolution and uh this is what's coming"
+  },
+  {
+    "start": "00:04:44.320000",
+    "end": "00:04:46.680000",
+    "text": "convolution and uh this is what's coming\nnext"
+  }
+]

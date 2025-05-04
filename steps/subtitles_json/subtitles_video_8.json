@@ -1,0 +1,2217 @@
+[
+  {
+    "start": "00:00:05.600000",
+    "end": "00:00:08.950000",
+    "text": "we are in the trajectory where we are\ngoing to obtain a Blog diagram of our"
+  },
+  {
+    "start": "00:00:08.960000",
+    "end": "00:00:11.350000",
+    "text": "going to obtain a Blog diagram of our\nfirst classifier binary classifier that"
+  },
+  {
+    "start": "00:00:11.360000",
+    "end": "00:00:14.190000",
+    "text": "first classifier binary classifier that\nis but before we do so I think it's"
+  },
+  {
+    "start": "00:00:14.200000",
+    "end": "00:00:16.870000",
+    "text": "is but before we do so I think it's\nworthwhile kind of thinking a bit about"
+  },
+  {
+    "start": "00:00:16.880000",
+    "end": "00:00:19.349000",
+    "text": "worthwhile kind of thinking a bit about\nuh the two general Frameworks which are"
+  },
+  {
+    "start": "00:00:19.359000",
+    "end": "00:00:21.830000",
+    "text": "uh the two general Frameworks which are\npresent in the design of this"
+  },
+  {
+    "start": "00:00:21.840000",
+    "end": "00:00:24.670000",
+    "text": "present in the design of this\nprobabilistic models uh that will give"
+  },
+  {
+    "start": "00:00:24.680000",
+    "end": "00:00:27.070000",
+    "text": "probabilistic models uh that will give\nus the functional form of this binary"
+  },
+  {
+    "start": "00:00:27.080000",
+    "end": "00:00:29.310000",
+    "text": "us the functional form of this binary\nclassifier so in general there are two"
+  },
+  {
+    "start": "00:00:29.320000",
+    "end": "00:00:36.030000",
+    "text": "classifier so in general there are two\nFrameworks the first"
+  },
+  {
+    "start": "00:00:38.559000",
+    "end": "00:00:40.510000",
+    "text": "one both of these Frameworks involve the\nposterior probability but in a kind of a"
+  },
+  {
+    "start": "00:00:40.520000",
+    "end": "00:00:43.430000",
+    "text": "posterior probability but in a kind of a\ndifferent way so the first framework is"
+  },
+  {
+    "start": "00:00:43.440000",
+    "end": "00:00:49.750000",
+    "text": "different way so the first framework is\nuh called"
+  },
+  {
+    "start": "00:00:53.359000",
+    "end": "00:00:58.150000",
+    "text": "discriminative and uh the second one is\ncalled"
+  },
+  {
+    "start": "00:01:00.000000",
+    "end": "00:01:02.229000",
+    "text": "generate and the difference between the\nthe two is quite important and they are"
+  },
+  {
+    "start": "00:01:02.239000",
+    "end": "00:01:05.550000",
+    "text": "the two is quite important and they are\nalthough they both uh effectively are"
+  },
+  {
+    "start": "00:01:05.560000",
+    "end": "00:01:09.030000",
+    "text": "although they both uh effectively are\nmodeling in a different way at the"
+  },
+  {
+    "start": "00:01:09.040000",
+    "end": "00:01:11.710000",
+    "text": "modeling in a different way at the\nposterior uh let me call this posterior"
+  },
+  {
+    "start": "00:01:11.720000",
+    "end": "00:01:16.510000",
+    "text": "posterior uh let me call this posterior\ny of the class small letter K given"
+  },
+  {
+    "start": "00:01:16.520000",
+    "end": "00:01:18.550000",
+    "text": "y of the class small letter K given\nX which as we have seen in the"
+  },
+  {
+    "start": "00:01:18.560000",
+    "end": "00:01:20.990000",
+    "text": "X which as we have seen in the\nprobability review uh section this"
+  },
+  {
+    "start": "00:01:21.000000",
+    "end": "00:01:22.390000",
+    "text": "probability review uh section this\nposterior"
+  },
+  {
+    "start": "00:01:22.400000",
+    "end": "00:01:25.670000",
+    "text": "posterior\nis the uh x"
+  },
+  {
+    "start": "00:01:25.680000",
+    "end": "00:01:33.270000",
+    "text": "is the uh x\ngiven YK * P of YK"
+  },
+  {
+    "start": "00:01:36.600000",
+    "end": "00:01:41.389000",
+    "text": "and uh divided\nby P ofx so this is the posterior and"
+  },
+  {
+    "start": "00:01:41.399000",
+    "end": "00:01:43.670000",
+    "text": "by P ofx so this is the posterior and\nthese two Frameworks as we will see kind"
+  },
+  {
+    "start": "00:01:43.680000",
+    "end": "00:01:46.709000",
+    "text": "these two Frameworks as we will see kind\nof model it a bit differently so the"
+  },
+  {
+    "start": "00:01:46.719000",
+    "end": "00:01:50.230000",
+    "text": "of model it a bit differently so the\ndiscriminative uh uh uh framework we"
+  },
+  {
+    "start": "00:01:50.240000",
+    "end": "00:01:54.429000",
+    "text": "discriminative uh uh uh framework we\nwill be discussing in uh extensively in"
+  },
+  {
+    "start": "00:01:54.439000",
+    "end": "00:01:57.029000",
+    "text": "will be discussing in uh extensively in\nuh this binary classifier uh block"
+  },
+  {
+    "start": "00:01:57.039000",
+    "end": "00:01:59.429000",
+    "text": "uh this binary classifier uh block\ndiagram is the one that will involve"
+  },
+  {
+    "start": "00:01:59.439000",
+    "end": "00:02:01.550000",
+    "text": "diagram is the one that will involve\nDirect modeling of the posterior so the"
+  },
+  {
+    "start": "00:02:01.560000",
+    "end": "00:02:04.270000",
+    "text": "Direct modeling of the posterior so the\ndiscriminative I call it the first"
+  },
+  {
+    "start": "00:02:04.280000",
+    "end": "00:02:07.149000",
+    "text": "discriminative I call it the first\nframework and the second framework so"
+  },
+  {
+    "start": "00:02:07.159000",
+    "end": "00:02:08.469000",
+    "text": "framework and the second framework so\nthe first"
+  },
+  {
+    "start": "00:02:08.479000",
+    "end": "00:02:14.150000",
+    "text": "the first\nframework so"
+  },
+  {
+    "start": "00:02:20.920000",
+    "end": "00:02:24.190000",
+    "text": "methods uh\nmodel the"
+  },
+  {
+    "start": "00:02:34.879000",
+    "end": "00:02:37.589000",
+    "text": "so we get this uh posterior uh from the\nblock diagram itself and while the"
+  },
+  {
+    "start": "00:02:37.599000",
+    "end": "00:02:41.190000",
+    "text": "block diagram itself and while the\ngenerative ones are effectively model"
+  },
+  {
+    "start": "00:02:41.200000",
+    "end": "00:02:43.830000",
+    "text": "generative ones are effectively model\nthe posterior in Parts in its from each"
+  },
+  {
+    "start": "00:02:43.840000",
+    "end": "00:02:46.670000",
+    "text": "the posterior in Parts in its from each\nkind of components so we'll first deal"
+  },
+  {
+    "start": "00:02:46.680000",
+    "end": "00:02:49.110000",
+    "text": "kind of components so we'll first deal\nwith the so-called discriminative uh"
+  },
+  {
+    "start": "00:02:49.120000",
+    "end": "00:02:51.630000",
+    "text": "with the so-called discriminative uh\nclassifiers and I want to"
+  },
+  {
+    "start": "00:02:51.640000",
+    "end": "00:02:55.550000",
+    "text": "classifiers and I want to\nconnect um the um uh earlier discussion"
+  },
+  {
+    "start": "00:02:55.560000",
+    "end": "00:02:58.350000",
+    "text": "connect um the um uh earlier discussion\nwe had about the radar problem uh in"
+  },
+  {
+    "start": "00:02:58.360000",
+    "end": "00:03:00.229000",
+    "text": "we had about the radar problem uh in\nthat kind of video we have introduced a"
+  },
+  {
+    "start": "00:03:00.239000",
+    "end": "00:03:04.350000",
+    "text": "that kind of video we have introduced a\nproblem where uh we had um uh we"
+  },
+  {
+    "start": "00:03:04.360000",
+    "end": "00:03:07.550000",
+    "text": "problem where uh we had um uh we\nactually went and Drew all the areas"
+  },
+  {
+    "start": "00:03:07.560000",
+    "end": "00:03:09.550000",
+    "text": "actually went and Drew all the areas\nunder the two probability distributions"
+  },
+  {
+    "start": "00:03:09.560000",
+    "end": "00:03:12.390000",
+    "text": "under the two probability distributions\nthat were gave raise to the probability"
+  },
+  {
+    "start": "00:03:12.400000",
+    "end": "00:03:14.589000",
+    "text": "that were gave raise to the probability\nof mistake so I want to flip the coin"
+  },
+  {
+    "start": "00:03:14.599000",
+    "end": "00:03:18.030000",
+    "text": "of mistake so I want to flip the coin\nnow and actually H sort of discuss the"
+  },
+  {
+    "start": "00:03:18.040000",
+    "end": "00:03:20.110000",
+    "text": "now and actually H sort of discuss the\nprobability of being correct not the"
+  },
+  {
+    "start": "00:03:20.120000",
+    "end": "00:03:23.630000",
+    "text": "probability of being correct not the\nmisclassification error but uh the U"
+  },
+  {
+    "start": "00:03:23.640000",
+    "end": "00:03:26.670000",
+    "text": "misclassification error but uh the U\nwhen we when we have uh the so-called uh"
+  },
+  {
+    "start": "00:03:26.680000",
+    "end": "00:03:29.429000",
+    "text": "when we when we have uh the so-called uh\ntrue positive events and trying to"
+  },
+  {
+    "start": "00:03:29.439000",
+    "end": "00:03:31.270000",
+    "text": "true positive events and trying to\nmaximiz imize them instead of trying to"
+  },
+  {
+    "start": "00:03:31.280000",
+    "end": "00:03:34.350000",
+    "text": "maximiz imize them instead of trying to\nminimize them is classification error so"
+  },
+  {
+    "start": "00:03:34.360000",
+    "end": "00:03:36.990000",
+    "text": "minimize them is classification error so\num I want to kind of come up with some"
+  },
+  {
+    "start": "00:03:37.000000",
+    "end": "00:03:39.949000",
+    "text": "um I want to kind of come up with some\nreasonably um intuitive answer to the"
+  },
+  {
+    "start": "00:03:39.959000",
+    "end": "00:03:42.110000",
+    "text": "reasonably um intuitive answer to the\nfollowing question which I'm writing"
+  },
+  {
+    "start": "00:03:42.120000",
+    "end": "00:03:44.830000",
+    "text": "following question which I'm writing\nover here uh"
+  },
+  {
+    "start": "00:03:44.840000",
+    "end": "00:03:51.910000",
+    "text": "over here uh\nwhy the"
+  },
+  {
+    "start": "00:04:00.439000",
+    "end": "00:04:02.509000",
+    "text": "posterior P of YK\ngiven"
+  },
+  {
+    "start": "00:04:02.519000",
+    "end": "00:04:09.309000",
+    "text": "given\nX and uh"
+  },
+  {
+    "start": "00:04:25.240000",
+    "end": "00:04:27.310000",
+    "text": "metrix so if I kind of repeat this kind\nof discussion but from as I said from"
+  },
+  {
+    "start": "00:04:27.320000",
+    "end": "00:04:30.510000",
+    "text": "of discussion but from as I said from\nthe uh probability of of being correct"
+  },
+  {
+    "start": "00:04:30.520000",
+    "end": "00:04:32.870000",
+    "text": "the uh probability of of being correct\nin this kind of classification problem"
+  },
+  {
+    "start": "00:04:32.880000",
+    "end": "00:04:34.990000",
+    "text": "in this kind of classification problem\nwe have again this kind of two integrals"
+  },
+  {
+    "start": "00:04:35.000000",
+    "end": "00:04:37.990000",
+    "text": "we have again this kind of two integrals\nbut these two integrals now capture the"
+  },
+  {
+    "start": "00:04:38.000000",
+    "end": "00:04:40.310000",
+    "text": "but these two integrals now capture the\ncorrect uh"
+  },
+  {
+    "start": "00:04:40.320000",
+    "end": "00:04:43.830000",
+    "text": "correct uh\nevents this is uh when we have"
+  },
+  {
+    "start": "00:04:43.840000",
+    "end": "00:04:46.870000",
+    "text": "events this is uh when we have\nprobability of Y is equal to 0 DX plus"
+  },
+  {
+    "start": "00:04:46.880000",
+    "end": "00:04:50.550000",
+    "text": "probability of Y is equal to 0 DX plus\nanother integral R1 probability of X"
+  },
+  {
+    "start": "00:04:50.560000",
+    "end": "00:04:54.510000",
+    "text": "another integral R1 probability of X\ncomma y = to 1 DX these are effectively"
+  },
+  {
+    "start": "00:04:54.520000",
+    "end": "00:04:58.270000",
+    "text": "comma y = to 1 DX these are effectively\nthe flipped uh areas that from the ones"
+  },
+  {
+    "start": "00:04:58.280000",
+    "end": "00:04:59.870000",
+    "text": "the flipped uh areas that from the ones\nwe have actually Drew if you want going"
+  },
+  {
+    "start": "00:04:59.880000",
+    "end": "00:05:01.590000",
+    "text": "we have actually Drew if you want going\nto go ahead and review that kind of"
+  },
+  {
+    "start": "00:05:01.600000",
+    "end": "00:05:03.230000",
+    "text": "to go ahead and review that kind of\nvideo that will actually be"
+  },
+  {
+    "start": "00:05:03.240000",
+    "end": "00:05:08.310000",
+    "text": "video that will actually be\nhelpful uh which is of course equal to a"
+  },
+  {
+    "start": "00:05:08.320000",
+    "end": "00:05:11.990000",
+    "text": "helpful uh which is of course equal to a\nsummation in general for uh this is now"
+  },
+  {
+    "start": "00:05:12.000000",
+    "end": "00:05:16.110000",
+    "text": "summation in general for uh this is now\nthe general uh case where we have"
+  },
+  {
+    "start": "00:05:16.120000",
+    "end": "00:05:20.189000",
+    "text": "the general uh case where we have\nCapital One to capital K in this"
+  },
+  {
+    "start": "00:05:20.199000",
+    "end": "00:05:22.670000",
+    "text": "Capital One to capital K in this\nspecific capital K is equal to"
+  },
+  {
+    "start": "00:05:22.680000",
+    "end": "00:05:25.390000",
+    "text": "specific capital K is equal to\ntwo uh but this formula that I'm"
+  },
+  {
+    "start": "00:05:25.400000",
+    "end": "00:05:26.670000",
+    "text": "two uh but this formula that I'm\nactually writing here is going to be"
+  },
+  {
+    "start": "00:05:26.680000",
+    "end": "00:05:28.309000",
+    "text": "actually writing here is going to be\ngeneral for capital K"
+  },
+  {
+    "start": "00:05:28.319000",
+    "end": "00:05:31.110000",
+    "text": "general for capital K\nclasses uh or of the integral over the"
+  },
+  {
+    "start": "00:05:31.120000",
+    "end": "00:05:33.469000",
+    "text": "classes uh or of the integral over the\nregions"
+  },
+  {
+    "start": "00:05:33.479000",
+    "end": "00:05:37.029000",
+    "text": "regions\nRK of the so I'm replacing the joint"
+  },
+  {
+    "start": "00:05:37.039000",
+    "end": "00:05:44.469000",
+    "text": "RK of the so I'm replacing the joint\nwith the posterior times the"
+  },
+  {
+    "start": "00:05:47.840000",
+    "end": "00:05:52.350000",
+    "text": "marginal and now it's actually a bit uh\nmore evident how uh maximizing P"
+  },
+  {
+    "start": "00:05:52.360000",
+    "end": "00:05:54.070000",
+    "text": "more evident how uh maximizing P\ncorrect"
+  },
+  {
+    "start": "00:05:54.080000",
+    "end": "00:05:57.230000",
+    "text": "correct\neffectively uh involves"
+  },
+  {
+    "start": "00:05:57.240000",
+    "end": "00:06:00.469000",
+    "text": "effectively uh involves\nmaximizing the posterior because"
+  },
+  {
+    "start": "00:06:00.479000",
+    "end": "00:06:01.790000",
+    "text": "maximizing the posterior because\nthis term over"
+  },
+  {
+    "start": "00:06:01.800000",
+    "end": "00:06:05.469000",
+    "text": "this term over\nhere is"
+  },
+  {
+    "start": "00:06:10.880000",
+    "end": "00:06:16.629000",
+    "text": "and\nindependent of the"
+  },
+  {
+    "start": "00:06:18.520000",
+    "end": "00:06:21.430000",
+    "text": "assignment of\nx"
+  },
+  {
+    "start": "00:06:21.440000",
+    "end": "00:06:24.070000",
+    "text": "x\nto the"
+  },
+  {
+    "start": "00:06:24.080000",
+    "end": "00:06:26.990000",
+    "text": "to the\nlabel"
+  },
+  {
+    "start": "00:06:27.000000",
+    "end": "00:06:30.909000",
+    "text": "label\nYK so now we have connected the"
+  },
+  {
+    "start": "00:06:30.919000",
+    "end": "00:06:32.990000",
+    "text": "YK so now we have connected the\ndirect connection effectively that of"
+  },
+  {
+    "start": "00:06:33.000000",
+    "end": "00:06:35.909000",
+    "text": "direct connection effectively that of\nthe probability of being correct and the"
+  },
+  {
+    "start": "00:06:35.919000",
+    "end": "00:06:37.629000",
+    "text": "the probability of being correct and the\nmaximization trying to maximize the"
+  },
+  {
+    "start": "00:06:37.639000",
+    "end": "00:06:39.309000",
+    "text": "maximization trying to maximize the\nprobability of being correct effectively"
+  },
+  {
+    "start": "00:06:39.319000",
+    "end": "00:06:41.189000",
+    "text": "probability of being correct effectively\nmeans maximizing the posterior"
+  },
+  {
+    "start": "00:06:41.199000",
+    "end": "00:06:43.189000",
+    "text": "means maximizing the posterior\nprobability so let me write write that"
+  },
+  {
+    "start": "00:06:43.199000",
+    "end": "00:06:44.790000",
+    "text": "probability so let me write write that\ndown because it's kind of"
+  },
+  {
+    "start": "00:06:44.800000",
+    "end": "00:06:46.870000",
+    "text": "down because it's kind of\nimportant"
+  },
+  {
+    "start": "00:06:46.880000",
+    "end": "00:06:50.670000",
+    "text": "important\nmaximizing P"
+  },
+  {
+    "start": "00:06:53.520000",
+    "end": "00:07:00.589000",
+    "text": "correct is equivalent to\nmaximizing P of y k YK given X"
+  },
+  {
+    "start": "00:07:00.599000",
+    "end": "00:07:04.990000",
+    "text": "maximizing P of y k YK given X\nuh effectively"
+  },
+  {
+    "start": "00:07:07.240000",
+    "end": "00:07:09.950000",
+    "text": "um effectively this points to the\nfollowing if we are to plot the"
+  },
+  {
+    "start": "00:07:09.960000",
+    "end": "00:07:12.270000",
+    "text": "following if we are to plot the\nproperity"
+  },
+  {
+    "start": "00:07:12.280000",
+    "end": "00:07:15.670000",
+    "text": "properity\ndistribution uh of uh the posterior"
+  },
+  {
+    "start": "00:07:15.680000",
+    "end": "00:07:17.869000",
+    "text": "distribution uh of uh the posterior\nactually we will see here we'll see"
+  },
+  {
+    "start": "00:07:17.879000",
+    "end": "00:07:19.350000",
+    "text": "actually we will see here we'll see\nsomething like"
+  },
+  {
+    "start": "00:07:19.360000",
+    "end": "00:07:24.990000",
+    "text": "something like\nthat let's plot the posterior probility"
+  },
+  {
+    "start": "00:07:28.560000",
+    "end": "00:07:31.670000",
+    "text": "distribution we went from we went from\nuh distributions at such as this if you"
+  },
+  {
+    "start": "00:07:31.680000",
+    "end": "00:07:33.350000",
+    "text": "uh distributions at such as this if you\nremember back in the"
+  },
+  {
+    "start": "00:07:33.360000",
+    "end": "00:07:37.830000",
+    "text": "remember back in the\nU in the discussion of the binary"
+  },
+  {
+    "start": "00:07:40.599000",
+    "end": "00:07:43.390000",
+    "text": "classifier something like that we have\nseen of"
+  },
+  {
+    "start": "00:07:43.400000",
+    "end": "00:07:47.230000",
+    "text": "seen of\nX and this is the probability of"
+  },
+  {
+    "start": "00:07:47.240000",
+    "end": "00:07:51.469000",
+    "text": "X and this is the probability of\nX comma y this was the probability of X"
+  },
+  {
+    "start": "00:07:51.479000",
+    "end": "00:07:53.830000",
+    "text": "X comma y this was the probability of X\ncomma Y is equal to Zer and this a"
+  },
+  {
+    "start": "00:07:53.840000",
+    "end": "00:07:59.550000",
+    "text": "comma Y is equal to Zer and this a\nprobability of X comma y isal to 1"
+  },
+  {
+    "start": "00:07:59.560000",
+    "end": "00:08:02.510000",
+    "text": "probability of X comma y isal to 1\nand if we are to plot the posterior"
+  },
+  {
+    "start": "00:08:02.520000",
+    "end": "00:08:04.510000",
+    "text": "and if we are to plot the posterior\nprobability uh"
+  },
+  {
+    "start": "00:08:04.520000",
+    "end": "00:08:08.149000",
+    "text": "probability uh\ndistribution uh we will"
+  },
+  {
+    "start": "00:08:08.159000",
+    "end": "00:08:12.710000",
+    "text": "distribution uh we will\nbe coming up with uh something that it"
+  },
+  {
+    "start": "00:08:12.720000",
+    "end": "00:08:15.990000",
+    "text": "be coming up with uh something that it\nwill look like"
+  },
+  {
+    "start": "00:08:16.000000",
+    "end": "00:08:18.629000",
+    "text": "will look like\nthis in general this is a very general"
+  },
+  {
+    "start": "00:08:18.639000",
+    "end": "00:08:23.589000",
+    "text": "this in general this is a very general\nkind of"
+  },
+  {
+    "start": "00:08:27.560000",
+    "end": "00:08:30.869000",
+    "text": "plot so this is one to make sure that we\ndo not exceed"
+  },
+  {
+    "start": "00:08:30.879000",
+    "end": "00:08:34.430000",
+    "text": "do not exceed\nthe one probability of one so this is"
+  },
+  {
+    "start": "00:08:34.440000",
+    "end": "00:08:35.190000",
+    "text": "the one probability of one so this is\nthe"
+  },
+  {
+    "start": "00:08:35.200000",
+    "end": "00:08:38.190000",
+    "text": "the\nprobability of Y is equal to 0 given X"
+  },
+  {
+    "start": "00:08:38.200000",
+    "end": "00:08:42.149000",
+    "text": "probability of Y is equal to 0 given X\nand this is the probability of Y is = to"
+  },
+  {
+    "start": "00:08:42.159000",
+    "end": "00:08:46.310000",
+    "text": "and this is the probability of Y is = to\n1 given"
+  },
+  {
+    "start": "00:08:48.839000",
+    "end": "00:08:51.630000",
+    "text": "X and\nso uh the histograms uh that we have"
+  },
+  {
+    "start": "00:08:51.640000",
+    "end": "00:08:53.949000",
+    "text": "so uh the histograms uh that we have\nactually um uh the histograms that the"
+  },
+  {
+    "start": "00:08:53.959000",
+    "end": "00:08:55.990000",
+    "text": "actually um uh the histograms that the\nposterior hisrs actually have come up"
+  },
+  {
+    "start": "00:08:56.000000",
+    "end": "00:09:01.829000",
+    "text": "posterior hisrs actually have come up\nwith uh for a given uh x0 that"
+  },
+  {
+    "start": "00:09:04.880000",
+    "end": "00:09:09.590000",
+    "text": "uh is coming to us uh\nas as a let's say a new X that we would"
+  },
+  {
+    "start": "00:09:09.600000",
+    "end": "00:09:13.509000",
+    "text": "as as a let's say a new X that we would\nlike to classify as positive or negative"
+  },
+  {
+    "start": "00:09:13.519000",
+    "end": "00:09:16.509000",
+    "text": "like to classify as positive or negative\nlet's say x new that we have never seen"
+  },
+  {
+    "start": "00:09:16.519000",
+    "end": "00:09:20.710000",
+    "text": "let's say x new that we have never seen\nbefore touches these two Curves in this"
+  },
+  {
+    "start": "00:09:20.720000",
+    "end": "00:09:21.790000",
+    "text": "before touches these two Curves in this\nkind of two"
+  },
+  {
+    "start": "00:09:21.800000",
+    "end": "00:09:24.350000",
+    "text": "kind of two\npoints I actually we can actually see"
+  },
+  {
+    "start": "00:09:24.360000",
+    "end": "00:09:31.430000",
+    "text": "points I actually we can actually see\nhere that these two points correspond to"
+  },
+  {
+    "start": "00:09:36.360000",
+    "end": "00:09:40.509000",
+    "text": "uh the discrete so this is uh this is\nthe for the zeroth class and this is for"
+  },
+  {
+    "start": "00:09:40.519000",
+    "end": "00:09:44.110000",
+    "text": "the for the zeroth class and this is for\nthe let's say class"
+  },
+  {
+    "start": "00:09:44.120000",
+    "end": "00:09:47.269000",
+    "text": "the let's say class\none this is the the probability Mass"
+  },
+  {
+    "start": "00:09:47.279000",
+    "end": "00:09:50.150000",
+    "text": "one this is the the probability Mass\nfunction of the uh posterior"
+  },
+  {
+    "start": "00:09:50.160000",
+    "end": "00:09:52.470000",
+    "text": "function of the uh posterior\ndistribution at the output of our"
+  },
+  {
+    "start": "00:09:52.480000",
+    "end": "00:09:56.350000",
+    "text": "distribution at the output of our\npredictor so this is the P of Y is equal"
+  },
+  {
+    "start": "00:09:56.360000",
+    "end": "00:09:58.030000",
+    "text": "predictor so this is the P of Y is equal\n0 given X"
+  },
+  {
+    "start": "00:09:58.040000",
+    "end": "00:10:00.630000",
+    "text": "0 given X\nnew and this the probability of Y is"
+  },
+  {
+    "start": "00:10:00.640000",
+    "end": "00:10:08.710000",
+    "text": "new and this the probability of Y is\nequal to 1 given X"
+  },
+  {
+    "start": "00:10:11.720000",
+    "end": "00:10:14.269000",
+    "text": "new and so what we have just uh\nrecognized over here is that all we have"
+  },
+  {
+    "start": "00:10:14.279000",
+    "end": "00:10:17.389000",
+    "text": "recognized over here is that all we have\nto do is we always"
+  },
+  {
+    "start": "00:10:17.399000",
+    "end": "00:10:21.910000",
+    "text": "to do is we always\npick uh the uh Pro the class that gives"
+  },
+  {
+    "start": "00:10:21.920000",
+    "end": "00:10:25.790000",
+    "text": "pick uh the uh Pro the class that gives\nus the maximum uh posterior probability"
+  },
+  {
+    "start": "00:10:25.800000",
+    "end": "00:10:28.949000",
+    "text": "us the maximum uh posterior probability\noutput and rest assured if we do that we"
+  },
+  {
+    "start": "00:10:28.959000",
+    "end": "00:10:30.110000",
+    "text": "output and rest assured if we do that we\nare"
+  },
+  {
+    "start": "00:10:30.120000",
+    "end": "00:10:32.110000",
+    "text": "are\nmaximizing the probability of being"
+  },
+  {
+    "start": "00:10:32.120000",
+    "end": "00:10:33.790000",
+    "text": "maximizing the probability of being\ncorrect so this discussion kind of"
+  },
+  {
+    "start": "00:10:33.800000",
+    "end": "00:10:36.670000",
+    "text": "correct so this discussion kind of\nresulted into this kind of intuitive"
+  },
+  {
+    "start": "00:10:36.680000",
+    "end": "00:10:38.910000",
+    "text": "resulted into this kind of intuitive\nconclusion but it was not really evident"
+  },
+  {
+    "start": "00:10:38.920000",
+    "end": "00:10:42.509000",
+    "text": "conclusion but it was not really evident\ninitially how the posteriors and the uh"
+  },
+  {
+    "start": "00:10:42.519000",
+    "end": "00:10:47.430000",
+    "text": "initially how the posteriors and the uh\nprobability of being correct are"
+  },
+  {
+    "start": "00:10:50.600000",
+    "end": "00:10:54.350000",
+    "text": "related so continuing now for uh the\ndiscussion we just had on the"
+  },
+  {
+    "start": "00:10:56.600000",
+    "end": "00:10:58.910000",
+    "text": "discriminative kind of classifiers I\ndirectly model the predict the posterior"
+  },
+  {
+    "start": "00:10:58.920000",
+    "end": "00:11:00.110000",
+    "text": "directly model the predict the posterior\nprobability"
+  },
+  {
+    "start": "00:11:00.120000",
+    "end": "00:11:01.509000",
+    "text": "probability\nwe can actually write the posterior"
+  },
+  {
+    "start": "00:11:01.519000",
+    "end": "00:11:04.030000",
+    "text": "we can actually write the posterior\nprobability as follows the Y let's say"
+  },
+  {
+    "start": "00:11:04.040000",
+    "end": "00:11:07.990000",
+    "text": "probability as follows the Y let's say\nis equal to one given X is the"
+  },
+  {
+    "start": "00:11:08.000000",
+    "end": "00:11:12.150000",
+    "text": "is equal to one given X is the\nprobability of x given Y is = to 1 time"
+  },
+  {
+    "start": "00:11:12.160000",
+    "end": "00:11:14.670000",
+    "text": "probability of x given Y is = to 1 time\nthe probability of Y is = to"
+  },
+  {
+    "start": "00:11:14.680000",
+    "end": "00:11:18.710000",
+    "text": "the probability of Y is = to\n1 divided by the probability of X but we"
+  },
+  {
+    "start": "00:11:18.720000",
+    "end": "00:11:20.509000",
+    "text": "1 divided by the probability of X but we\nwill write this probability of x given"
+  },
+  {
+    "start": "00:11:20.519000",
+    "end": "00:11:22.190000",
+    "text": "will write this probability of x given\nwe have let's say two"
+  },
+  {
+    "start": "00:11:22.200000",
+    "end": "00:11:24.750000",
+    "text": "we have let's say two\nclasses or as the probability of Y is"
+  },
+  {
+    "start": "00:11:24.760000",
+    "end": "00:11:26.910000",
+    "text": "classes or as the probability of Y is\nequal to"
+  },
+  {
+    "start": "00:11:26.920000",
+    "end": "00:11:30.190000",
+    "text": "equal to\nzero uh probability of x given y to 0 *"
+  },
+  {
+    "start": "00:11:30.200000",
+    "end": "00:11:32.110000",
+    "text": "zero uh probability of x given y to 0 *\nprobability of Y is equal to 0 we are"
+  },
+  {
+    "start": "00:11:32.120000",
+    "end": "00:11:35.110000",
+    "text": "probability of Y is equal to 0 we are\nusing here the sum rule of probability"
+  },
+  {
+    "start": "00:11:35.120000",
+    "end": "00:11:36.990000",
+    "text": "using here the sum rule of probability\nthat we have"
+  },
+  {
+    "start": "00:11:37.000000",
+    "end": "00:11:40.310000",
+    "text": "that we have\nreviewed uh plus the probability of x"
+  },
+  {
+    "start": "00:11:40.320000",
+    "end": "00:11:42.910000",
+    "text": "reviewed uh plus the probability of x\ngiven Y is = to 1 * the probability of Y"
+  },
+  {
+    "start": "00:11:42.920000",
+    "end": "00:11:45.790000",
+    "text": "given Y is = to 1 * the probability of Y\nis equal"
+  },
+  {
+    "start": "00:11:50.480000",
+    "end": "00:11:55.590000",
+    "text": "1 so if you divide uh both\nterms uh by uh the um if we divide both"
+  },
+  {
+    "start": "00:11:55.600000",
+    "end": "00:11:57.750000",
+    "text": "terms uh by uh the um if we divide both\nterms with"
+  },
+  {
+    "start": "00:11:57.760000",
+    "end": "00:12:00.509000",
+    "text": "terms with\num with a pro with the"
+  },
+  {
+    "start": "00:12:00.519000",
+    "end": "00:12:03.069000",
+    "text": "um with a pro with the\nnumerator we will come up with the"
+  },
+  {
+    "start": "00:12:03.079000",
+    "end": "00:12:06.509000",
+    "text": "numerator we will come up with the\nfollowing expression 1 /"
+  },
+  {
+    "start": "00:12:06.519000",
+    "end": "00:12:12.069000",
+    "text": "following expression 1 /\n1+ the probability"
+  },
+  {
+    "start": "00:12:16.279000",
+    "end": "00:12:20.189000",
+    "text": "of x given Y is equal to 1 probability\nof Y is equal to 1 * ided by probability"
+  },
+  {
+    "start": "00:12:20.199000",
+    "end": "00:12:22.790000",
+    "text": "of Y is equal to 1 * ided by probability\nof x given Y is equal to 0 probability"
+  },
+  {
+    "start": "00:12:22.800000",
+    "end": "00:12:29.710000",
+    "text": "of x given Y is equal to 0 probability\nof Y is equal to 0 to the minus1"
+  },
+  {
+    "start": "00:12:29.720000",
+    "end": "00:12:33.470000",
+    "text": "of Y is equal to 0 to the minus1\nand uh"
+  },
+  {
+    "start": "00:12:36.320000",
+    "end": "00:12:40.150000",
+    "text": "this is now related to the probability\nof odds because the probability of odds"
+  },
+  {
+    "start": "00:12:40.160000",
+    "end": "00:12:44.829000",
+    "text": "of odds because the probability of odds\nthe not the probability was the odds if"
+  },
+  {
+    "start": "00:12:44.839000",
+    "end": "00:12:48.790000",
+    "text": "the not the probability was the odds if\nwe uh now write down the"
+  },
+  {
+    "start": "00:12:48.800000",
+    "end": "00:12:53.910000",
+    "text": "we uh now write down the\nodds is the ratio"
+  },
+  {
+    "start": "00:12:57.720000",
+    "end": "00:13:01.829000",
+    "text": "of of this divided\nby of divided by this so for example in"
+  },
+  {
+    "start": "00:13:01.839000",
+    "end": "00:13:04.350000",
+    "text": "by of divided by this so for example in\na horse race where we have a horse that"
+  },
+  {
+    "start": "00:13:04.360000",
+    "end": "00:13:08.150000",
+    "text": "a horse race where we have a horse that\nruns 100 races and wins 25 times and"
+  },
+  {
+    "start": "00:13:08.160000",
+    "end": "00:13:11.310000",
+    "text": "runs 100 races and wins 25 times and\nloses the other 75 times the probability"
+  },
+  {
+    "start": "00:13:11.320000",
+    "end": "00:13:14.790000",
+    "text": "loses the other 75 times the probability\nof winning is 25 over 100 that's well"
+  },
+  {
+    "start": "00:13:14.800000",
+    "end": "00:13:16.189000",
+    "text": "of winning is 25 over 100 that's well\nknown to us"
+  },
+  {
+    "start": "00:13:16.199000",
+    "end": "00:13:22.110000",
+    "text": "known to us\n25% but the odds are 25 over 75 or 33%"
+  },
+  {
+    "start": "00:13:22.120000",
+    "end": "00:13:24.670000",
+    "text": "25% but the odds are 25 over 75 or 33%\nso or one win to three losses so this is"
+  },
+  {
+    "start": "00:13:24.680000",
+    "end": "00:13:26.949000",
+    "text": "so or one win to three losses so this is\nwhat we have actually defined over here"
+  },
+  {
+    "start": "00:13:26.959000",
+    "end": "00:13:30.949000",
+    "text": "what we have actually defined over here\nin terms of our um uh"
+  },
+  {
+    "start": "00:13:30.959000",
+    "end": "00:13:35.389000",
+    "text": "in terms of our um uh\nodds the probability of uh winning uh to"
+  },
+  {
+    "start": "00:13:35.399000",
+    "end": "00:13:37.230000",
+    "text": "odds the probability of uh winning uh to\nthe probability of"
+  },
+  {
+    "start": "00:13:37.240000",
+    "end": "00:13:41.430000",
+    "text": "the probability of\nlosing uh so that's um uh effectively uh"
+  },
+  {
+    "start": "00:13:41.440000",
+    "end": "00:13:44.750000",
+    "text": "losing uh so that's um uh effectively uh\nif we can assign this to a positive"
+  },
+  {
+    "start": "00:13:44.760000",
+    "end": "00:13:48.069000",
+    "text": "if we can assign this to a positive\nnumber uh if we assign model it as a"
+  },
+  {
+    "start": "00:13:48.079000",
+    "end": "00:13:51.350000",
+    "text": "number uh if we assign model it as a\nposst number typically we use the uh e"
+  },
+  {
+    "start": "00:13:51.360000",
+    "end": "00:13:53.030000",
+    "text": "posst number typically we use the uh e\nto the power"
+  },
+  {
+    "start": "00:13:53.040000",
+    "end": "00:13:56.350000",
+    "text": "to the power\nof some kind of positive number a to"
+  },
+  {
+    "start": "00:13:56.360000",
+    "end": "00:14:00.910000",
+    "text": "of some kind of positive number a to\nmodel that uh then uh we can and uh uh"
+  },
+  {
+    "start": "00:14:00.920000",
+    "end": "00:14:02.949000",
+    "text": "model that uh then uh we can and uh uh\nyou know have effectively these two"
+  },
+  {
+    "start": "00:14:02.959000",
+    "end": "00:14:04.670000",
+    "text": "you know have effectively these two\nexpressions and from these two"
+  },
+  {
+    "start": "00:14:04.680000",
+    "end": "00:14:07.550000",
+    "text": "expressions and from these two\nexpressions we can actually write now"
+  },
+  {
+    "start": "00:14:07.560000",
+    "end": "00:14:09.990000",
+    "text": "expressions we can actually write now\nthe form of the posterior probability"
+  },
+  {
+    "start": "00:14:10.000000",
+    "end": "00:14:11.990000",
+    "text": "the form of the posterior probability\ndistribution so that is the probability"
+  },
+  {
+    "start": "00:14:12.000000",
+    "end": "00:14:15.710000",
+    "text": "distribution so that is the probability\nof Y is equal to 1 given"
+  },
+  {
+    "start": "00:14:15.720000",
+    "end": "00:14:17.790000",
+    "text": "of Y is equal to 1 given\nX is"
+  },
+  {
+    "start": "00:14:17.800000",
+    "end": "00:14:21.030000",
+    "text": "X is\n1/ 1 + cus"
+  },
+  {
+    "start": "00:14:21.040000",
+    "end": "00:14:23.829000",
+    "text": "1/ 1 + cus\na and this is a wellknown function that"
+  },
+  {
+    "start": "00:14:23.839000",
+    "end": "00:14:32.590000",
+    "text": "a and this is a wellknown function that\nis actually called the sigmoid function"
+  },
+  {
+    "start": "00:14:34.519000",
+    "end": "00:14:35.629000",
+    "text": "uh because it is uh when we actually\nplot this"
+  },
+  {
+    "start": "00:14:35.639000",
+    "end": "00:14:42.550000",
+    "text": "plot this\nfunction it will look something like"
+  },
+  {
+    "start": "00:14:46.480000",
+    "end": "00:14:52.550000",
+    "text": "that so over here will be uh\n0.5 and over here will be uh the"
+  },
+  {
+    "start": "00:14:55.360000",
+    "end": "00:14:58.710000",
+    "text": "one and it will look like a\nsigmoid that will give uh will take as"
+  },
+  {
+    "start": "00:14:58.720000",
+    "end": "00:15:01.790000",
+    "text": "sigmoid that will give uh will take as\ninput a and will provide Sigma of a and"
+  },
+  {
+    "start": "00:15:01.800000",
+    "end": "00:15:03.350000",
+    "text": "input a and will provide Sigma of a and\nall the output is going to be"
+  },
+  {
+    "start": "00:15:03.360000",
+    "end": "00:15:06.910000",
+    "text": "all the output is going to be\nconstrained between 0 and"
+  },
+  {
+    "start": "00:15:06.920000",
+    "end": "00:15:10.710000",
+    "text": "constrained between 0 and\none so we have"
+  },
+  {
+    "start": "00:15:10.720000",
+    "end": "00:15:13.590000",
+    "text": "one so we have\neffectively uh came up with this kind of"
+  },
+  {
+    "start": "00:15:13.600000",
+    "end": "00:15:18.670000",
+    "text": "effectively uh came up with this kind of\nexpression of the uh sort of a pro"
+  },
+  {
+    "start": "00:15:18.680000",
+    "end": "00:15:20.749000",
+    "text": "expression of the uh sort of a pro\nposterior probability distribution at"
+  },
+  {
+    "start": "00:15:20.759000",
+    "end": "00:15:23.030000",
+    "text": "posterior probability distribution at\nthe output of a sigmoidal unit with"
+  },
+  {
+    "start": "00:15:23.040000",
+    "end": "00:15:26.870000",
+    "text": "the output of a sigmoidal unit with\nhaving as argument some kind of input a"
+  },
+  {
+    "start": "00:15:26.880000",
+    "end": "00:15:29.710000",
+    "text": "having as argument some kind of input a\nnow if"
+  },
+  {
+    "start": "00:15:29.720000",
+    "end": "00:15:31.590000",
+    "text": "now if\nuh and this is kind of motivates the"
+  },
+  {
+    "start": "00:15:31.600000",
+    "end": "00:15:34.949000",
+    "text": "uh and this is kind of motivates the\nkind of logistic regression if a is a"
+  },
+  {
+    "start": "00:15:34.959000",
+    "end": "00:15:37.269000",
+    "text": "kind of logistic regression if a is a\nlinear combination is a linear"
+  },
+  {
+    "start": "00:15:37.279000",
+    "end": "00:15:51.749000",
+    "text": "linear combination is a linear\ncombination of"
+  },
+  {
+    "start": "00:15:56.800000",
+    "end": "00:16:00.189000",
+    "text": "features let's say a is W transpose f of\nx we have seen both of them"
+  },
+  {
+    "start": "00:16:00.199000",
+    "end": "00:16:02.309000",
+    "text": "x we have seen both of them\num notations in our linear regression"
+  },
+  {
+    "start": "00:16:02.319000",
+    "end": "00:16:03.389000",
+    "text": "um notations in our linear regression\nkind of"
+  },
+  {
+    "start": "00:16:03.399000",
+    "end": "00:16:05.550000",
+    "text": "kind of\nexample"
+  },
+  {
+    "start": "00:16:05.560000",
+    "end": "00:16:09.350000",
+    "text": "example\nthen this uh"
+  },
+  {
+    "start": "00:16:09.360000",
+    "end": "00:16:14.069000",
+    "text": "then this uh\nmodel of the"
+  },
+  {
+    "start": "00:16:16.720000",
+    "end": "00:16:18.430000",
+    "text": "posterior is\ncalled"
+  },
+  {
+    "start": "00:16:18.440000",
+    "end": "00:16:22.749000",
+    "text": "called\nlogistic"
+  },
+  {
+    "start": "00:16:26.000000",
+    "end": "00:16:29.509000",
+    "text": "regression which is a wellknown uh and\nfairly popular way to do binary"
+  },
+  {
+    "start": "00:16:29.519000",
+    "end": "00:16:32.749000",
+    "text": "fairly popular way to do binary\nclassification so effectively over here"
+  },
+  {
+    "start": "00:16:32.759000",
+    "end": "00:16:34.829000",
+    "text": "classification so effectively over here\nwe have"
+  },
+  {
+    "start": "00:16:34.839000",
+    "end": "00:16:37.470000",
+    "text": "we have\num uh the"
+  },
+  {
+    "start": "00:16:37.480000",
+    "end": "00:16:41.030000",
+    "text": "um uh the\nassigned uh the to the log ODS so"
+  },
+  {
+    "start": "00:16:41.040000",
+    "end": "00:16:42.949000",
+    "text": "assigned uh the to the log ODS so\nanother way actually of seeing it is"
+  },
+  {
+    "start": "00:16:42.959000",
+    "end": "00:16:48.269000",
+    "text": "another way actually of seeing it is\nthat if we uh take here the uh log of"
+  },
+  {
+    "start": "00:16:48.279000",
+    "end": "00:16:51.269000",
+    "text": "that if we uh take here the uh log of\nthe"
+  },
+  {
+    "start": "00:16:54.199000",
+    "end": "00:16:59.350000",
+    "text": "odds in other words\nthe log of the uh"
+  },
+  {
+    "start": "00:16:59.360000",
+    "end": "00:17:02.230000",
+    "text": "the log of the uh\nthe"
+  },
+  {
+    "start": "00:17:06.439000",
+    "end": "00:17:10.789000",
+    "text": "probability probability of X comma Y is\n= 1 divided by the probability of"
+  },
+  {
+    "start": "00:17:10.799000",
+    "end": "00:17:15.750000",
+    "text": "= 1 divided by the probability of\nX comma Y is equal to 0 so this is going"
+  },
+  {
+    "start": "00:17:15.760000",
+    "end": "00:17:19.909000",
+    "text": "X comma Y is equal to 0 so this is going\nto be uh effectively"
+  },
+  {
+    "start": "00:17:19.919000",
+    "end": "00:17:24.549000",
+    "text": "to be uh effectively\na and if this a is equal to W transpose"
+  },
+  {
+    "start": "00:17:24.559000",
+    "end": "00:17:25.710000",
+    "text": "a and if this a is equal to W transpose\nf of"
+  },
+  {
+    "start": "00:17:25.720000",
+    "end": "00:17:29.510000",
+    "text": "f of\nx this is the form of U logistic"
+  },
+  {
+    "start": "00:17:29.520000",
+    "end": "00:17:32.470000",
+    "text": "x this is the form of U logistic\nregression so the logistic regression is"
+  },
+  {
+    "start": "00:17:32.480000",
+    "end": "00:17:34.870000",
+    "text": "regression so the logistic regression is\nuh followed by the uh is actually"
+  },
+  {
+    "start": "00:17:34.880000",
+    "end": "00:17:36.950000",
+    "text": "uh followed by the uh is actually\nimplemented using the following diagram"
+  },
+  {
+    "start": "00:17:36.960000",
+    "end": "00:17:39.549000",
+    "text": "implemented using the following diagram\nas it's actually indicated here first"
+  },
+  {
+    "start": "00:17:39.559000",
+    "end": "00:17:42.590000",
+    "text": "as it's actually indicated here first\nform a linear combination of"
+  },
+  {
+    "start": "00:17:42.600000",
+    "end": "00:17:45.310000",
+    "text": "form a linear combination of\nfeatures uh and this is the dot product"
+  },
+  {
+    "start": "00:17:45.320000",
+    "end": "00:17:46.590000",
+    "text": "features uh and this is the dot product\nin other words between the feature"
+  },
+  {
+    "start": "00:17:46.600000",
+    "end": "00:17:49.909000",
+    "text": "in other words between the feature\nvector and the the parameters of the of"
+  },
+  {
+    "start": "00:17:49.919000",
+    "end": "00:17:55.350000",
+    "text": "vector and the the parameters of the of\nour model W and then pass that uh"
+  },
+  {
+    "start": "00:17:55.360000",
+    "end": "00:17:58.270000",
+    "text": "our model W and then pass that uh\nthrough a sigmoidal unit in order to"
+  },
+  {
+    "start": "00:17:58.280000",
+    "end": "00:18:00.149000",
+    "text": "through a sigmoidal unit in order to\nobtain a posterior probability at the"
+  },
+  {
+    "start": "00:18:00.159000",
+    "end": "00:18:03.070000",
+    "text": "obtain a posterior probability at the\noutput so we kind of obtain the logistic"
+  },
+  {
+    "start": "00:18:03.080000",
+    "end": "00:18:05.230000",
+    "text": "output so we kind of obtain the logistic\nregression kind of block diagram for"
+  },
+  {
+    "start": "00:18:05.240000",
+    "end": "00:18:07.750000",
+    "text": "regression kind of block diagram for\nkind of a first principle so the block"
+  },
+  {
+    "start": "00:18:07.760000",
+    "end": "00:18:09.270000",
+    "text": "kind of a first principle so the block\ndiagram is going to"
+  },
+  {
+    "start": "00:18:09.280000",
+    "end": "00:18:12.029000",
+    "text": "diagram is going to\nbe W"
+  },
+  {
+    "start": "00:18:12.039000",
+    "end": "00:18:14.710000",
+    "text": "be W\ntranspose f of"
+  },
+  {
+    "start": "00:18:14.720000",
+    "end": "00:18:18.669000",
+    "text": "transpose f of\nx where we have taken X and very similar"
+  },
+  {
+    "start": "00:18:18.679000",
+    "end": "00:18:21.230000",
+    "text": "x where we have taken X and very similar\nto what we have seen in"
+  },
+  {
+    "start": "00:18:21.240000",
+    "end": "00:18:25.190000",
+    "text": "to what we have seen in\nuh logistic uh regression we went"
+  },
+  {
+    "start": "00:18:25.200000",
+    "end": "00:18:27.149000",
+    "text": "uh logistic uh regression we went\nthrough a featu"
+  },
+  {
+    "start": "00:18:27.159000",
+    "end": "00:18:31.870000",
+    "text": "through a featu\nriser to obtain I of"
+  },
+  {
+    "start": "00:18:35.520000",
+    "end": "00:18:39.310000",
+    "text": "X which we have used uh in this kind of\ndot product to uh form a scalar a and"
+  },
+  {
+    "start": "00:18:39.320000",
+    "end": "00:18:42.190000",
+    "text": "dot product to uh form a scalar a and\nthis scalar a is at the input of a"
+  },
+  {
+    "start": "00:18:42.200000",
+    "end": "00:18:43.950000",
+    "text": "this scalar a is at the input of a\nsigmoidal unit"
+  },
+  {
+    "start": "00:18:43.960000",
+    "end": "00:18:47.510000",
+    "text": "sigmoidal unit\nSigma and that uh y hat rest assur is"
+  },
+  {
+    "start": "00:18:47.520000",
+    "end": "00:18:49.310000",
+    "text": "Sigma and that uh y hat rest assur is\ngoing to be the probability of Y is"
+  },
+  {
+    "start": "00:18:49.320000",
+    "end": "00:18:55.029000",
+    "text": "going to be the probability of Y is\nequal to 1 given X so this is our"
+  },
+  {
+    "start": "00:18:55.039000",
+    "end": "00:18:57.549000",
+    "text": "equal to 1 given X so this is our\nfirst uh"
+  },
+  {
+    "start": "00:18:57.559000",
+    "end": "00:18:59.230000",
+    "text": "first uh\nclassifier uh"
+  },
+  {
+    "start": "00:18:59.240000",
+    "end": "00:19:06.110000",
+    "text": "classifier uh\nthat we will be calling um a"
+  },
+  {
+    "start": "00:19:09.159000",
+    "end": "00:19:11.630000",
+    "text": "generalized linear\nmodel and we call it generalized because"
+  },
+  {
+    "start": "00:19:11.640000",
+    "end": "00:19:14.230000",
+    "text": "model and we call it generalized because\nof the nonlinear unit uh which is uh"
+  },
+  {
+    "start": "00:19:14.240000",
+    "end": "00:19:16.549000",
+    "text": "of the nonlinear unit uh which is uh\ndefinitely nonlinear because the every"
+  },
+  {
+    "start": "00:19:16.559000",
+    "end": "00:19:19.310000",
+    "text": "definitely nonlinear because the every\nsigmoidal unit can take any number from"
+  },
+  {
+    "start": "00:19:19.320000",
+    "end": "00:19:21.070000",
+    "text": "sigmoidal unit can take any number from\nminus one million let's say to plus one"
+  },
+  {
+    "start": "00:19:21.080000",
+    "end": "00:19:23.909000",
+    "text": "minus one million let's say to plus one\nmillion but it compresses that into a"
+  },
+  {
+    "start": "00:19:23.919000",
+    "end": "00:19:26.549000",
+    "text": "million but it compresses that into a\ndynamic R between 0 and one we"
+  },
+  {
+    "start": "00:19:26.559000",
+    "end": "00:19:28.909000",
+    "text": "dynamic R between 0 and one we\ndefinitely want the output to be 0 and 1"
+  },
+  {
+    "start": "00:19:28.919000",
+    "end": "00:19:30.590000",
+    "text": "definitely want the output to be 0 and 1\nbecause we have interpreted the output"
+  },
+  {
+    "start": "00:19:30.600000",
+    "end": "00:19:33.070000",
+    "text": "because we have interpreted the output\nas a pro as a posterior probability but"
+  },
+  {
+    "start": "00:19:33.080000",
+    "end": "00:19:36.149000",
+    "text": "as a pro as a posterior probability but\ndefinitely there a nonlinear unit so"
+  },
+  {
+    "start": "00:19:36.159000",
+    "end": "00:19:38.510000",
+    "text": "definitely there a nonlinear unit so\nthis kind of long Nan transformation"
+  },
+  {
+    "start": "00:19:38.520000",
+    "end": "00:19:42.549000",
+    "text": "this kind of long Nan transformation\nfrom a uh to the posterior and that's"
+  },
+  {
+    "start": "00:19:42.559000",
+    "end": "00:19:44.110000",
+    "text": "from a uh to the posterior and that's\nwhy we call it generalized but"
+  },
+  {
+    "start": "00:19:44.120000",
+    "end": "00:19:47.510000",
+    "text": "why we call it generalized but\ndefinitely it's a linear model uh in a"
+  },
+  {
+    "start": "00:19:47.520000",
+    "end": "00:19:49.909000",
+    "text": "definitely it's a linear model uh in a\nsense that it is um you know one of the"
+  },
+  {
+    "start": "00:19:49.919000",
+    "end": "00:19:52.789000",
+    "text": "sense that it is um you know one of the\nblocks of the diagram involves uh a"
+  },
+  {
+    "start": "00:19:52.799000",
+    "end": "00:19:55.510000",
+    "text": "blocks of the diagram involves uh a\nlinear unit a linear combination of the"
+  },
+  {
+    "start": "00:19:55.520000",
+    "end": "00:19:59.950000",
+    "text": "linear unit a linear combination of the\nfeatures FX"
+  },
+  {
+    "start": "00:20:03.400000",
+    "end": "00:20:07.190000",
+    "text": "so all we need to do now is to attach to\nit two things the first"
+  },
+  {
+    "start": "00:20:07.200000",
+    "end": "00:20:11.149000",
+    "text": "it two things the first\nis the binary cross entropy"
+  },
+  {
+    "start": "00:20:11.159000",
+    "end": "00:20:14.789000",
+    "text": "is the binary cross entropy\nloss which will accept also uh the"
+  },
+  {
+    "start": "00:20:14.799000",
+    "end": "00:20:17.470000",
+    "text": "loss which will accept also uh the\nground truth y this binary cross entropy"
+  },
+  {
+    "start": "00:20:17.480000",
+    "end": "00:20:22.350000",
+    "text": "ground truth y this binary cross entropy\nloss will be"
+  },
+  {
+    "start": "00:20:25.000000",
+    "end": "00:20:27.630000",
+    "text": "feeding the well known to\nus stochastic graded descent kind of"
+  },
+  {
+    "start": "00:20:27.640000",
+    "end": "00:20:30.590000",
+    "text": "us stochastic graded descent kind of\nalgorithm with it's kind of parameter"
+  },
+  {
+    "start": "00:20:30.600000",
+    "end": "00:20:37.070000",
+    "text": "algorithm with it's kind of parameter\ngradient calculation and parameter"
+  },
+  {
+    "start": "00:20:39.280000",
+    "end": "00:20:42.830000",
+    "text": "update will\nfeed uh the"
+  },
+  {
+    "start": "00:20:42.840000",
+    "end": "00:20:47.110000",
+    "text": "feed uh the\nW uh and uh will update the W at every"
+  },
+  {
+    "start": "00:20:47.120000",
+    "end": "00:20:50.909000",
+    "text": "W uh and uh will update the W at every\niteration so this uh block diagram is no"
+  },
+  {
+    "start": "00:20:50.919000",
+    "end": "00:20:53.310000",
+    "text": "iteration so this uh block diagram is no\nsurprise To Us by now we have seen it so"
+  },
+  {
+    "start": "00:20:53.320000",
+    "end": "00:20:56.430000",
+    "text": "surprise To Us by now we have seen it so\nmany times in both linear regression and"
+  },
+  {
+    "start": "00:20:56.440000",
+    "end": "00:20:58.350000",
+    "text": "many times in both linear regression and\nnow classification and the only thing"
+  },
+  {
+    "start": "00:20:58.360000",
+    "end": "00:21:01.310000",
+    "text": "now classification and the only thing\nthat remains to be uh done over here is"
+  },
+  {
+    "start": "00:21:01.320000",
+    "end": "00:21:05.350000",
+    "text": "that remains to be uh done over here is\nto uh come up with a uh expression of"
+  },
+  {
+    "start": "00:21:05.360000",
+    "end": "00:21:07.430000",
+    "text": "to uh come up with a uh expression of\nthe Cross"
+  },
+  {
+    "start": "00:21:07.440000",
+    "end": "00:21:10.070000",
+    "text": "the Cross\nentropy loss the binary cross entropy"
+  },
+  {
+    "start": "00:21:10.080000",
+    "end": "00:21:12.269000",
+    "text": "entropy loss the binary cross entropy\nloss with respect to the set of"
+  },
+  {
+    "start": "00:21:12.279000",
+    "end": "00:21:16.510000",
+    "text": "loss with respect to the set of\nparameters W and this can be shown to be"
+  },
+  {
+    "start": "00:21:16.520000",
+    "end": "00:21:21.350000",
+    "text": "parameters W and this can be shown to be\nU some form such as"
+  },
+  {
+    "start": "00:21:21.360000",
+    "end": "00:21:23.590000",
+    "text": "U some form such as\nthisal to 1 to"
+  },
+  {
+    "start": "00:21:23.600000",
+    "end": "00:21:27.190000",
+    "text": "thisal to 1 to\nM of Y"
+  },
+  {
+    "start": "00:21:27.200000",
+    "end": "00:21:29.110000",
+    "text": "M of Y\nIUS y"
+  },
+  {
+    "start": "00:21:29.120000",
+    "end": "00:21:33.149000",
+    "text": "IUS y\nI Pi of"
+  },
+  {
+    "start": "00:21:33.159000",
+    "end": "00:21:36.350000",
+    "text": "I Pi of\nXI so now we have some expression about"
+  },
+  {
+    "start": "00:21:36.360000",
+    "end": "00:21:39.190000",
+    "text": "XI so now we have some expression about\nthe uh gradient that we need in order"
+  },
+  {
+    "start": "00:21:39.200000",
+    "end": "00:21:42.149000",
+    "text": "the uh gradient that we need in order\nfor us to implement sastic grade descent"
+  },
+  {
+    "start": "00:21:42.159000",
+    "end": "00:21:43.909000",
+    "text": "for us to implement sastic grade descent\nand now we will see in a notebook how"
+  },
+  {
+    "start": "00:21:43.919000",
+    "end": "00:21:47.350000",
+    "text": "and now we will see in a notebook how\nthe stoas r descent is powering logistic"
+  },
+  {
+    "start": "00:21:47.360000",
+    "end": "00:21:49.710000",
+    "text": "the stoas r descent is powering logistic\nregressor and in fact it's Al also"
+  },
+  {
+    "start": "00:21:49.720000",
+    "end": "00:21:52.110000",
+    "text": "regressor and in fact it's Al also\nworthwhile commenting on how the name"
+  },
+  {
+    "start": "00:21:52.120000",
+    "end": "00:21:53.870000",
+    "text": "worthwhile commenting on how the name\nkind of logistic regression came to be"
+  },
+  {
+    "start": "00:21:53.880000",
+    "end": "00:21:55.950000",
+    "text": "kind of logistic regression came to be\nattached to this kind of block"
+  },
+  {
+    "start": "00:21:55.960000",
+    "end": "00:21:59.269000",
+    "text": "attached to this kind of block\ndiagram and uh uh in fact fact if we"
+  },
+  {
+    "start": "00:21:59.279000",
+    "end": "00:22:01.430000",
+    "text": "diagram and uh uh in fact fact if we\ntreat this binary classification problem"
+  },
+  {
+    "start": "00:22:01.440000",
+    "end": "00:22:04.190000",
+    "text": "treat this binary classification problem\nlike a regression problem and we plot"
+  },
+  {
+    "start": "00:22:04.200000",
+    "end": "00:22:08.950000",
+    "text": "like a regression problem and we plot\nover here the U so-called XIs uh versus"
+  },
+  {
+    "start": "00:22:08.960000",
+    "end": "00:22:11.830000",
+    "text": "over here the U so-called XIs uh versus\nuh the Y similarly what we have seen in"
+  },
+  {
+    "start": "00:22:11.840000",
+    "end": "00:22:14.230000",
+    "text": "uh the Y similarly what we have seen in\nso many regression problems then"
+  },
+  {
+    "start": "00:22:14.240000",
+    "end": "00:22:17.990000",
+    "text": "so many regression problems then\ndefinitely r y is uh uh discrete random"
+  },
+  {
+    "start": "00:22:18.000000",
+    "end": "00:22:20.390000",
+    "text": "definitely r y is uh uh discrete random\nvariable and take values between zero"
+  },
+  {
+    "start": "00:22:20.400000",
+    "end": "00:22:25.789000",
+    "text": "variable and take values between zero\nlet's say and one and certainly for uh"
+  },
+  {
+    "start": "00:22:25.799000",
+    "end": "00:22:28.029000",
+    "text": "let's say and one and certainly for uh\nin this kind of neighborhood we'll see"
+  },
+  {
+    "start": "00:22:28.039000",
+    "end": "00:22:31.909000",
+    "text": "in this kind of neighborhood we'll see\nmany assignments to zero and in this"
+  },
+  {
+    "start": "00:22:31.919000",
+    "end": "00:22:35.310000",
+    "text": "many assignments to zero and in this\nneighborhood remember the radar problem"
+  },
+  {
+    "start": "00:22:35.320000",
+    "end": "00:22:37.990000",
+    "text": "neighborhood remember the radar problem\nHigh signal strength low signal strength"
+  },
+  {
+    "start": "00:22:38.000000",
+    "end": "00:22:40.870000",
+    "text": "High signal strength low signal strength\nHigh signal strength mostly we will get"
+  },
+  {
+    "start": "00:22:40.880000",
+    "end": "00:22:43.310000",
+    "text": "High signal strength mostly we will get\nuh a positive uh prediction of our"
+  },
+  {
+    "start": "00:22:43.320000",
+    "end": "00:22:46.350000",
+    "text": "uh a positive uh prediction of our\nattacks and uh over here we're going to"
+  },
+  {
+    "start": "00:22:46.360000",
+    "end": "00:22:47.909000",
+    "text": "attacks and uh over here we're going to\nhave a negative prediction of our"
+  },
+  {
+    "start": "00:22:47.919000",
+    "end": "00:22:49.669000",
+    "text": "have a negative prediction of our\nattacks here we're actually plotting"
+  },
+  {
+    "start": "00:22:49.679000",
+    "end": "00:22:53.750000",
+    "text": "attacks here we're actually plotting\nhere the uh ground truths and uh if we"
+  },
+  {
+    "start": "00:22:53.760000",
+    "end": "00:22:58.630000",
+    "text": "here the uh ground truths and uh if we\nare to if we are to uh do regression to"
+  },
+  {
+    "start": "00:22:58.640000",
+    "end": "00:23:01.230000",
+    "text": "are to if we are to uh do regression to\nfit this data in a very similar way as"
+  },
+  {
+    "start": "00:23:01.240000",
+    "end": "00:23:03.630000",
+    "text": "fit this data in a very similar way as\nwe have done earlier probably will come"
+  },
+  {
+    "start": "00:23:03.640000",
+    "end": "00:23:07.070000",
+    "text": "we have done earlier probably will come\nup with a kind of a straight line that"
+  },
+  {
+    "start": "00:23:07.080000",
+    "end": "00:23:10.310000",
+    "text": "up with a kind of a straight line that\ntries to uh maximize some objective kind"
+  },
+  {
+    "start": "00:23:10.320000",
+    "end": "00:23:13.909000",
+    "text": "tries to uh maximize some objective kind\nof function so this is uh uh straight"
+  },
+  {
+    "start": "00:23:13.919000",
+    "end": "00:23:16.190000",
+    "text": "of function so this is uh uh straight\nline regression is not going to be very"
+  },
+  {
+    "start": "00:23:16.200000",
+    "end": "00:23:17.990000",
+    "text": "line regression is not going to be very\nappropriate for a classification problem"
+  },
+  {
+    "start": "00:23:18.000000",
+    "end": "00:23:20.510000",
+    "text": "appropriate for a classification problem\nbecause we are expecting our predictor"
+  },
+  {
+    "start": "00:23:20.520000",
+    "end": "00:23:23.390000",
+    "text": "because we are expecting our predictor\nto uh produce values always between zero"
+  },
+  {
+    "start": "00:23:23.400000",
+    "end": "00:23:25.909000",
+    "text": "to uh produce values always between zero\nand one so therefore what we do here is"
+  },
+  {
+    "start": "00:23:25.919000",
+    "end": "00:23:28.549000",
+    "text": "and one so therefore what we do here is\nwe are applying the sigmoidal so this is"
+  },
+  {
+    "start": "00:23:28.559000",
+    "end": "00:23:30.549000",
+    "text": "we are applying the sigmoidal so this is\nis effectively the line that generates"
+  },
+  {
+    "start": "00:23:30.559000",
+    "end": "00:23:34.390000",
+    "text": "is effectively the line that generates\nthe uh a uh when we have no features no"
+  },
+  {
+    "start": "00:23:34.400000",
+    "end": "00:23:36.549000",
+    "text": "the uh a uh when we have no features no\nfeaturization in this specific Syle"
+  },
+  {
+    "start": "00:23:36.559000",
+    "end": "00:23:39.630000",
+    "text": "featurization in this specific Syle\nexample and so the sigmoidal unit will"
+  },
+  {
+    "start": "00:23:39.640000",
+    "end": "00:23:41.269000",
+    "text": "example and so the sigmoidal unit will\nuh match"
+  },
+  {
+    "start": "00:23:41.279000",
+    "end": "00:23:44.750000",
+    "text": "uh match\neffectively the uh it has a linear"
+  },
+  {
+    "start": "00:23:44.760000",
+    "end": "00:23:47.789000",
+    "text": "effectively the uh it has a linear\ncomponent over here and will compress"
+  },
+  {
+    "start": "00:23:47.799000",
+    "end": "00:23:50.029000",
+    "text": "component over here and will compress\neverything between zero and one so"
+  },
+  {
+    "start": "00:23:50.039000",
+    "end": "00:23:52.310000",
+    "text": "everything between zero and one so\nthat's another way of kind of"
+  },
+  {
+    "start": "00:23:52.320000",
+    "end": "00:23:54.630000",
+    "text": "that's another way of kind of\ngraphically uh remembering logistic"
+  },
+  {
+    "start": "00:23:54.640000",
+    "end": "00:23:56.430000",
+    "text": "graphically uh remembering logistic\nregression as an attempt to do"
+  },
+  {
+    "start": "00:23:56.440000",
+    "end": "00:23:59.390000",
+    "text": "regression as an attempt to do\nregression but um uh at the same time"
+  },
+  {
+    "start": "00:23:59.400000",
+    "end": "00:24:01.750000",
+    "text": "regression but um uh at the same time\nwith a kind of a compressive uh"
+  },
+  {
+    "start": "00:24:01.760000",
+    "end": "00:24:04.909000",
+    "text": "with a kind of a compressive uh\nstep okay so now what we will do to"
+  },
+  {
+    "start": "00:24:04.919000",
+    "end": "00:24:07.390000",
+    "text": "step okay so now what we will do to\nconclude a little bit the topic of"
+  },
+  {
+    "start": "00:24:07.400000",
+    "end": "00:24:10.269000",
+    "text": "conclude a little bit the topic of\nclassification is to just in passing"
+  },
+  {
+    "start": "00:24:10.279000",
+    "end": "00:24:11.789000",
+    "text": "classification is to just in passing\nquote a couple of things about the"
+  },
+  {
+    "start": "00:24:11.799000",
+    "end": "00:24:14.110000",
+    "text": "quote a couple of things about the\nsecond framework that I have mentioned"
+  },
+  {
+    "start": "00:24:14.120000",
+    "end": "00:24:17.990000",
+    "text": "second framework that I have mentioned\nuh the soal generative classification"
+  },
+  {
+    "start": "00:24:18.000000",
+    "end": "00:24:19.669000",
+    "text": "uh the soal generative classification\nFrameworks in the generative"
+  },
+  {
+    "start": "00:24:19.679000",
+    "end": "00:24:21.350000",
+    "text": "Frameworks in the generative\nclassification framework we're again"
+  },
+  {
+    "start": "00:24:21.360000",
+    "end": "00:24:24.990000",
+    "text": "classification framework we're again\ngoing to be uh task to calculate the"
+  },
+  {
+    "start": "00:24:25.000000",
+    "end": "00:24:30.990000",
+    "text": "going to be uh task to calculate the\nposterior uh probability"
+  },
+  {
+    "start": "00:24:32.840000",
+    "end": "00:24:36.149000",
+    "text": "that we see\nhere for in general kind of K"
+  },
+  {
+    "start": "00:24:36.159000",
+    "end": "00:24:39.950000",
+    "text": "here for in general kind of K\nglasses and uh this"
+  },
+  {
+    "start": "00:24:42.240000",
+    "end": "00:24:45.990000",
+    "text": "posterior is going to\nbe evidently given by this General kind"
+  },
+  {
+    "start": "00:24:46.000000",
+    "end": "00:24:52.710000",
+    "text": "be evidently given by this General kind\nof"
+  },
+  {
+    "start": "00:24:55.200000",
+    "end": "00:24:57.789000",
+    "text": "formula so in the generative approach we\nwill do uh two steps instead of uh"
+  },
+  {
+    "start": "00:24:57.799000",
+    "end": "00:24:59.389000",
+    "text": "will do uh two steps instead of uh\ncoming up with the block diagram that"
+  },
+  {
+    "start": "00:24:59.399000",
+    "end": "00:25:03.750000",
+    "text": "coming up with the block diagram that\ngenerates that uh from uh directly and"
+  },
+  {
+    "start": "00:25:03.760000",
+    "end": "00:25:06.110000",
+    "text": "generates that uh from uh directly and\nmodels the posterior directly as we have"
+  },
+  {
+    "start": "00:25:06.120000",
+    "end": "00:25:09.310000",
+    "text": "models the posterior directly as we have\ndone with uh logistic aggression we will"
+  },
+  {
+    "start": "00:25:09.320000",
+    "end": "00:25:15.909000",
+    "text": "done with uh logistic aggression we will\nuh first uh do two steps one is to"
+  },
+  {
+    "start": "00:25:37.679000",
+    "end": "00:25:40.389000",
+    "text": "marginal and uh then come to some degree\nof approximation because it's actually"
+  },
+  {
+    "start": "00:25:40.399000",
+    "end": "00:25:41.789000",
+    "text": "of approximation because it's actually\ntypically a very"
+  },
+  {
+    "start": "00:25:41.799000",
+    "end": "00:25:44.990000",
+    "text": "typically a very\nexpensive uh for large dimensions for"
+  },
+  {
+    "start": "00:25:45.000000",
+    "end": "00:25:49.430000",
+    "text": "expensive uh for large dimensions for\nlarg"
+  },
+  {
+    "start": "00:25:52.120000",
+    "end": "00:25:55.269000",
+    "text": "Gen this is\nuh a very"
+  },
+  {
+    "start": "00:25:55.279000",
+    "end": "00:25:59.950000",
+    "text": "uh a very\nexpensive calculation"
+  },
+  {
+    "start": "00:26:02.480000",
+    "end": "00:26:03.630000",
+    "text": "so for we will typically involve some\nform of"
+  },
+  {
+    "start": "00:26:03.640000",
+    "end": "00:26:06.310000",
+    "text": "form of\napproximation uh for calculating this uh"
+  },
+  {
+    "start": "00:26:06.320000",
+    "end": "00:26:10.149000",
+    "text": "approximation uh for calculating this uh\ndenominator over here of the"
+  },
+  {
+    "start": "00:26:19.240000",
+    "end": "00:26:22.310000",
+    "text": "base is a famous uh generative uh\nclassification method and uh we actually"
+  },
+  {
+    "start": "00:26:22.320000",
+    "end": "00:26:25.070000",
+    "text": "classification method and uh we actually\ngoing to see that when we come to uh"
+  },
+  {
+    "start": "00:26:25.080000",
+    "end": "00:26:27.630000",
+    "text": "going to see that when we come to uh\nlanguage modeling and some other tasks"
+  },
+  {
+    "start": "00:26:27.640000",
+    "end": "00:26:30.909000",
+    "text": "language modeling and some other tasks\nlater on in some videos so I will uh"
+  },
+  {
+    "start": "00:26:30.919000",
+    "end": "00:26:32.990000",
+    "text": "later on in some videos so I will uh\ntake a rain check to discuss it at that"
+  },
+  {
+    "start": "00:26:33.000000",
+    "end": "00:26:34.950000",
+    "text": "take a rain check to discuss it at that\nmoment and revisit if you like the"
+  },
+  {
+    "start": "00:26:34.960000",
+    "end": "00:26:37.669000",
+    "text": "moment and revisit if you like the\ngenerative classification framework and"
+  },
+  {
+    "start": "00:26:37.679000",
+    "end": "00:26:39.510000",
+    "text": "generative classification framework and\nthe discussion of on Bas is not really"
+  },
+  {
+    "start": "00:26:39.520000",
+    "end": "00:26:43.799000",
+    "text": "the discussion of on Bas is not really\nessential right now for us to progress"
+  }
+]
