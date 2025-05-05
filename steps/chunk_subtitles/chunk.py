@@ -214,6 +214,13 @@ def separate_into_chunks(
                         for entry in word_timings
                         if entry["word"] in next_chunk and entry["timestamp"] > last_used_ts
                     ]
+                    if i < len(chunks) - 3:  # lookahead to next next next chunk
+                        next_chunk = chunks[i + 3]
+                        matching = [
+                            entry
+                            for entry in word_timings
+                            if entry["word"] in next_chunk and entry["timestamp"] > last_used_ts
+                        ]
 
             if len(matching) == 0:
                 current_subtitle_idx += 1

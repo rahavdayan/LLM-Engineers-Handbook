@@ -1,0 +1,1102 @@
+[
+  {
+    "start": "00:00:00.000000",
+    "end": "00:00:19.119000",
+    "text": "so this is basically what is happening in a an example over here where we have an input image and we are actually sliding a kernel a 3x3 kernel and we are getting an an aafeature map"
+  },
+  {
+    "start": "00:00:19.119000",
+    "end": "00:00:22.359000",
+    "text": "so the input feature map here is just has one"
+  },
+  {
+    "start": "00:00:22.359000",
+    "end": "00:00:34.360000",
+    "text": "we will be calling sometimes this depth channel and the output feature map has again one channel over here"
+  },
+  {
+    "start": "00:00:34.360000",
+    "end": "00:00:38.229000",
+    "text": "and what we have here is we have"
+  },
+  {
+    "start": "00:00:38.229000",
+    "end": "00:00:45.559000",
+    "text": "a couple of things that we need to introduce as terms in convolutional operations that our actual doing and inside the convolutionsthe first is the form of the concept of padding"
+  },
+  {
+    "start": "00:00:45.559000",
+    "end": "00:01:05.040000",
+    "text": "and typically we are padding the u input feature maps in order to do two things"
+  },
+  {
+    "start": "00:01:05.040000",
+    "end": "00:01:18.640000",
+    "text": "we achieving two things probably you have noticed that in an earlier kindof discussion or we had the operation of cross correlation operation in this in this kind of image"
+  },
+  {
+    "start": "00:01:18.640000",
+    "end": "00:01:36.550000",
+    "text": "over here the output feature map was always smaller in terms of speciaal dimensions compared to the input feature map and it is evidently so because the only way that this output feature k can be exactly the same size as the input is"
+  },
+  {
+    "start": "00:01:36.550000",
+    "end": "00:01:44.119000",
+    "text": "when the kernel is 1 by one so when the kel has a special extent of 1 by one then we have exactly that situation"
+  },
+  {
+    "start": "00:01:44.119000",
+    "end": "00:02:07.360000",
+    "text": "but in most cases where the can wont be onebyone we will expect this output feature maps to shrink in terms of spatial content and we do not want them to shrink too much because sooner or later we will be running out of spatial dimensions in our outputs and therefore we cannot really go deep to construct deep architectures in these networks"
+  },
+  {
+    "start": "00:02:07.360000",
+    "end": "00:02:07.360000",
+    "text": "so what we expect to do"
+  },
+  {
+    "start": "00:02:07.360000",
+    "end": "00:02:20.040000",
+    "text": "what we are have done is we have with padding we getare trying to manage this special extent reduction on one hand"
+  },
+  {
+    "start": "00:02:20.040000",
+    "end": "00:02:41.400000",
+    "text": "as you can see if we had this padding over here then the output feature map is going to be much larger than otherwise"
+  },
+  {
+    "start": "00:02:41.400000",
+    "end": "00:03:03.110000",
+    "text": "so if you can imagine that without a padding then this sort of output feature map would actually be"
+  },
+  {
+    "start": "00:03:03.110000",
+    "end": "00:03:03.110000",
+    "text": "i cant really sortof tell you exactly the dimensions"
+  },
+  {
+    "start": "00:03:03.110000",
+    "end": "00:03:30.990000",
+    "text": "but if you do it visually then you can actually see its going to be probably something like a 3x3 output"
+  },
+  {
+    "start": "00:03:30.990000",
+    "end": "00:03:41.560000",
+    "text": "now the sort of another another advantage of paddingis that we allow the kel to actually move into locations which would not be able to move otherwise"
+  },
+  {
+    "start": "00:03:41.560000",
+    "end": "00:03:44.670000",
+    "text": "so a kernel as we discussed a bit earlier contains some values and we would like all of the pixels including the edge pixels of the input feature map to be correlated with all of the other pixels of the allofthepixels of the kel"
+  },
+  {
+    "start": "00:03:44.670000",
+    "end": "00:03:44.670000",
+    "text": "and therefore padding allows us to to do so"
+  },
+  {
+    "start": "00:03:44.670000",
+    "end": "00:03:48.599000",
+    "text": "otherwise you can imagine this red kernel over here will actually be only be able to correlate with those three pixels of the feature map"
+  },
+  {
+    "start": "00:03:48.599000",
+    "end": "00:04:11.920000",
+    "text": "now this pixel over here can be correlated with both this pixel of the kernel and that pixel of the and this pixel and this pixel of the sort of kel that we have so we have the ability to sortofget more information especially towards the edges of that input feature map with padding"
+  },
+  {
+    "start": "00:04:11.920000",
+    "end": "00:04:24.280000",
+    "text": "another parameter that we should also sort of understand is this kind of stride so stride is the just like the stride that you as you walk it"
+  },
+  {
+    "start": "00:04:24.280000",
+    "end": "00:04:33.830000",
+    "text": "this here actually refers to the number of pixels that are skipping overthe in order for you to be ableto do the next correlation so here you see two locations of that kernel in that location and the blue location"
+  },
+  {
+    "start": "00:04:33.830000",
+    "end": "00:04:48.880000",
+    "text": "the red location the blue location"
+  },
+  {
+    "start": "00:04:48.880000",
+    "end": "00:04:54.440000",
+    "text": "if your stride was one then the blue k have been right here"
+  },
+  {
+    "start": "00:04:54.440000",
+    "end": "00:05:05.600000",
+    "text": "and while with a stride of two then we dont get one correlation operation for every pixel of the input feature map"
+  },
+  {
+    "start": "00:05:05.600000",
+    "end": "00:05:11.919000",
+    "text": "and this is obviously is helping us manage the complexity of these filters"
+  },
+  {
+    "start": "00:05:11.919000",
+    "end": "00:05:13.680000",
+    "text": "in fact goes slightly to the opposite direction of what we have said earlier in"
+  },
+  {
+    "start": "00:05:13.680000",
+    "end": "00:05:26.319000",
+    "text": "some instances we prefer to get for some of the layers of the convolutional neuron"
+  },
+  {
+    "start": "00:05:26.319000",
+    "end": "00:05:28.440000",
+    "text": "the stifle parameter to be larger than one"
+  },
+  {
+    "start": "00:05:28.440000",
+    "end": "00:05:33.720000",
+    "text": "typically the stride parameter of height and width are going to be the same"
+  },
+  {
+    "start": "00:05:33.720000",
+    "end": "00:05:36.629000",
+    "text": "so thats what you see over here"
+  },
+  {
+    "start": "00:05:36.629000",
+    "end": "00:05:44.160000",
+    "text": "bottom line is that all these parameters and far more that are to follow are hyperparameter optimization"
+  },
+  {
+    "start": "00:05:44.160000",
+    "end": "00:05:59.110000",
+    "text": "in order for us to define the complete architecture of of a cnc here you see some animations that kindof reinforce what we have justquoted ed without padding"
+  },
+  {
+    "start": "00:05:59.110000",
+    "end": "00:06:11.319000",
+    "text": "the kel the output feature map is going to be u potentially significantly reduced in terms of spatial extent"
+  },
+  {
+    "start": "00:06:11.319000",
+    "end": "00:06:17.080000",
+    "text": "something will make any subsequent cor correlation with kels"
+  },
+  {
+    "start": "00:06:17.080000",
+    "end": "00:06:26.720000",
+    "text": "you know not very useful with padding this is we avoid that and here we actually have padding combinations of padding and stride"
+  },
+  {
+    "start": "00:06:26.720000",
+    "end": "00:06:37.160000",
+    "text": "so i suggest that you study this kind of animations to just get the gist as to what padding and stride are actually offering to us"
+  },
+  {
+    "start": "00:06:37.160000",
+    "end": "00:06:43.189000",
+    "text": "but now the time has come to look at the operation of the convolutional neuron"
+  },
+  {
+    "start": "00:06:43.189000",
+    "end": "00:06:43.189000",
+    "text": "ed"
+  },
+  {
+    "start": "00:06:43.189000",
+    "end": "00:06:47.120000",
+    "text": "without padding sonetwork and in fact the describe"
+  },
+  {
+    "start": "00:06:47.120000",
+    "end": "00:07:12.520000",
+    "text": "if you like the single convolutional kind of layer in in detail we will start drawing a snapshot of a cnc layer operation that will actually help us to understand the general case where we have input u and output feature maps coming into the cnc layer"
+  },
+  {
+    "start": "00:07:12.520000",
+    "end": "00:07:17.720000",
+    "text": "but however these input and output feature maps possess different depths and this is another parameter that we have to understand"
+  },
+  {
+    "start": "00:07:17.720000",
+    "end": "00:07:25.150000",
+    "text": "you know that our we are responsible for designing these layers with that that the depth of what we will produce isour responsibility to to design"
+  },
+  {
+    "start": "00:07:25.150000",
+    "end": "00:07:31.720000",
+    "text": "so lets write now draw"
+  },
+  {
+    "start": "00:07:31.720000",
+    "end": "00:07:38.639000",
+    "text": "if you like a picture of that cnc layer in operation okay"
+  },
+  {
+    "start": "00:07:38.639000",
+    "end": "00:07:42.680000",
+    "text": "let me call it the snapshot we will see just a single snapshot of that layer"
+  },
+  {
+    "start": "00:07:42.680000",
+    "end": "00:07:47.720000",
+    "text": "and this will also help us understand the u"
+  },
+  {
+    "start": "00:07:47.720000",
+    "end": "00:07:49.360000",
+    "text": "what is the convolutional neuron"
+  },
+  {
+    "start": "00:07:49.360000",
+    "end": "00:07:53.280000",
+    "text": "we already have seen the sort of sigmoidal kind of neuroner"
+  },
+  {
+    "start": "00:07:53.280000",
+    "end": "00:07:59.960000",
+    "text": "now we will see in the inthe fully connected dense layer architectures"
+  },
+  {
+    "start": "00:07:59.960000",
+    "end": "00:08:03.909000",
+    "text": "now well see the convolutional neuroin front of our so the moment let i call it snapshot of so the photo lett be on cn of cnp"
+  },
+  {
+    "start": "00:08:03.909000",
+    "end": "00:08:19.240000",
+    "text": "okay let’ed by an cns of a csnoperation all right"
+  },
+  {
+    "start": "00:08:19.240000",
+    "end": "00:08:55.880000",
+    "text": "so lets draw"
+  },
+  {
+    "start": "00:08:55.880000",
+    "end": "00:09:09.870000",
+    "text": "now the general case as we discussed that we have an input volume this input volume is associated with h the output feature map of an earlier layer"
+  },
+  {
+    "start": "00:09:09.870000",
+    "end": "00:09:09.870000",
+    "text": "lets call that layer l  minus one"
+  },
+  {
+    "start": "00:09:09.870000",
+    "end": "00:09:27.800000",
+    "text": "this is basically the feature map that was generated by the previous layer in general and well have a depth of capital m  l  minus one"
+  },
+  {
+    "start": "00:09:27.800000",
+    "end": "00:09:53.760000",
+    "text": "it will have some kind de width let me make sure that you can actually see here this is wl  minus one"
+  },
+  {
+    "start": "00:09:53.760000",
+    "end": "00:10:08.310000",
+    "text": "the height over here will actually be hlminus one all right"
+  },
+  {
+    "start": "00:10:08.310000",
+    "end": "00:10:50.069000",
+    "text": "so thats basically the dimensions of my incoming volume and this incoming volume has some kind resolution in terms of number of height and width pixels"
+  },
+  {
+    "start": "00:10:50.069000",
+    "end": "00:11:43.310000",
+    "text": "let me just draw them quickly because we would like to now draw the u what will be the output of out of this operation which is the output feature map"
+  },
+  {
+    "start": "00:11:43.310000",
+    "end": "00:12:08.160000",
+    "text": "now the output is going to be generated at this specific moment in time i have in general a filter that has 3x3 special extent it is located"
+  },
+  {
+    "start": "00:12:08.160000",
+    "end": "00:12:21.360000",
+    "text": "let say here at this moment in timebecause thats why you call it a snapshot"
+  },
+  {
+    "start": "00:12:21.360000",
+    "end": "00:12:21.360000",
+    "text": "and it has some depth i want to discuss a little bit the depth"
+  },
+  {
+    "start": "00:12:21.360000",
+    "end": "00:12:45.269000",
+    "text": "what makes sense for this depth of the filter to be"
+  },
+  {
+    "start": "00:12:45.269000",
+    "end": "00:13:14.360000",
+    "text": "but it when it is located over here for sure im expecting to have some output feature map"
+  },
+  {
+    "start": "00:13:14.360000",
+    "end": "00:00:-1.000000",
+    "text": "this output feature map will be probablysmaller in terms of spal extent"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "thats why im kindof drawing it like this"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "it has some kind or a number ofpixels"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "okay and we have some kind of  a deep and this depth is definitely something that i need in it has some sort andparameters"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "im calling this depth ml and evidently we have a different hl and wls dimensions and this is basically my"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "you know volumes input and output volumes in general going to have input and output fors"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:13:14.360000",
+    "text": "so the question i actually have right now is to understand a little bit about the depth of the filter"
+  },
+  {
+    "start": "00:13:14.360000",
+    "end": "00:19:21.630000",
+    "text": "and we have three options either the depth of the filter will actually be deeper than the input feature map shallower than the input feature map or exactly the same depth as the inputandof reasoning over here"
+  },
+  {
+    "start": "00:19:21.630000",
+    "end": "00:00:-1.000000",
+    "text": "does it make any sense for the filter to be deeper than the input feature map"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:19:21.630000",
+    "text": "and if you think about it the answer is no"
+  },
+  {
+    "start": "00:19:21.630000",
+    "end": "00:22:13.430000",
+    "text": "it does not really make a lot of sense because at the end of the day we are going to be correlating the contents of that filter with the contents of the inputfeature maps and if the filter is actually deeper then we are not going to be picking up anything from the inputfeature mapping because we are going to"
+  },
+  {
+    "start": "00:22:13.430000",
+    "end": "00:22:13.430000",
+    "text": "so why have it deeper"
+  },
+  {
+    "start": "00:22:13.430000",
+    "end": "00:23:18.710000",
+    "text": "okay so you know theres no point of doing soshallower than the input feature map also"
+  },
+  {
+    "start": "00:23:18.710000",
+    "end": "00:23:29.310000",
+    "text": "it does not really make a lot of sense because we are going to leave content that the inputfeature maps u contains for us on the table so the so"
+  },
+  {
+    "start": "00:23:29.310000",
+    "end": "00:23:33.039000",
+    "text": "the only reasonable assumption is this filter to be exactly the same in terms of the inputfeature mapping depth right in terms of this terms of depth of the input f map so its just basically draw it as such and it in factit is really this filter that is going to be the one that we are going to be using to do this kind dethreedimensional kind of a correlation over here now to understand the contents"
+  },
+  {
+    "start": "00:23:33.039000",
+    "end": "00:23:33.039000",
+    "text": "that correlation is kindof important and what is actually even more important to understand what it will generate as we will see shortly"
+  },
+  {
+    "start": "00:23:33.039000",
+    "end": "00:23:49.230000",
+    "text": "what it will not generate it will not generate the whole volume over here but it will actually generate only one slice out of that output volume"
+  },
+  {
+    "start": "00:23:49.230000",
+    "end": "00:00:-1.000000",
+    "text": "okay let me take the sort of so for that specific snapshot that im actually right nowgenerating thespecific"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "let me draw that like like there somespecific result which is a scaler"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:23:49.230000",
+    "text": "therefore its  a result of a single pixel from this column which is located at the coordinate i comma j so specially wise"
+  },
+  {
+    "start": "00:23:49.230000",
+    "end": "00:26:29.799000",
+    "text": "and i hope you remember what we have seen earlier in the sort of example architecture"
+  },
+  {
+    "start": "00:26:29.799000",
+    "end": "00:26:29.799000",
+    "text": "sorry in the cnc architecture diagram we are let just show you u that kind of diagram again"
+  },
+  {
+    "start": "00:26:29.799000",
+    "end": "00:27:06.440000",
+    "text": "for that specific snapshot lets say the blue la snapshot"
+  },
+  {
+    "start": "00:27:06.440000",
+    "end": "00:00:-1.000000",
+    "text": "im actually generating this scalar result and using just one kernel a filter"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "like here itstandingof depth one in this case so as it will actually"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "as it actually turns out that fil that filter at that specific snapshot it will do a threedimensional correlation and it will still generate a single scaler for me okay"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and that single scalar will be at  a specific depth okay"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and the special coordinates of that scalar is i"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "comma j"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:27:06.440000",
+    "text": "that the one i just drew now we will call that depth with an index in — a moment"
+  },
+  {
+    "start": "00:27:06.440000",
+    "end": "00:31:56.269000",
+    "text": "but whatcolumn 90° and write it over here"
+  },
+  {
+    "start": "00:31:56.269000",
+    "end": "00:00:-1.000000",
+    "text": "it will be evidently this dimension will be ml the depth dimension and this is the because we are correspond to the earth layer"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and let me just do exactly the same thing with the filter"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so im actually taking the filter and decompose it over here to the 3x3 kels that it contains"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and so these are going to be my3x3kernels and this will be of dimension mlminus1"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:31:56.269000",
+    "text": "so just took the filter rotated 90° and just decomposition into its kelses"
+  },
+  {
+    "start": "00:31:56.269000",
+    "end": "00:35:13.670000",
+    "text": "this is the l minus one layer and so since i go to begenerating a scaler lets assume that im generating right now at that specific snap sort"
+  },
+  {
+    "start": "00:35:13.670000",
+    "end": "00:35:28.800000",
+    "text": "the this is the icommaj coordinate and the icommas j coordinates"
+  },
+  {
+    "start": "00:35:28.800000",
+    "end": "00:00:-1.000000",
+    "text": "letsimply that im generating this scalar over here"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:35:28.800000",
+    "text": "this scalar is going to be represented by the letterz and well have evidently my commaj as a special coordinates"
+  },
+  {
+    "start": "00:35:28.800000",
+    "end": "00:37:40.109000",
+    "text": "and we have  or equal to kl and obviously 1 is less than or equal to mlvalues that the kl index which is the depth index can take and i will actually be using also a corresponding index to address each one of those kels"
+  },
+  {
+    "start": "00:37:40.109000",
+    "end": "00:38:13.349000",
+    "text": "which are going to be used for the determining that kind of scalar z so that scalar z is going to be produced by using all of these kelses of the the filter and i am going to also need to define to define two other indexes"
+  },
+  {
+    "start": "00:38:13.349000",
+    "end": "00:00:-1.000000",
+    "text": "the first index is going to be u and the other index goingto be vso myequation so is the following"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so given i comma j commas kl given in other words the coordinates of the scalar which i want to generate"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:38:13.349000",
+    "text": "my scalar z i kommata j commos kl are going to be given by three summations"
+  },
+  {
+    "start": "00:38:13.349000",
+    "end": "00:39:16.440000",
+    "text": "the first two summations i have seen already in the plain twodimensional correlation operation"
+  },
+  {
+    "start": "00:39:16.440000",
+    "end": "00:00:-1.000000",
+    "text": "the one that we just did in an earlier so this is u summation over u and v definitely im expecting the special content of that kind"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "sothe contents of the input image"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "okay so this is the two summations over here but also im expecting to now do a threedimensional correlation operation"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "thats a third summation over an index"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "iill be calling kl minus1 and this index addresses the specific kernel which im going to be using"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so kl minus one is definitely the less than or equal to one and less than or equal to mlm minus one in a similar way as we have seen earlier"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so what isof the of the of the kernel that now has u comma v comma kl klminus1 all right so we have in fact the w is not the cond of the kernel"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "the cond of the kernel"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "yes we can call them w but w i would associate w with this line over here that for specifying this line"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i have the u commas v coordinates spal coordinates of the kernel"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "that specific kernel however is provided by this index and the scalar it is going to be generating is by this index so this particular kel is by this c"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "computer this special cle is by this or klefullywhy"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i need this w of q comma v commas kl comma kl minus one"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "okay so this will actually be the weights that are going to be"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so a fourdimensional tensor is being used here for specifying those parameters that that we are store in those in in those filters"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and in fact we only have one filter right now so"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so a fourdimensional tenseor to identify the parameters that we have utilized in this specific dot product over here"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "only thing actually is changing is the space coordinate that is being produced in this scaler so the only thing"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so by moving the filter around im changing the i comma j of what im producing therefore what im actually going to be producing is a slice a specific slice out of this sort of output feature map so the specific slice im just drawing over here"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "just one of the ml slices so ml slices generates the complete volume"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so this slice is the one that i am going to be making this completesizematrix and so from one filterill be generating a single matrix"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and therefore and this is the important conclusion from we need multiple"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "we need multipleoutput feature mapvolume so for a volume for the whole thing for the output feature map we need to be creating multiple fatures"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "in fact this thing over here is really the connectivity diagram of the convolutional neuron"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "what we call  a convolutional – a single filter is and the operation actually we see over here is the operationparameters that we have used over here"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "the contents if you like the filter are the socalled trainable parametersand we will now see an animation of this thing in in our core site"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so if i go to my core site and actually scroll down a little bit then you can see now the threedimensional"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so first of all before we see the animation we can actually see its exactly the diagram i just drew a different"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i have an input volume which is the blue over here with has going to be using has the same depth din as the input volume doesnt make sense otherwise"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:39:16.440000",
+    "text": "and then in terms of the output volume a single filter is goingto be generating one slice out of the dout slices"
+  },
+  {
+    "start": "00:39:16.440000",
+    "end": "00:39:30.480000",
+    "text": "so on one slice lets say this specific matrix over here where my mouse pointer is"
+  },
+  {
+    "start": "00:39:30.480000",
+    "end": "00:00:-1.000000",
+    "text": "that is going to be what is going to be produced by a single filter and this dotted line here indicates that if you want to generate the complete output volume with  depth  outcubes in order for you to be ableto generate a complete green output feature map so i think its worth spending some time in this animation"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "in this animation you can actually see exactly what i just discussed here"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "in this example i have an inputfeature maps of depth three"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and i have"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "a outputfeature mapping of depth two"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "let assume that that is the sort of design parameter which i want to implement"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "therefore if i have an output feat map of two i need two filters and these are the two filter with one filter it is the f1 and thisis the filter w1 and evidently the each of these filters has of dep depth three because three is also the depth of the input feature map"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and at every specific snapshot lets assume this is the snapshot that i just drew on pieceof paper"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "this filter is located at this specific location in my input feature map and it is responsible for creating this scalar z which is nine in this case"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "okay"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so if i may and as far as the output feature map is concerned this filter is only able to plot if you like to determine the this particular slice of the"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "the w1 andoutput feature map"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "if i want to continue then we will see that the second filter is the one which is involved in the creation of of the second slice of the output feature"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "this is really the essence of a threedimensional convolution"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i suggest that you spend some time on this animation trying to understand what is going on and you can toggle the movement just to be able to replicate the output scaler from the input values which have been provided overhere a bit on this presentation of the snapshot operation of a layer thesite over here has is squatting some kind of important formulas regarding the size the special dimensions of the output feature map"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i think its important to note them down and so it is the floor of the height of the input feure map plus two the padding size minus the kernel size divided by the strides and plus one"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "okay so this is the formula that will that you can actually use to understand exactly what will be your output feature maps are in terms of spatial dimensions and of course this will be the input featuremap sizes for the forthelayer that follows"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "okay so what will actually be those layers"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i think its you know its quite important to get into the u discussion now about other architectural features before we go into some kind of a discussion about the advantages of convolution layers as compared to fully connected layers which i think is best demonstrated using an example"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "before we go into that example lets look at another operation that well be calling the max pulling layer or in general pulling layer which isactually described here and its best demonstrated with this kind of image"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and this this case what we see is that we have an input feature map that has a depth of one in this case and we do still have the concept of if you like of a kernel that we slide around just like in the convolutional layer"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "but in this case insteadofa nonlinear function like  reu that we have actually also seen in the fully connected layers that we are still going to see in the evolutional layer as we will see"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "in that example but rather thanthat function in this specific case"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "its shown as the max function wherethe idea behind this is that we are going to not form a correlation result over here like a dot product but were going to select the maximum element of what we see in the input feature map"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "typically we apply the that function at for each of the channels of the input feature map but in some instances we may apply it also across the depth dimension"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "what we are achieving is evidently we are achieving some reduction in the spatial dimensions ofand that kind of intuitively understood as trying to select the most important features of the input feature map and transfer out into the layer above for further process"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "say okay so that is the max pooling layer in this case which is typically interl with convolutional layers  as we will see in some example architectures closing"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i want to emphasize the another u kind of specific parameterization of the convolutional layer"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "we call here the one by one convolutional layer and it is definitely a sort of a layer thatis being met in various kind of architect lectures and maybe it does not really make a lotof sense to you"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "the moment you see this kind de animation over here"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "why in earth were going to do one by one convolutions since we as we discussed were trying to detect features and typically the kernel sizes have larger dimensions than one by one but i think the the explanation potentially could be more intuitively understood if we see the threedimensional version of this one by one convolution so we havehere the orange u filter that evidently the k size is one by one"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and we have as we discussed earlier depth d that matches the depth of the input feature map"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and as we also discussed earlier the the this filter operation will move around"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "we were sliding around this filter and were creating one slice for this filter so in this onebyone convolution we have just one slice"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "and as you can see what we are achieving here we are forming a scalar by combining the depth compressing the whole depth dimension"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so i actuallyhave we are seeing typically this type of layers"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "lets say towards the end of an network the top of the network where we just before the head where we want to just compress that information to a matrix and potentially that kindof slice is going to be flattened in order for being passed over into the head"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "which may consist of fully connected layers as well"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "see that in moment okay"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so thats one application of the onebyone convol convolution operation all right"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so it it it kinda looks like an multilayer petron or a dense layer as it is combining these depth dimensions into that scaler all right"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so lets now see some example architectures these example architectures could potentially be like the toy network that we see here where we have"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "as we discussed the convolutional layer followed by nonlinearity and max pulling layers and finally at the end"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "okay"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "we expect to see — in this case you know so there are alsoto play the role of the of the head of the network where we have lets say in this case five classes that we would like to do a classification on"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "but instead of looking at this toy network work and i think its a bit more instructive to look at i will call it canonical architecture called vgg from the initials of the authors of that kind of architecture"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "this architecture is"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i call an architecture that i suggest students to start from every time they want to look at these convolutional networks because theydo represent some kind of a initial good architecture that we can sortofmake some conclusions in regarding the dimensionality and the patterns that we expect to see in a typical cnc architecture instead"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "instead looking if you like in the most modern versions of cnn i think its worthwhile looking at this to understand a couple of things"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so the first thing that wed like to capture over here is this image and understand what is really happening"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "okay so the image is the in this figure we see cnn layer so 12"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "we are an nsc network that consistingmultiple layers and one striking thing from the getgo that you can see is that"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "the cnn is the dimensionality of the ccne is in terms of spatial dimensions is evidently shrinking as we are going deeper so we see the convolutional layers followed by max pulling layers u for and then towards the end we see the fully connected network which is the head"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so in terms of spatial dimensions we are actually decreasing the spatial dimensions because obviously we are using kels which are larger than one by one and and but onare also are seeing"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "is we see an increase in the depth dimension"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so in terms of numbers over here 224x224 pixels are the spatial dimensions of the input images and then and then we have a 64 to be the depth dimension of the or equivalent the number of neurons in the u that we have in or the number of filters that we have in in that layer"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so this is also our responsibility so"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "our responsibility are twofold"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "one is to with a padding and stride parameters to massage these kind de special dimensions we need and at thesame time also select the number of filters"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "how many convolutional neurons are we going to engage in that layer so as you can see we go from 64 128 256 512 that is really the end game"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "with respect to numberoffilters the intuition behind the increase in the number of filters as the network becomes deeper and deeper is the following"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "the network is learning more and more complicated features as we are going deeper"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "the first layers are the are are learning representations which are simple shapes i will call"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "it similar things that you would expect to for you to understand when"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "you look at if you like at a kind of primitive shape like a circle"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so as you are trying to create combinations of these simpler representations you probably need all to be doing more of those combination and by suitable visualizations so as your is trying to make combos of this simplelookingyou are trying to understand whether or not theres one combination that actually magically generating the right set of representations in subsequent deeper layers such as your head can actually do the job"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "so thats the first intuition regarding the increase in the depth of the of the of the filters"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "the second is that you can afford to"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "i mean you can afford having that kindof increase in the depth of the filter and without really paying too much complexity performance"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "sorry complexity in the in the terms of number"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "of operations because your special dimensions of the feature maps which are produced from a earlier operations are shrinking so you increase the number of filter parameters and stillse not really paying any kind of complexity"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "this sortof penalty because"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:39:30.480000",
+    "text": "okay so these are the two things that we need"
+  },
+  {
+    "start": "00:39:30.480000",
+    "end": "00:39:34.200000",
+    "text": "we can actually mention about this kind of architecture that looks again like – a pyramid but this pyramid is — a kind of works in  different way as as compared to what we have seen in fully connected architect pictures and nowi think its worthwhile spending some time on uon on an example and this example is a python notebook"
+  },
+  {
+    "start": "00:39:34.200000",
+    "end": "00:00:-1.000000",
+    "text": "this example is actually shown over here you can actually click on this and open it in pap for execution"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:00:-1.000000",
+    "text": "however the notebook in your case over here will actually be working as it is"
+  },
+  {
+    "start": "00:00:-1.000000",
+    "end": "00:39:38.160000",
+    "text": "so in the next video well go through this example and then see exactly whats going on in terms of and the api and the implementation of acn"
+  }
+]
