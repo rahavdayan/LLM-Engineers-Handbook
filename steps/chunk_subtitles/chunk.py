@@ -23,11 +23,13 @@ def convert_to_timedelta(timestamp):
 
 
 def timedelta_to_str(td):
-    total_seconds = td.total_seconds()
-    hours = int(total_seconds // 3600)
-    minutes = int((total_seconds % 3600) // 60)
-    seconds = total_seconds % 60
-    return "%02d:%02d:%09.6f" % (hours, minutes, seconds)
+    if td is not None:
+        total_seconds = td.total_seconds()
+        hours = int(total_seconds // 3600)
+        minutes = int((total_seconds % 3600) // 60)
+        seconds = total_seconds % 60
+        return "%02d:%02d:%09.6f" % (hours, minutes, seconds)
+    return "%02d:%02d:%09.6f" % (0, 0, -1)
 
 
 def get_non_overlapping_part(str1, str2):
@@ -112,6 +114,7 @@ def clean_subtitle_text(subtitle_text):
     filler_pattern = re.compile(r"|".join(filler_words), re.IGNORECASE)
     text = subtitle_text.replace("\n", " ")
     text = filler_pattern.sub("", text)
+    text = text.translate(str.maketrans("", "", string.punctuation)).strip().lower()
     text = re.sub(r"\s+", " ", text).strip()
     return text.lower()
 
@@ -194,14 +197,33 @@ def separate_into_chunks(
     subtitle_chunks = []
     last_used_ts = timedelta(seconds=0)  # Initial starting point (0:00)
 
-    for chunk in chunks:
+    for i in range(0, len(chunks)):
         last_seen_ts = None
-        matching = [entry for entry in word_timings if entry["word"] in chunk and entry["timestamp"] > last_used_ts]
+        matching = [entry for entry in word_timings if entry["word"] in chunks[i] and entry["timestamp"] > last_used_ts]
 
         if len(matching) == 0:
-            current_subtitle_idx += 1
-            word_timings = get_word_timings(combined_subtitles[current_subtitle_idx]["subtitles"])
-            matching = [entry for entry in word_timings if entry["word"] in chunk and entry["timestamp"] > last_used_ts]
+            if i < len(chunks) - 1:  # lookahead to next chunk
+                next_chunk = chunks[i + 1]
+                matching = [
+                    entry for entry in word_timings if entry["word"] in next_chunk and entry["timestamp"] > last_used_ts
+                ]
+                if i < len(chunks) - 2:  # lookahead to next next chunk
+                    next_chunk = chunks[i + 2]
+                    matching = [
+                        entry
+                        for entry in word_timings
+                        if entry["word"] in next_chunk and entry["timestamp"] > last_used_ts
+                    ]
+
+            if len(matching) == 0:
+                current_subtitle_idx += 1
+                if current_subtitle_idx <= len(combined_subtitles) - 1:
+                    word_timings = get_word_timings(combined_subtitles[current_subtitle_idx]["subtitles"])
+                    matching = [
+                        entry
+                        for entry in word_timings
+                        if entry["word"] in chunks[i] and entry["timestamp"] > last_used_ts
+                    ]
 
         if len(matching) > 0:
             start_ts = min(min(entry["timestamp"] for entry in matching), last_used_ts)
@@ -225,7 +247,7 @@ def separate_into_chunks(
             start_ts = end_ts
             end_ts = None
 
-        subtitle_chunks.append({"start": start_ts, "end": end_ts, "text": chunk})
+        subtitle_chunks.append({"start": start_ts, "end": end_ts, "text": chunks[i]})
     if len(subtitle_chunks) > 0 and subtitle_chunks[-1]["end"] is None:
         subtitle_chunks[-1]["end"] = max(entry["timestamp"] for entry in word_timings)
     return subtitle_chunks

@@ -52,7 +52,7 @@
   {
     "start": "00:01:58.799000",
     "end": "00:02:04.029000",
-    "text": "and then very quickly the brain switches softly into objects paying attentionto objects which are associated with the task that we have we we have to execute"
+    "text": "and then very quickly the brain switches softly into objects paying attentionto objects which are associated with the task that we have we weve seen"
   },
   {
     "start": "00:02:04.029000",
@@ -71,13 +71,18 @@
   },
   {
     "start": "00:02:39.920000",
-    "end": "00:02:47.480000",
-    "text": "what is an image thatearlier and how were going to represent it and evidently an image is a matrix"
+    "end": "00:02:41.430000",
+    "text": "what is an image that like the one that weve seenearlier and how were going to represent it"
   },
   {
-    "start": "00:02:47.480000",
+    "start": "00:02:41.430000",
+    "end": "00:02:52.920000",
+    "text": "and evidently an image is a matrix and i think we had some discussion about images before"
+  },
+  {
+    "start": "00:02:52.920000",
     "end": "00:03:08.040000",
-    "text": "and i think we had some discussion about images before and a black white imag is or a grayscale image as you actually see over here is  a matrix of that whose elements are integer numbers and this integer numbers typically we are"
+    "text": "and a black white imag is or a grayscale image as you actually see over here is  a matrix of that whose elements are integer numbers and this integer numbers typically we are"
   },
   {
     "start": "00:03:08.040000",
@@ -86,16 +91,16 @@
   },
   {
     "start": "00:03:15.959000",
+    "end": "00:03:18.480000",
+    "text": "with those pixels are 8 bits"
+  },
+  {
+    "start": "00:03:18.480000",
     "end": "00:03:22.949000",
-    "text": "with those pixels are 8 bits so we represent the information at each pixel and codes as 8 bit which means that"
+    "text": "so we represent the information at each pixel and codes as 8 bit which means thatthese integer numbers are zero from 0 to 255 and so when we go to color"
   },
   {
     "start": "00:03:22.949000",
-    "end": "00:03:30.120000",
-    "text": "so they have an example but also there is no such thingthese integer numbers are zero from 0 to 255 and so when we go to color"
-  },
-  {
-    "start": "00:03:30.120000",
     "end": "00:03:38.879000",
     "text": "im es we need more than one of those matrice in fact we need three matricels typically again"
   },
@@ -107,15 +112,15 @@
   {
     "start": "00:03:56.000000",
     "end": "00:03:59.280000",
-    "text": "and also probably you notice that these numbers are now floating point numbers lets say from 0"
+    "text": "and also probably you notice that these numbers are now floating point numbers"
   },
   {
     "start": "00:03:59.280000",
-    "end": "00:04:02.309000",
-    "text": "to one and this results fromnormalizing these pixel numbers to with a number 255 because 2 to the power of 8 is 256 and therefore all our numbers will be from 0"
+    "end": "00:04:18.000000",
+    "text": "let say from 0normalizing these pixel numbers to with a number 255 because 2 to the power of 8 is 256 and therefore all our numbers will be from 0"
   },
   {
-    "start": "00:04:02.309000",
+    "start": "00:04:18.000000",
     "end": "00:04:24.440000",
     "text": "to 255 in those matrices if we start dividing every element with 255 we get numbers between 0 and 1"
   },

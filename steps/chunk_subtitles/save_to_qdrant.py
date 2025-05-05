@@ -14,26 +14,33 @@ def save_to_qdrant():
 
     # Define the directory using pathlib
     project_root = Path(__file__).resolve().parent.parent
-    folder_path = project_root / "subtitle_chunks_json"
+    subtitles_dir = project_root / "subtitle_chunks_json"
 
-    if not folder_path.exists():
-        logger.error("Directory does not exist: %s", folder_path)
+    if not subtitles_dir.exists():
+        logger.error("Directory does not exist: %s", subtitles_dir)
         return
+
+    # Get all .json files in the directory and sort them
+    subtitle_files = sorted([file for file in subtitles_dir.iterdir() if file.suffix == ".json"])
 
     # Collect subtitle chunks
     docs = []
     metadata = []
 
-    for file_path in folder_path.iterdir():
-        if file_path.suffix != ".json":
-            continue
+    for idx, file_path in enumerate(subtitle_files):
+        # Assign video index based on the loop index (idx + 1)
+        video_index = idx + 1  # Video index is 1-based
+
         try:
             with file_path.open("r", encoding="utf-8") as file:
                 subtitle_data = json.load(file)
                 for chunk in subtitle_data:
                     text = chunk.get("text", "")
                     docs.append(text)
-                    metadata.append(chunk)  # full chunk as metadata
+
+                    # Include video index in metadata
+                    chunk["video"] = video_index
+                    metadata.append(chunk)
         except Exception as e:
             logger.warning("Failed to read file %s: %s", file_path.name, e)
 
@@ -49,14 +56,17 @@ def save_to_qdrant():
     client = QdrantClient(host="localhost", port=6333)
     collection_name = "subtitle_chunks"
 
-    # Create the collection if it doesn't exist
+    # Always delete and recreate the collection to ensure it's clean
     existing_collections = [c.name for c in client.get_collections().collections]
-    if collection_name not in existing_collections:
-        client.recreate_collection(
-            collection_name=collection_name,
-            vectors_config=VectorParams(size=len(embeddings[0]), distance=Distance.COSINE),
-        )
-        logger.info("Created new collection: %s", collection_name)
+    if collection_name in existing_collections:
+        client.delete_collection(collection_name=collection_name)
+        logger.info("Deleted existing collection: %s", collection_name)
+
+    client.recreate_collection(
+        collection_name=collection_name,
+        vectors_config=VectorParams(size=len(embeddings[0]), distance=Distance.COSINE),
+    )
+    logger.info("Created fresh collection: %s", collection_name)
 
     # Prepare points
     points = [PointStruct(id=i, vector=embeddings[i], payload=metadata[i]) for i in range(len(docs))]
