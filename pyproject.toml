@@ -42,6 +42,9 @@ langchain-community = "^0.2.11"
 fastapi = ">=0.100,<=0.110"
 uvicorn = "^0.30.6"
 opik = "^0.2.2"
+spacy = "^3.8.5"
+bertopic = "^0.17.0"
+webvtt-py = "^0.5.1"
 
 
 [tool.poetry.group.dev.dependencies]
