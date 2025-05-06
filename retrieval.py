@@ -54,6 +54,12 @@ def get_video_segment(FROM, TO, video_idx):
     video_filename = video_dir / f"video_{video_idx}.mp4"
     output_path = Path("demo.mp4")
 
+    # Parse input times
+    fmt = "%H:%M:%S.%f"
+    start_time = datetime.strptime(FROM, fmt)
+    end_time = datetime.strptime(TO, fmt)
+    base_duration = (end_time - start_time).total_seconds()
+
     # Check and download video if not already downloaded
     if not video_filename.exists():
         video_urls = {
@@ -81,29 +87,8 @@ def get_video_segment(FROM, TO, video_idx):
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([youtube_url])
 
-    # Get full video duration
-    probe = ffmpeg.probe(str(video_filename))
-    video_duration = float(probe["format"]["duration"])
-
-    # Parse input times
-    fmt = "%H:%M:%S.%f"
-    start_time = datetime.strptime(FROM, fmt)
-    end_time = datetime.strptime(TO, fmt)
-    base_duration = (end_time - start_time).total_seconds()
-
-    # Ensure at least 20 seconds but not beyond video end
-    desired_duration = max(20, base_duration)
-
     # Convert start_time to seconds
     start_seconds = start_time.hour * 3600 + start_time.minute * 60 + start_time.second + start_time.microsecond / 1e6
-
-    # Cap duration to video length
-    max_possible_duration = video_duration - start_seconds
-    final_duration = min(desired_duration, max_possible_duration)
-
-    if final_duration <= 0:
-        raise ValueError("Start time is beyond the end of the video.")
-
     clip_start_str = str(timedelta(seconds=start_seconds))
 
     # Remove old output if it exists
@@ -111,8 +96,8 @@ def get_video_segment(FROM, TO, video_idx):
         output_path.unlink()
 
     # Extract segment
-    ffmpeg.input(str(video_filename), ss=clip_start_str, t=final_duration).output(
+    ffmpeg.input(str(video_filename), ss=clip_start_str, t=base_duration).output(
         str(output_path), vcodec="copy", acodec="copy"
-    ).overwrite_output().run()
+    ).overwrite_output().run(quiet=False)
 
     return str(output_path)
