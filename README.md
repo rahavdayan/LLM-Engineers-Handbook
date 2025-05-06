@@ -3,9 +3,9 @@
 
 **by Rahav Dayan**
 
-This project implements a RAG system with a user interface. The system is designed to take a user question and return relevant video segments with brief explanations for each. The application runs locally through a Gradio interface.
+This project implements a RAG system with a user interface. The system is designed to take a user question and a relevant video segment with a brief explanation of it. The application runs locally through a Gradio interface.
 
-The system processes the lecture videos from Hugging Face, aligns them with subtitles, applies topic modeling, and stores structured chunks in a vector database (Qdrant) for retrieval. A local language model (via Ollama) is used to generate user-friendly responses based on the retrieved content.
+The system downloads the lecture videos from Hugging Face, applies topic modeling and chunks subtitle texts, and stores the structured chunks in a vector database (Qdrant) for retrieval. A local language model (via Ollama) is used to generate user-friendly responses based on the retrieved content.
 
 It may take anywhere from a few seconds to a few minutes to receive a response.
 
@@ -13,7 +13,11 @@ It may take anywhere from a few seconds to a few minutes to receive a response.
 
 This repository is a fork of the textbook's repository, `LLM-Engineers-Handbook`. Here's how to get started once you clone the repo:
 
-### 1. Install dependencies using Poetry
+### 1. Set up Environment Variables
+
+Change the name of the `.env.example` file to `.env` to set up your environment variables.
+
+### 2. Install dependencies using Poetry
 ```bash
 poetry install
 ```
@@ -28,28 +32,28 @@ pip install gradio
 pip install ollama
 ```
 
-### 2. Install Ollama and pull the Llama 3.1 model
+### 3. Install Ollama and pull the Llama 3.1 model
 You need to [install Ollama](https://ollama.com/download) for your operating system. Then run:
 ```bash
 ollama pull llama3.1:8b
 ```
 
-### 3. Start the ZenML server
+### 4. Start the ZenML server
 ```bash
 poe local-infrastructure-up
 ```
 
-### 4. Populate the Qdrant database
+### 5. Populate the Qdrant database
 ```bash
 poe populate-qdrant
 ```
 
-### 5. Add the videos to the repository
+### 6. Add the videos to the repository
 My scripts work by downloading the videos from YouTube, then slicing them. It appears that if I upload them to YouTube, it cuts them off at ~5 minutes. If the professor posts them to YouTube I will update the links in my code. For now, download and extract the zipped videos from [here](https://drive.google.com/file/d/1SI2y67vcLFgs1g2tg_IvZcm094OoZwkZ/view?usp=sharing) and put them into the `videos` folder in the root (it is in `.gitignore`).
 
 If displaying the videos becomes an issue, let me know.
 
-### 6. Run the Gradio app
+### 7. Run the Gradio app
 Open and run the `gradio.ipynb` notebook in the root directory. You can either:
 
 - Use the embedded Gradio interface within the notebook, or
@@ -70,13 +74,13 @@ Subtitle text is cleaned and merged into larger blocks (500 characters each), re
 The sentence-level chunks are encoded into embeddings and stored in a Qdrant vector database for fast similarity-based retrieval.
 
 **`retrieval.py`**  
-This defines the retrieval/generation logic. A user query is encoded, and the top relevant chunk is retrieved from Qdrant. These are passed to a locally hosted LLM (via Ollama) to generate a concise response along with related video segments.
+This defines the retrieval/generation logic. A user query is encoded, and the top relevant chunk is retrieved from Qdrant. It is passed to a locally hosted LLM (via Ollama) to generate a concise response along with the associated video segment.
 
 **`gradio.ipynb`**  
 This notebook defines the user interface for the Gradio app. 
 
 **`demonstration.ipynb`**  
-This notebook highlights clips from the three sample questions mentioned in the assignment.
+This notebook highlights the retrieved clips from the three sample questions mentioned in the assignment.
 
 ## Good Questions to Ask the RAG
 
