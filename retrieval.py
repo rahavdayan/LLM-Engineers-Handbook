@@ -47,64 +47,72 @@ def generate_response(question, text):
 
 
 def get_video_segment(FROM, TO, video_idx):
-    INPUT = "input.mp4"
-    OUTPUT = "demo.mp4"
-    Path.unlink(OUTPUT)
-    video_urls = {
-        1: "https://youtu.be/_ekbcOBkMJU",
-        2: "https://youtu.be/wOG5vNOTBsk",
-        3: "https://youtu.be/xekV8aRFGuo",
-        4: "https://youtu.be/m8c9hNEmJyc",
-        5: "https://youtu.be/AqZQf1hiNok",
-        6: "https://youtu.be/s7jDDNPNajI",
-        7: "https://youtu.be/4XFANU-qJYE",
-        8: "https://youtu.be/_xDS9TJXrEA",
-    }
+    # Create folder for storing downloaded videos
+    video_dir = Path("videos")
+    video_dir.mkdir(exist_ok=True)
 
-    youtube_url = video_urls.get(video_idx)
-    if not youtube_url:
-        raise ValueError("Invalid video index")
+    video_filename = video_dir / f"video_{video_idx}.mp4"
+    output_path = Path("demo.mp4")
 
-    # Download video using yt-dlp
-    ydl_opts = {
-        "format": "bestvideo+bestaudio/best",
-        "outtmpl": INPUT,
-        "merge_output_format": "mp4",
-        "quiet": True,
-    }
+    # Check and download video if not already downloaded
+    if not video_filename.exists():
+        video_urls = {
+            1: "https://youtu.be/_ekbcOBkMJU",
+            2: "https://youtu.be/wOG5vNOTBsk",
+            3: "https://youtu.be/xekV8aRFGuo",
+            4: "https://youtu.be/m8c9hNEmJyc",
+            5: "https://youtu.be/AqZQf1hiNok",
+            6: "https://youtu.be/s7jDDNPNajI",
+            7: "https://youtu.be/4XFANU-qJYE",
+            8: "https://youtu.be/_xDS9TJXrEA",
+        }
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([youtube_url])
+        youtube_url = video_urls.get(video_idx)
+        if not youtube_url:
+            raise ValueError("Invalid video index.")
+
+        ydl_opts = {
+            "format": "bestvideo+bestaudio/best",
+            "outtmpl": str(video_filename),
+            "merge_output_format": "mp4",
+            "quiet": True,
+        }
+
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([youtube_url])
+
+    # Get full video duration
+    probe = ffmpeg.probe(str(video_filename))
+    video_duration = float(probe["format"]["duration"])
 
     # Parse input times
     fmt = "%H:%M:%S.%f"
     start_time = datetime.strptime(FROM, fmt)
     end_time = datetime.strptime(TO, fmt)
+    base_duration = (end_time - start_time).total_seconds()
 
-    # Midpoint of selected segment
-    mid_point = start_time + (end_time - start_time) / 2
-    ideal_clip_start = mid_point - timedelta(seconds=10)
+    # Ensure at least 20 seconds but not beyond video end
+    desired_duration = max(20, base_duration)
 
-    # Get full video duration using ffmpeg.probe
-    probe = ffmpeg.probe(INPUT)
-    video_duration = float(probe["format"]["duration"])  # in seconds
+    # Convert start_time to seconds
+    start_seconds = start_time.hour * 3600 + start_time.minute * 60 + start_time.second + start_time.microsecond / 1e6
 
-    # Clamp start and end to video bounds
-    clip_start_sec = max(0, ideal_clip_start.timestamp())
-    clip_end_sec = min(video_duration, clip_start_sec + 20)
+    # Cap duration to video length
+    max_possible_duration = video_duration - start_seconds
+    final_duration = min(desired_duration, max_possible_duration)
 
-    # Adjust start if clip is too close to end
-    if clip_end_sec - clip_start_sec < 20:
-        clip_start_sec = max(0, clip_end_sec - 20)
+    if final_duration <= 0:
+        raise ValueError("Start time is beyond the end of the video.")
 
-    # Format for ffmpeg input
-    clip_start_str = str(timedelta(seconds=clip_start_sec))
-    duration_str = str(timedelta(seconds=clip_end_sec - clip_start_sec))
+    clip_start_str = str(timedelta(seconds=start_seconds))
 
-    # Trim the video
-    ffmpeg.input(INPUT, ss=clip_start_str, t=duration_str).output(
-        OUTPUT, vcodec="copy", acodec="copy"
+    # Remove old output if it exists
+    if output_path.exists():
+        output_path.unlink()
+
+    # Extract segment
+    ffmpeg.input(str(video_filename), ss=clip_start_str, t=final_duration).output(
+        str(output_path), vcodec="copy", acodec="copy"
     ).overwrite_output().run()
 
-    Path.unlink(INPUT)
-    return OUTPUT
+    return str(output_path)

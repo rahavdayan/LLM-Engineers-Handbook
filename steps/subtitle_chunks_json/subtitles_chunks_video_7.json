@@ -1,1147 +1,392 @@
 [
   {
     "start": "00:00:00.000000",
-    "end": "00:00:11.360000",
-    "text": "we have seen earlier the regression problem where we have effectively to model a conditional probability distribution at the output of our predictor"
-  },
-  {
-    "start": "00:00:11.360000",
-    "end": "00:00:13.679000",
-    "text": "now we actually switching to a new task"
-  },
-  {
-    "start": "00:00:13.679000",
-    "end": "00:00:18.039000",
-    "text": "its  a classification task where again we will solve this task using the vaping block diagram"
-  },
-  {
-    "start": "00:00:18.039000",
     "end": "00:00:25.000000",
-    "text": "again we will need to model our predictor with  a conditional probability distribution"
+    "text": "we have seen earlier the regression problem where we have effectively to model a conditional probability distribution at the output of our predictor now we actually switching to   a new task its  a classification task where again we will solve this task using the vaping block diagram again we will need to model our predictor with a conditional probability distribution"
   },
   {
     "start": "00:00:25.000000",
-    "end": "00:00:35.910000",
-    "text": "but in classification our target variables are distinct and discrete random variables rather than continues so in this kind of setting ill motivate the classification taskwith a simple use case is actually going to be called the radar problem and well thats what we will start withnext"
+    "end": "00:00:32.670000",
+    "text": "but in classification our target variables are distinct and discrete random variables rather than continues so in this kind of settingill motivate the classification task with a simple use case is actually going to be called the radar problem and well thats what we will start withnext in this setting the use case you will see is  a wellknown application back in the second world war"
   },
   {
-    "start": "00:00:35.910000",
-    "end": "00:00:56.600000",
-    "text": "in this setting the use case you will see is a wellknown application back in the second world war"
+    "start": "00:00:32.670000",
+    "end": "00:01:23.200000",
+    "text": "the battle of england was w primarily from the erection of these towers this was actually called the radar towers whose job is was to transmit  transmit — a signal towards the france where from france the nazi airplane were coming into bomb london and the every time thatthis waveform was impinging into some large object on the sky like a plane it was returning back into what we call the radareceiver and there was kind of  a human operator over there in on each kind of tower with an access to  a  kind of a telephone device over there"
   },
   {
-    "start": "00:00:56.600000",
-    "end": "00:01:06.600000",
-    "text": "the battle of england was w primarily from the erection of these towers"
+    "start": "00:01:23.200000",
+    "end": "00:01:29.950000",
+    "text": "and every time that there was — a strong return of – a strong signal that was received in the radar kind of a receiver antenna it was he was calling london and millions were people were well the sirens were sounding and thousands arewere actually running to the tubes stations to tube stations to save their lives that was the application and this application is evidently present in any modern car today that has exactly the same ability to have raiders located in the lets say in the front of the car to send exactly the same signals"
   },
   {
-    "start": "00:01:06.600000",
-    "end": "00:01:29.960000",
-    "text": "this was actually called the radar towers whose job is was to transmit  transmit — a signal towards the france where from france the nazi airplanes were coming into bomb london and the every time thatlarge object on the sky like a plane"
+    "start": "00:01:29.950000",
+    "end": "00:01:38.960000",
+    "text": "and every time that you have a feature in your car that its automatic what is called automatic distance keeping to the vehicle in front of you that is exactly the same thing it was returning back thatreflection from the car in front and controller is actually trying to keep the velocities between your vehicle and the car in front of you constant and therefore maintain a desired distance between the two cars"
   },
   {
-    "start": "00:01:29.960000",
-    "end": "00:01:58.680000",
-    "text": "it was returning back into what we call the radareceiver and there was kind of a human operator over there in on each kind of tower with an access to  a kind of a telephone device over there"
+    "start": "00:01:38.960000",
+    "end": "00:00:-1.000000",
+    "text": "but anyway i would motivate it with this sortof application which is the world war ii application because also back then  a lot of the terminology that we will cover today it was also first invented and just to see exactly what is actually happening here we have some kind of a time plot of x and it will be designating for us the socall signalstrength of or received signal strength or power"
   },
   {
-    "start": "00:01:58.680000",
-    "end": "00:02:05.240000",
-    "text": "and every time that there was — a strong return of – a strong signal that was received in the radar kind of  a receiver antenna"
+    "start": "00:00:-1.000000",
+    "end": "00:01:38.960000",
+    "text": "and very simplistically we have some you know some fluctuation received power when we have a return a strong return from  a plane and in nights where we dont the attacks were usually during the night that when we have no return we still have some fluctuating signal power much smaller than that and okay our receiver is going to have just one knob that knob is going to be called the threshold will symbolize it with w its a scalar valuethat it is anything that exceeds it is going tolets assume that this threshold value is set to this kind of level"
   },
   {
-    "start": "00:02:05.240000",
-    "end": "00:02:09.520000",
-    "text": "it was he was calling london and millions were well"
-  },
-  {
-    "start": "00:02:09.520000",
-    "end": "00:02:19.670000",
-    "text": "the sirens were sounding and thousands are actually running to tubes stations to tube stations to save their lives"
-  },
-  {
-    "start": "00:02:19.670000",
-    "end": "00:02:41.000000",
-    "text": "that was the application and this application is evidently present in any modern car today that has exactly the same ability to have raiders located in the lets say in the front of the vehicle to send exactly the same signals"
-  },
-  {
-    "start": "00:02:41.000000",
-    "end": "00:02:59.710000",
-    "text": "and every time that you have a feature in your car that its automatic what is called automatic distance keeping to the vehicle in front of you that is exactly the same thing it was returning back that reflection from the car in front and controller is actually trying to keepthe the velocities between your car and the car in front of you constant and therefore maintain a desired distance between the two cars"
-  },
-  {
-    "start": "00:02:59.710000",
-    "end": "00:03:20.280000",
-    "text": "but anyway i would motivate it with this sortof application which is the world war ii application because also back then a lot of the terminology that we will cover today"
-  },
-  {
-    "start": "00:03:20.280000",
-    "end": "00:03:40.750000",
-    "text": "it was also first invented and just to see exactly what is actually happening here we have some kind of time plot of a quantity that will be calling x and it will be designating for us the socall signalstrength of or received signal strength or power"
-  },
-  {
-    "start": "00:03:40.750000",
-    "end": "00:03:46.910000",
-    "text": "and very simplistically we have some"
-  },
-  {
-    "start": "00:03:46.910000",
-    "end": "00:03:52.319000",
-    "text": "you know some fluctuation received power when we have a return"
-  },
-  {
-    "start": "00:03:52.319000",
-    "end": "00:04:06.680000",
-    "text": "a strong return from  a plane and in nights where we dont the attacks were usually during the night that when we have no return we still have some fluctuating signal power much smaller than that"
-  },
-  {
-    "start": "00:04:06.680000",
+    "start": "00:01:38.960000",
     "end": "00:04:20.519000",
-    "text": "and okay our receiver is going to have just one knob"
+    "text": "everything that exceeds it is going to be called the predicted that is well not predicted is were going to sound the alarm and anything that it is not exceeding it we are going to not alarm anyone alert anyone and we will call that the noattack case so our problem is a binary classification problem"
   },
   {
     "start": "00:04:20.519000",
-    "end": "00:04:24.240000",
-    "text": "that knob is going to be called the threshold will symbolize it with w its a scalar value that it is anything that exceedsis going tolets assume that this threshold value is set to this kind of level"
+    "end": "00:05:10.029000",
+    "text": "what we call binary because our now target variable as compared to that regression can onlytake two values one we will call this the socalled positive condition the attack is going on and zero we will be calling this the socal negative condition and our job here now that we are in the 2020s we are going to solve this problem of determining the value of that kindof threshold using kinda machine learning approaches"
   },
   {
-    "start": "00:04:24.240000",
-    "end": "00:04:28.790000",
-    "text": "everything that exceeds it is going to be called the predicted that is well not predicted"
+    "start": "00:05:10.029000",
+    "end": "00:06:03.590000",
+    "text": "so we have what we will do is we will task a military person over here to sit and observe what is really happening every single day so first night records the signal strength x1 and records also whetherattack has happened or not x2 the same way and so on if they survive we will keep them if they not we have to replace them with somebody else so xm ym thats our lets say"
   },
   {
-    "start": "00:04:28.790000",
-    "end": "00:04:33.230000",
-    "text": "is was going to sound the alarm and anything that it is not exceeding it"
-  },
-  {
-    "start": "00:04:33.230000",
-    "end": "00:05:00.479000",
-    "text": "we are going to not alarm anyone alert anyone and we will call that the noattack case"
-  },
-  {
-    "start": "00:05:00.479000",
-    "end": "00:05:05.639000",
-    "text": "so our problem is a binary classification problem"
-  },
-  {
-    "start": "00:05:05.639000",
-    "end": "00:05:12.960000",
-    "text": "what we call binary because our now target variable as compared to that regression can only take two values"
-  },
-  {
-    "start": "00:05:12.960000",
-    "end": "00:05:15.870000",
-    "text": "one we will call this the socalled positive condition theattack is going on and zero"
-  },
-  {
-    "start": "00:05:15.870000",
-    "end": "00:05:28.120000",
-    "text": "we will be calling this the socal negative condition and our job here"
-  },
-  {
-    "start": "00:05:28.120000",
-    "end": "00:05:46.479000",
-    "text": "now that we are in the 2020s we are going to solve this problem of determining the value of that kindof threshold using kinda machine learning approaches"
-  },
-  {
-    "start": "00:05:46.479000",
-    "end": "00:06:06.560000",
-    "text": "so we have what we will do is we will task a military person over here to sit and observe what is really happening every single day so first night records the signal strength x1 and records also whether attack has happened or not x2 the same way and so on"
-  },
-  {
-    "start": "00:06:06.560000",
-    "end": "00:06:13.000000",
-    "text": "keep them if they not"
-  },
-  {
-    "start": "00:06:13.000000",
-    "end": "00:06:41.319000",
-    "text": "we have to replace them with somebody else so myym thats our lets say we have aggregated m examples of what is has happened at our receiver and as before we progress into specifying what is really the problem statement i just want to convey some kind of an intuitive fashion of what is happening"
-  },
-  {
-    "start": "00:06:41.319000",
+    "start": "00:06:03.590000",
     "end": "00:06:53.400000",
-    "text": "so this was the soal attack signal strength and this was the noattack signal strength"
+    "text": "we have aggregated m examples of what is has happened at our receiver and as before we progress into specifying what is really the problem statement i just want to convey some kind of an intuitive fashion of what is happening so this was the soal attack signal strength and this was the noattack signal strength observations night after night"
   },
   {
     "start": "00:06:53.400000",
-    "end": "00:07:00.319000",
-    "text": "the sorta time series of all these kind of observations night after night and we have the problem to solvewith an optimal value for the threshold you can understand that the threshold is quite critical in determining whether how the system operates"
+    "end": "00:07:46.390000",
+    "text": "and we have the problem to solve is to come up with an optimal value for the threshold you can understand that the threshold is quite critical in determining whether how the system operates if you set the threshold too high this means that we will be missing quite a lot of attacks and evidently people will die if we set the threshold too low this means that we will be waking up everyone unnecessarily the first night they will believe us and you know return to their beds disappointed somehowor relieved the second night they will still believe us"
   },
   {
-    "start": "00:07:00.319000",
-    "end": "00:07:30.800000",
-    "text": "if we set the threshold too high this means that we will be missing quite a lot of attacks and evidently people will die"
-  },
-  {
-    "start": "00:07:30.800000",
-    "end": "00:07:48.919000",
-    "text": "if we set the threshold too low this means that we will be waking up everyone unnecessarily the first night they will believe us and you know return to their beds disappointed somehow or relieved the second night"
-  },
-  {
-    "start": "00:07:48.919000",
-    "end": "00:07:50.629000",
-    "text": "they will still believe us they will go downto the tube but after the third night they will stop believing us"
-  },
-  {
-    "start": "00:07:50.629000",
-    "end": "00:08:05.639000",
-    "text": "and when a real att happens people will also die so that the system will lose complete credibility"
-  },
-  {
-    "start": "00:08:05.639000",
+    "start": "00:07:46.390000",
     "end": "00:08:25.990000",
-    "text": "so our predictor the yhat that we have to predict at this moment in time we will treat this as a one and zero later will become a number between zero and one is also goingto return"
+    "text": "they will go down to the tube but after the third night they will stop believing us and when a real att happens people will also die so the system will lose complete credibility so our predictor the yhat that we have to predict at this moment in time we will treat this as  a one and zero later will become  a number between zero and one is also goingto return"
   },
   {
     "start": "00:08:25.990000",
-    "end": "00:08:37.919000",
-    "text": "our prediction predictor is going also to return one or zero for the positive and negative condition respectively"
+    "end": "00:08:32.550000",
+    "text": "our prediction predictor is going also to return one or zero for thepositive and negative condition respectively okay so that is the problem statement how to set up this w optimally and as you can understand i can just after just before in the regression kind of problem we had introduced the probabilistic nature of every predictor"
   },
   {
-    "start": "00:08:37.919000",
-    "end": "00:08:41.440000",
-    "text": "okay so that is the problem statement"
-  },
-  {
-    "start": "00:08:41.440000",
-    "end": "00:08:54.720000",
-    "text": "set up this w optimally and as you can understand i can just after just before in the regression kind of problem"
-  },
-  {
-    "start": "00:08:54.720000",
+    "start": "00:08:32.550000",
     "end": "00:09:15.880000",
-    "text": "we had introduced the probabilistic nature of every predictor so what we will do now is wedraw two probability distributions and let me just draw this probability distribution"
+    "text": "so what what our will do now is wedraw two probability distributions and let me just draw this probability distribution let saythis"
   },
   {
     "start": "00:09:15.880000",
-    "end": "00:09:27.800000",
-    "text": "let saythis so this is a probability distribution of q"
+    "end": "00:09:32.630000",
+    "text": "so this is a probability distribution of x we have here on the xaxis our signal strength and one of them is going to becalled the probability of x and when no attack is happening and this is the probability of x when the attack is happening and as you can see these two prob distributions can be easily obtained u as histograms by just going back to our data tape the data set that we have created and recorded and select all the rows where the y target variable is zero and obtain this histogramm and visit all the corresponding rows where the y is equal to one and plot this corresponding histetra"
   },
   {
-    "start": "00:09:27.800000",
-    "end": "00:09:35.839000",
-    "text": "we have here on the xaxis our signal strength and one of them is going to be called the probability of q"
+    "start": "00:09:32.630000",
+    "end": "00:09:32.630000",
+    "text": "so in terms of plottinghistograms this is definitely a  a very i will call it an easy exercise and as you probably notice from the shape of these histogrammes we have not really made any assumption with respect to ugausianity or nothing like that they are definitely plotted as nongausian type of probability distributions and the moment i have and also another sort of evident that thing that is actually going on with this problem is that there is  a very strong overlap between the two histograms when they have the signalstrength between no attacks and attacks"
   },
   {
-    "start": "00:09:35.839000",
-    "end": "00:09:41.230000",
-    "text": "and when no attack is happening and this is the probability ofattack is happening and as you can see these two prob distributions can be easily obtained u as histograms by just going back to our data tape the data set that we have created and recorded and select all the rows where the y target variable is zero and obtain this histogramm and visit all the corresponding rows where the y is equal to one and plot this corresponding histogram"
+    "start": "00:09:32.630000",
+    "end": "00:09:47.790000",
+    "text": "as you can see also here from the time series plot theres a quite significant overlap between the two and thats of course due to properties of radio wave propagation the waveform emitted from this kindof radar station can be pinched on the sea surface and go into some kind other transverse other kind of paths the socall multipath fading situation"
   },
   {
-    "start": "00:09:41.230000",
-    "end": "00:10:15.630000",
-    "text": "so in terms of plotting the histages this is definitely a very"
+    "start": "00:09:47.790000",
+    "end": "00:10:13.710000",
+    "text": "some of you may have observed fading while lening to analog radio stations such as am and fm back in the olddays this were the only radio stations that we had access to and also you may have sort of experienced exactly the same situation where you are going in and out of coverage holes using your cellular devices"
   },
   {
-    "start": "00:10:15.630000",
-    "end": "00:10:24.389000",
-    "text": "i will call it a easy exercise"
+    "start": "00:10:13.710000",
+    "end": "00:10:42.480000",
+    "text": "the important thing about the sortofuu overlap is that lets assume that i have selected here a value for my threshold w and the moment i have if you like  a threshold w i can start clear defining certain areas under those probability distributions that will be of great interest to me so i want itshade the first probability tail which is this one"
   },
   {
-    "start": "00:10:24.389000",
-    "end": "00:10:27.120000",
-    "text": "and as you probably notice from the shape ofthese histograms"
+    "start": "00:10:42.480000",
+    "end": "00:10:53.470000",
+    "text": "i want also to shade thisand area and also want  to say with horizontal stripes this area so these three areas are i think will be quite important now the overlap means that since theres no absolutely clear separation between the two prob distributions we are always going to make some form of mistake we always going to have mistakes and in fact we can clearly distinguish four fourconditions and we will tabulate them with with what we call the confusionmatrix on the one axis of the confusion matrix"
   },
   {
-    "start": "00:10:27.120000",
-    "end": "00:10:31.240000",
-    "text": "we have not really made any assumption with respect to ugausianity or nothing like that"
+    "start": "00:10:53.470000",
+    "end": "00:00:-1.000000",
+    "text": "well be assigning this axe to the socall ground truth and the other to the prediction the yut and when the yhat is positive and negative and this positive and negative agrees to the withthe ground truth then we will be calling this correspondingly true positive and truenegative in fact its actually quite common to write first the letter the second letter as a pneumonic rule"
   },
   {
-    "start": "00:10:31.240000",
-    "end": "00:10:59.320000",
-    "text": "they are definitely plotted as nongausian type of probability distributions and the moment i have and also another sort of evident that thing that is actually going on with this problem is that there is a very strong overlap between the two histogrammes when we have the signal strength between no attacks and attacks"
+    "start": "00:00:-1.000000",
+    "end": "00:10:53.470000",
+    "text": "write first the second letter and put  the letter t in front every timethe that you have agreement with ground truth in the case where you predict there is an attack going on but you are wrong you are prepending it with the letter f stands for false so we have false positive here and here we have also false negative we are predicting negative but we are wrong"
   },
   {
-    "start": "00:10:59.320000",
-    "end": "00:11:02.920000",
-    "text": "as you can see also here from the time series plot theres a quite significant overlapthats of course"
+    "start": "00:10:53.470000",
+    "end": "00:12:12.240000",
+    "text": "and therefore we have the socalled false negative events the overlap as compared to the case which isquite unrealistic in practice where we have some form of significant separation between the two histograms likethis and this and therefore its easy to select something of a threshold w that will separate the two conditions perfectly the socal linearly separable case is not present here so we are going to so let me just delete it to avoid any confusion is not present here so we always going to have in other words these two type of events present in our problem"
   },
   {
-    "start": "00:11:02.920000",
-    "end": "00:11:22.839000",
-    "text": "due to properties of radio wave propagation the waveform emitted from this kindof radar station can be pinched on the sea surface and go into some kindother transverse other kind of paths"
-  },
-  {
-    "start": "00:11:22.839000",
-    "end": "00:11:26.480000",
-    "text": "the socall multipath fading situation"
-  },
-  {
-    "start": "00:11:26.480000",
-    "end": "00:11:38.230000",
-    "text": "some of you may have observed fading while lening to analog radio stations such as am and fm back in the old days"
-  },
-  {
-    "start": "00:11:38.230000",
-    "end": "00:11:49.030000",
-    "text": "this were the only radio stations that we had access to and also you may have sorta experienced exactly the same situation where you are going in and out of coverage holes usingyour cellular devices"
-  },
-  {
-    "start": "00:11:49.030000",
+    "start": "00:12:12.240000",
     "end": "00:12:16.680000",
-    "text": "the important thing about the sort of uu overlap is that lets assume that i have selected here a value for my threshold w and the moment i have if you like a threshold w i can start clear defining certain areas under those probability distributions"
+    "text": "and before i describe what was actually happening every time we get this threshold w to not be set optimally when the threshold w is set too high then we are missing the events that are actually attacks that are actually going will happen and therefore we are going to be increasing our force negative so we are predicting that no attacks is happening while in fact they are and if the w is set too low we are going to be increasing the false positive rate and in fact we will be alerting sort of the people to go down to the cube"
   },
   {
     "start": "00:12:16.680000",
-    "end": "00:12:20.240000",
-    "text": "that will be of great interest to me"
+    "end": "00:12:59.629000",
+    "text": "but unfortunately no attack is actually goingon now that we have recognized that we always going to make mistake as manifested by thisconfusion matrixwe are interested to just qualify these mistakes and quantify those mistakes by just understanding the probability of making a mistake"
   },
   {
-    "start": "00:12:20.240000",
-    "end": "00:12:26.800000",
-    "text": "so i want to shade the first probability tail which is this one"
+    "start": "00:12:59.629000",
+    "end": "00:12:59.629000",
+    "text": "this is definitely the probability of when we make where our prediction why hat is not equal to the ground ruthy and this is happens in two instances the first instance is when we have the probability when we make the prediction that no attack is happening when in fact there is an attack happening plus the events when we are making the oppositeclaim"
   },
   {
-    "start": "00:12:26.800000",
-    "end": "00:12:39.680000",
-    "text": "i want also to shade thisand area and also want to say with horizontal stripes this area"
+    "start": "00:12:59.629000",
+    "end": "00:14:31.629000",
+    "text": "and i think its worthwhile now trying to understand what is happening in this what are those probabilities and how they related to these histan we have plotted the moment we have specified the threshold location over here w we have split the region into two parts the first region is called r0 and the second region is calledr1 and now that we have this region names i think the region names are also intuitively kind of understood because this zero index here corresponds to the case where we declare anything as we said below the threshold"
   },
   {
-    "start": "00:12:39.680000",
-    "end": "00:12:45.110000",
-    "text": "so these three areas are i think will be quite importantenow the overlap means that since theres no absolutely clear separation between the two prob distributions we are always going to make some form of mistake"
+    "start": "00:14:31.629000",
+    "end": "00:15:13.320000",
+    "text": "w is theres no attackwe are predicting no attack so thats the what the zero is here and anything above the w we have we predicting attack is happening and thats why the one is there we can actually start putting this probabilities quantifying these probabilities based on the area under the those those cures and we i hope you all remember that probability for continuous random variables such as a signal strength over here is sort of manifested by such kindof areas so what im going to do now is im going to declare that thisprobability"
   },
   {
-    "start": "00:12:45.110000",
-    "end": "00:13:14.320000",
-    "text": "we always going to have mistakes and in fact we can clearly distinguish four fourconditions and we will tabulate them with"
+    "start": "00:15:13.320000",
+    "end": "00:15:13.320000",
+    "text": "the first probability over here is equal to the probability that i am making a prediction such as my q belongs to the region r0 when in fact the ground truth is one so i converted the q is equal to zero to all the events which are to the left of w so all the events where q belongs to this kind of region are zero and the dothe same belong to the region r1"
   },
   {
-    "start": "00:13:14.320000",
-    "end": "00:13:35.639000",
-    "text": "with what we call the confusion matrix on the one axisecurity matrix well be assigning this axeto the socall ground truth and the other to the prediction the yut and when the yhat is positive and negative and this conform means that since therewith the ground truth then we will be calling this correspondingly true positive and truenegative"
+    "start": "00:15:13.320000",
+    "end": "00:15:45.670000",
+    "text": "when z is equal to z all events of h greater than w in other words all xs which are belongingthat i had about what is yhat equal to one and what yhat is equal to zero so this one the probability that x belongs to the region r0 when hy is one corresponds to the left tail of this probability distribution so this probability distribution but only the left tail so you can see here that the whole probability distribution here"
   },
   {
-    "start": "00:13:35.639000",
-    "end": "00:13:56.560000",
-    "text": "in fact its actually quite common to write first the letter the second letter as a pneumonic rule"
-  },
-  {
-    "start": "00:13:56.560000",
-    "end": "00:14:01.389000",
-    "text": "write first the second letter and put t in front every time that you have agreement with ground truth"
-  },
-  {
-    "start": "00:14:01.389000",
-    "end": "00:14:10.399000",
-    "text": "in the case where you predict there is an attack going on but you are wrong you are prepending it"
-  },
-  {
-    "start": "00:14:10.399000",
-    "end": "00:14:18.069000",
-    "text": "with the letter f stands for false so we have false negative here and here we have also falsenegative we arepredicting negative but we are wrong"
-  },
-  {
-    "start": "00:14:18.069000",
-    "end": "00:14:25.839000",
-    "text": "and therefore we have the socalled false negative events"
-  },
-  {
-    "start": "00:14:25.839000",
-    "end": "00:14:41.040000",
-    "text": "the overlap as compared to the case which isquite unrealistic in practice where we have some form of significant separation between the two histograms like this and this"
-  },
-  {
-    "start": "00:14:41.040000",
-    "end": "00:14:45.480000",
-    "text": "and therefore its easy to select something of a threshold w that will separate the two conditions perfectly"
-  },
-  {
-    "start": "00:14:45.480000",
-    "end": "00:15:01.310000",
-    "text": "the socal linearly separable case is not present here so let me just delete it to avoid any confusion is not present here so we always going to havein other words these two type of events present in our problem"
-  },
-  {
-    "start": "00:15:01.310000",
+    "start": "00:15:45.670000",
     "end": "00:15:45.680000",
-    "text": "and before i describe what was actually happening every time we get this threshold w to not be set optimally when the threshold wh is set too high then we are missing the events that are actually attacks that are actually going will happen and therefore we are going to be increasing our force negative"
+    "text": "the whole histogram is p of x comm y to 1 but here im interesting only for the equal to r0 so its the summeation of this vertically sting or st striped and this bubbly kind and what r0 then itgoing to write it as an integralprobability of xcomma isal to 1 dx and im going to take this and actually do exactly the same for the r1 probability of ycommas isal to 0 dx and now if i actually start relating what i actually wrote here with the counts that i have count it i can count through"
   },
   {
     "start": "00:15:45.680000",
-    "end": "00:15:45.680000",
-    "text": "so we are predicting that no attacks is happening while in fact they are"
+    "end": "00:15:49.790000",
+    "text": "a random realization of this experiment from my kind of a looking at the predictor output and looking at the ground truth over here i can understand that this is corresponds to the false negative rate and these corresponds to the falk orpositiverate and definitely this is the false negative because i am actually predicting that no attack is happening and in fact im wrong and the corresponding here case where im predicting that the attack is happening and in fact im also wrong"
   },
   {
-    "start": "00:15:45.680000",
-    "end": "00:15:59.880000",
-    "text": "and if the w is set too low we are going to be increasing the false positive rate and in fact we willalerting sort of the people to go down to the cube but unfortunately no attack is actually goingon"
+    "start": "00:15:49.790000",
+    "end": "00:16:30.629000",
+    "text": "so the false positive and the false neg the falsenegative and the falseposi are related to the entries of the confusion matrix here that are definitely present and countable using this kind de histograms and as we discussed our role here is to find the optimal w and ijust want you to understand how visually we can be persuaded that is in fact there is an optimal w and that optimal w will minimize the probability of making the mistakes you cannot make make it zero because as we discussed we do not face in this situation linearly separable data set"
   },
   {
-    "start": "00:15:59.880000",
-    "end": "00:16:52.759000",
-    "text": "now that we have recognized that you always going to make mistake as manifested by this confusion matrixwe are interested in just qualify these mistakes and quantify those mistakes by just understanding the probability of making a mistake"
+    "start": "00:16:30.629000",
+    "end": "00:17:17.559000",
+    "text": "but at the very least we can minimize the summation of false positives and false negative events and imagine that that you are moving that w in the left side over here so trying to move this line to the left and look whats happeningyoure moving into the left gradually you will comeso maybe two snapshots are enough to see what is happening so in the first value of this w to the left of the previous kind of w what we are actually achieving is we are going to whatever we are losing in terms of area out of our this verticallystriped area"
   },
   {
-    "start": "00:16:52.759000",
-    "end": "00:17:03.240000",
-    "text": "this is definitely the probability of when we make"
+    "start": "00:17:17.559000",
+    "end": "00:17:34.039000",
+    "text": "we will be gaining in terms of the horizontallystriped area having said that we actually start seeing reduction of this bubbly area and this area will start to be reduced and reduced and reduced up to the pointwhere we reach what will be calling the w star the optimal w and thus optimal w is the w that minimized this probability of mistake simply because in that location"
   },
   {
-    "start": "00:17:03.240000",
-    "end": "00:17:07.069000",
-    "text": "where our prediction why hat is not equal to the ground ruthy and this is happens in two instances"
+    "start": "00:17:34.039000",
+    "end": "00:18:34.440000",
+    "text": "the bubbly area got eliminated completely and the summation of the therefore of the false positives and false negatives that included it is the minimum possible so actually we can write that sort of optimizingthe w towards w star will bedone using thealgorithm thatminimizes the probability of making a mistake so the misclassification error or alsocallmisclassification error eight so this will be done now that we have some kind of a visual motivation of what were trying to achieve here"
   },
   {
-    "start": "00:17:07.069000",
-    "end": "00:17:17.549000",
-    "text": "the first instance is when wehave the probability when we make the prediction that no attack is happening"
+    "start": "00:18:34.440000",
+    "end": "00:18:34.440000",
+    "text": "we now need to understand how we can also motivate in the next discussion an objective function and that it is going to be suitable for our problem here which is the classification problem in a similar way as we have done with the u earlier loss function we have used initially was called mean square error and then it was also called crossentropy so well do thatnext the come up with this objective function before we go and discuss that lets review the socalled classification metrics the classification metrics that there a couple of classification metrics will be of interest to us"
   },
   {
-    "start": "00:17:17.549000",
-    "end": "00:17:32.400000",
-    "text": "when in fact there is an attack happening plus the events when we are making the oppositeclaim and i think its worthwhile now trying to understand what is happening in this"
+    "start": "00:18:34.440000",
+    "end": "00:18:55.600000",
+    "text": "they will be entirely based of course on the previously described confusion matrix and the first matric i want to address is called the true positive rate the second metric is well the dr postive rate is comes with many names and many of them have been sortoforiginating from various kinds of domainselectrical engineering computer science and others so in computer science this also is called recall in electrical engineering this is also called probability of detection and many other domains quote it as sensitivity itll one and the same thing and i just want to mention all of them"
   },
   {
-    "start": "00:17:32.400000",
-    "end": "00:17:37.080000",
-    "text": "what are those probabilities and how they related to these histan"
+    "start": "00:18:55.600000",
+    "end": "00:19:41.990000",
+    "text": "just in case you come up with come across one of the of the many so this is the ratio between true positive and true negative plus falsenegative so this is a a ratio that is definitely going to be of concern to us and undof interest to our everytime we have to evaluate a classifier and the second metrix that i want quote and have some discussion about those metrics a bit later is  a socalled precision"
   },
   {
-    "start": "00:17:37.080000",
-    "end": "00:17:41.440000",
-    "text": "we have plotted the moment we have specified the threshold location over here"
+    "start": "00:19:41.990000",
+    "end": "00:19:41.990000",
+    "text": "and this precision is another ratio of true positiveide by true negative plus false positive"
   },
   {
-    "start": "00:17:41.440000",
-    "end": "00:17:50.789000",
-    "text": "w  we have split the region into two parts the first region is called r0 and the second region is calledr1"
+    "start": "00:19:41.990000",
+    "end": "00:20:10.440000",
+    "text": "and if you follow the this video where we have plotted these histograms in the binary classifier when the socalled the radar problem and you probably understood the tradeoff that exists between false positives and false negatives as we were moving in factmoving the value of the threshold w we were changing the areas under those two histograms and of course here we was trading all false positive or false negatives in our attempt to find this optimal kind w in a very similar way"
   },
   {
-    "start": "00:17:50.789000",
-    "end": "00:17:56.909000",
-    "text": "and now that we have this region namesare also intuitively kind of understood"
+    "start": "00:20:10.440000",
+    "end": "00:21:14.149000",
+    "text": "we can actually claim that now that we have the those metrics the tradeoff between falsepositives and falsenegatives is evident over here u inin the following trade off so let me write it this down so we can say that because as wfalse positivethere is abetween recall and precision because recall and precision everything is exactly the same in terms of numerator and portion of the denominator but only the falsepos and false negatives are present there"
   },
   {
-    "start": "00:17:56.909000",
-    "end": "00:18:08.919000",
-    "text": "because this zero index here corresponds to the case where we declare anything as we said below the threshold w is theres no attack"
+    "start": "00:21:14.149000",
+    "end": "00:21:48.549000",
+    "text": "so this is actually an important tradeoff that will be of great interest to us as we will always finding ourselves making that kind of tradeoff for classif classification architectures we will be designing soon the other metric its not really  a different metric but its  a way to present performance metrics classification metrix is this what we call the socal receiver operating characteristic and we actually call it receiver operating characteristic from those days in the 40s when they were deploying this kind of radars"
   },
   {
-    "start": "00:18:08.919000",
-    "end": "00:18:16.000000",
-    "text": "so thatsthe what the zero is here and anything above the w we have"
+    "start": "00:21:48.549000",
+    "end": "00:22:20.870000",
+    "text": "and i will describe it as the curve that we can plot by changing the threshold w in the xaxis over here it is the false positive rate also known as a false alarm from those days the probab ility of the probability of false alarm pfa and the yais is called recall evidently the samething as a true positive rate and definitely we have  a probability of false negative rate that goes from one to one"
   },
   {
-    "start": "00:18:16.000000",
-    "end": "00:18:18.640000",
-    "text": "we predicting attack is happening and thats why the one is there"
+    "start": "00:22:20.870000",
+    "end": "00:22:59.880000",
+    "text": "and the probability of recall truepositive rate that goes again from 0 to one because there are probabilities and therefore well find this cur of constraint by those valuesand the u as we change the threshold we will be ableto plot todraw such cures some of these curves are going to be like this let me plot threecases so case lets say a b and case c and i think its reasonable tounderstand now "
   },
   {
-    "start": "00:18:18.640000",
-    "end": "00:18:29.600000",
-    "text": "we can actually start putting this probabilities quantifying these probabilities based on the area under the those those cures"
+    "start": "00:22:59.880000",
+    "end": "00:00:-1.000000",
+    "text": "what is the best possible classifier we can ever design which is of course not achievable right now and its not achievable in any case we have such cases of overlap between positive and negative classes and that point over here is this is the sort of go of ideal and unrealistic operating pointhis care as we discussed is called receiver and every and each and every curve is being plotted by having a classifier and tuning"
   },
   {
-    "start": "00:18:29.600000",
-    "end": "00:18:34.430000",
-    "text": "and we i hope you all remember that probability for continuous random"
+    "start": "00:00:-1.000000",
+    "end": "00:22:59.880000",
+    "text": "if you like its parmeters adjusting its parameters the threshold more specifically and samehere this is supposed to be a diagonal line 45° and lets compare between three different classifiers which one do we believe that is actually the best one and its actually  a very straightforward kind of answer if we draw lets say a horizontal kindof l line"
   },
   {
-    "start": "00:18:34.430000",
-    "end": "00:18:39.600000",
-    "text": "variables such a signal strength over here is sort of manifested by such kindof areas"
+    "start": "00:22:59.880000",
+    "end": "00:25:56.950000",
+    "text": "the classifier a is offering exactly the same performance as the recall but at much reduced probability of false alarm or false positive rate as compared with classifier b and of course much better than classifier c and therefore either wedraw a horizontal line or actually you can actually draw  a vertical line we can make the same argument"
   },
   {
-    "start": "00:18:39.600000",
-    "end": "00:19:10.640000",
-    "text": "so what im going to do now is im going declare that this probability the first probability over here is equal to the probability that i am making a prediction such as my q belongs to the region r0 when in fact the ground truth is one so i converted"
+    "start": "00:25:56.950000",
+    "end": "00:26:44.640000",
+    "text": "a is offered  a much better probability of true positive as compared to b and as comparing with c for the same false negative rate and therefore we can actually write this kindof preference relationship in this specific case"
   },
   {
-    "start": "00:19:10.640000",
-    "end": "00:19:18.200000",
-    "text": "the q is equal to zero to all the events which are to the left of w"
+    "start": "00:26:44.640000",
+    "end": "00:26:57.269000",
+    "text": "so recall the recall and force positive are involved in plotting this kind deferential curve to give us if you like graphical view of how the classifier is is behaving in various kind orconditions and when we tune this classifier and we choosing the w the specific w start that we have seen earlier we effectively operate at a specific operating point"
   },
   {
-    "start": "00:19:18.200000",
-    "end": "00:19:29.350000",
-    "text": "so all the events where q belongs to this kind of region are zero and the do the same belong to the region r1when y is equal toz all events of x greater than w in other words"
+    "start": "00:26:57.269000",
+    "end": "00:27:31.200000",
+    "text": "at that point we will be sort of constantly operating and we will in many senses we will need to make different tradeoffs between positives and false positives and true negatives in various applications"
   },
   {
-    "start": "00:19:29.350000",
-    "end": "00:19:56.710000",
-    "text": "all xs which are belonging to the region r1 so it is exactly equivalent to those convention that i had about what is yahhat"
+    "start": "00:27:31.200000",
+    "end": "00:27:58.679000",
+    "text": "so let me write this down that eachpoint in the rosunique setting of the thresholdw so that is you know as kindof a short summary of classification metrics that will be of interest to us and the receiver operating curve and we will also have another curve called recall versus precision this curve will be introduced in another video and well be discussed"
   },
   {
-    "start": "00:19:56.710000",
-    "end": "00:20:12.120000",
-    "text": "equal to one and whatyhat is equal to zero"
+    "start": "00:27:58.679000",
+    "end": "00:28:08.720000",
+    "text": "then in an early video we saw how maximum likelihood was motivating every the underlying you like objective function of of every prediction problem and so binary classification will not be an exception and we started with the regression problem and we saw how maximal likelihood and crossentropy areultimately connected"
   },
   {
-    "start": "00:20:12.120000",
-    "end": "00:20:34.400000",
-    "text": "so this one the probability that z belongs to the region r0 when yuis one corresponds to the left tail of this probability distribution so this probability distribution but only the left tail"
-  },
-  {
-    "start": "00:20:34.400000",
-    "end": "00:20:34.400000",
-    "text": "so you can see here that the whole histogram is p of comm —"
-  },
-  {
-    "start": "00:20:34.400000",
-    "end": "00:21:40.110000",
-    "text": "g   all events of  but here im interesting"
-  },
-  {
-    "start": "00:21:40.110000",
-    "end": "00:21:43.470000",
-    "text": "only for the x equal to r0 so its the summation of this vertically ststststststststststststststststststststststststststststststyl and now if i actually start relating what we have count it through a random realization from my kind oflooking at the ground truth over here i can understand that this is corresponds to the false negative rate and this corresponds to the false positiverate"
-  },
-  {
-    "start": "00:21:43.470000",
-    "end": "00:21:51.760000",
-    "text": "and definitely this is the false negative because i am actually predicting that no attack is happening and in fact im wrong and the corresponding here case whereim predicting that the attack is happening and in fact im also wrong so the falsepositive and the false neg the falsenegative and the falseposi are related to the entries of the confusion matrixhere that are definitely present and countable using this kind of histograms"
-  },
-  {
-    "start": "00:21:51.760000",
-    "end": "00:22:03.590000",
-    "text": "and as we discussed our role here is to find the optimal w"
-  },
-  {
-    "start": "00:22:03.590000",
-    "end": "00:22:07.960000",
-    "text": "and i just want you to understand how visually we can be persuaded"
-  },
-  {
-    "start": "00:22:07.960000",
-    "end": "00:22:18.840000",
-    "text": "that is in fact there is an optimal w and that optimal w will minimize the probability of making the mistakes you cannot make"
-  },
-  {
-    "start": "00:22:18.840000",
-    "end": "00:22:20.880000",
-    "text": "make it zero because as we discussed we do not face in this situation linearly separable data set but at the very least we can minimize the summation of false positives and negative"
-  },
-  {
-    "start": "00:22:20.880000",
-    "end": "00:22:36.200000",
-    "text": "events and imagine that that you are moving that w in the left side over here so trying to move this line to the left and look whats happening as youre moving into the left gradually"
-  },
-  {
-    "start": "00:22:36.200000",
-    "end": "00:22:40.710000",
-    "text": "you will comeso"
-  },
-  {
-    "start": "00:22:40.710000",
-    "end": "00:22:47.559000",
-    "text": "maybe two snapshots are enough to see what is happening"
-  },
-  {
-    "start": "00:22:47.559000",
-    "end": "00:23:09.120000",
-    "text": "so in the first value of this w to the left of the previous kind of w what we are actually achieving is we are going to whatever we are losing in terms de area out of our this verticallystriped area"
-  },
-  {
-    "start": "00:23:09.120000",
-    "end": "00:23:48.679000",
-    "text": "we will be gaining in terms of the horizontallysaid that we actually start seeing reduction of this bubbly area and this area will start to be reduced and reduced and reduced up to the point where we reach what will be calling the w star the optimal w and thus optimal w is the w that minimized this probability of mistake simply because in that location the bubbly area got eliminated completely and the summation of the therefore of the false positives and false negatives that included"
-  },
-  {
-    "start": "00:23:48.679000",
-    "end": "00:23:50.559000",
-    "text": "it is the minimum possible"
-  },
-  {
-    "start": "00:23:50.559000",
-    "end": "00:24:01.390000",
-    "text": "so actually we can write that sort of optimizing"
-  },
-  {
-    "start": "00:24:01.390000",
-    "end": "00:24:54.480000",
-    "text": "the w towards w star will bedone using thealgorithm thatminimizes the probability of making a mistake so the misclassification error or also calledmasclassification error eight"
-  },
-  {
-    "start": "00:24:54.480000",
-    "end": "00:25:01.080000",
-    "text": "so this will be done now that we have some kindof visual motivation of what were trying to achieve here"
-  },
-  {
-    "start": "00:25:01.080000",
-    "end": "00:25:17.110000",
-    "text": "we now need to understand how we can also motivate in the next discussion an objective function and that it is going to be suitable for our problem here which is the classification problem in similar way as we have done with the uearlier loss function we have used initially was called mean square error and then it was also called crossentropy"
-  },
-  {
-    "start": "00:25:17.110000",
-    "end": "00:25:17.110000",
-    "text": "so do that next"
-  },
-  {
-    "start": "00:25:17.110000",
-    "end": "00:25:43.549000",
-    "text": "the come up with this objective function before we go and discuss that lets review the socalled classification metrics"
-  },
-  {
-    "start": "00:25:43.549000",
-    "end": "00:25:45.480000",
-    "text": "the classification metrics that there a couple of classification metrics will be of interest to us"
-  },
-  {
-    "start": "00:25:45.480000",
-    "end": "00:25:56.960000",
-    "text": "they will be entirely based of course on the previously described confusion matrix and the first matric i want to address is called the true positive rate"
-  },
-  {
-    "start": "00:25:56.960000",
-    "end": "00:26:01.230000",
-    "text": "the second metric is well the thedr"
-  },
-  {
-    "start": "00:26:01.230000",
-    "end": "00:26:19.760000",
-    "text": "postive rate is comes with many names and many of them have been sortof originating from various kind domains electrical engineering computer science and others so in computer science this also is called recall"
-  },
-  {
-    "start": "00:26:19.760000",
-    "end": "00:26:29.399000",
-    "text": "in electrical engineering this is also called probability of detection and many other domains quote it as sensitivity"
-  },
-  {
-    "start": "00:26:29.399000",
-    "end": "00:26:39.600000",
-    "text": "itsunnel its one and the same thing and i just want to mention all of them just in case you come up with come across one of the of the many"
-  },
-  {
-    "start": "00:26:39.600000",
-    "end": "00:26:44.630000",
-    "text": "so this is the ratio between true positive and true positive plus false"
-  },
-  {
-    "start": "00:26:44.630000",
-    "end": "00:26:52.039000",
-    "text": "negative so this is a a ratio that is definitely going to be of concern to us andor of interest to us"
-  },
-  {
-    "start": "00:26:52.039000",
-    "end": "00:27:05.679000",
-    "text": "every time we have to evaluate a classifier and the second metrix that i want to quote and have some discussion about those metrics a bit later is  a socalled precision"
-  },
-  {
-    "start": "00:27:05.679000",
-    "end": "00:27:11.240000",
-    "text": "and this precision is another ratio of true positive ide by true negative plus false positive"
-  },
-  {
-    "start": "00:27:11.240000",
-    "end": "00:27:25.350000",
-    "text": "and if you follow the this video where we have plotted these histograms in the binary classifier when the so called the radar problem and your probably understood"
-  },
-  {
-    "start": "00:27:25.350000",
-    "end": "00:27:35.440000",
-    "text": "so itthe tradeoff that exists between false positives and false negatives as we were moving in fact"
-  },
-  {
-    "start": "00:27:35.440000",
-    "end": "00:27:45.480000",
-    "text": "the as we were moving the value of the threshold w we were changing the areas under those two histograms and of course here we are"
-  },
-  {
-    "start": "00:27:45.480000",
-    "end": "00:28:04.480000",
-    "text": "we were trading all falsepositive or false nebulouss in our attempt to find this optimal kind of w in a very similar way we can actually claim that now that we have the those metrics the tradeoff between false positivities and false negativals is evident over here u in let me write it this down so we can say that because as wfalse positives and false negatives we can actually claim that there is between recall and precision"
-  },
-  {
-    "start": "00:28:04.480000",
-    "end": "00:28:36.799000",
-    "text": "because recall and precision everything is exactly the same in terms of numerator and portion of the denominator but only the falsepos and falsenegatives are present there"
-  },
-  {
-    "start": "00:28:36.799000",
-    "end": "00:29:08.600000",
-    "text": "so this is actually an important tradeoff that will be of great interest to us"
-  },
-  {
-    "start": "00:29:08.600000",
-    "end": "00:29:15.269000",
-    "text": "as we will always finding ourselves making that kind of tradeoff for classif classification architectures wewill be designing soon"
-  },
-  {
-    "start": "00:29:15.269000",
-    "end": "00:29:28.320000",
-    "text": "the other metric its not really a different metric but its a way to present performance metrics classification metrix"
-  },
-  {
-    "start": "00:29:28.320000",
-    "end": "00:29:37.039000",
-    "text": "is this what we call the socal receiver operating characteristic"
-  },
-  {
-    "start": "00:29:37.039000",
-    "end": "00:29:41.120000",
-    "text": "and we actually call it receiver operating characteristic from those days in the 40s when they were deploying this kind of radars"
-  },
-  {
-    "start": "00:29:41.120000",
-    "end": "00:29:51.039000",
-    "text": "and i will describe it as the curve that we can plot by changing the threshold w in the xaxis over here"
-  },
-  {
-    "start": "00:29:51.039000",
-    "end": "00:29:57.159000",
-    "text": "it is the false positive rate also known as a false alarm from these daysprobability of false alarm pfa and the yais is called recall"
-  },
-  {
-    "start": "00:29:57.159000",
-    "end": "00:30:24.080000",
-    "text": "evidently the same thing as a true positive rate and definitely we have a probability of false positive rate that goes from one to one and the probability of recall true negative rate that goes again from 0"
-  },
-  {
-    "start": "00:30:24.080000",
-    "end": "00:30:42.399000",
-    "text": "to one because there are probabilities and therefore well find this cur of constraint by those valuesand the u will be ableto plot todraw such cures"
-  },
-  {
-    "start": "00:30:42.399000",
-    "end": "00:30:51.310000",
-    "text": "some of these curves are going to be like this let me plot threecases so case lets say a case b and case c"
-  },
-  {
-    "start": "00:30:51.310000",
-    "end": "00:31:10.480000",
-    "text": "and i think its reasonable to understand now what is the best possible classifier we can ever design which is of course not achievable right now and its not achievable"
-  },
-  {
-    "start": "00:31:10.480000",
-    "end": "00:31:31.190000",
-    "text": "in any case we have such cases of overlap between positive and negative classes and that point over here is this is the sort of go of ideal and unrealistic operating point"
-  },
-  {
-    "start": "00:31:31.190000",
-    "end": "00:31:39.149000",
-    "text": "history care as we discussed is called receiver and every and each and every curve is being plotted by having a classifier and tuningpar ameters adjusting its parameters"
-  },
-  {
-    "start": "00:31:39.149000",
-    "end": "00:32:16.919000",
-    "text": "the threshold more specifically and same here this is supposed to be  a diagonal line 45° and lets compare between three different classifiers"
-  },
-  {
-    "start": "00:32:16.919000",
-    "end": "00:32:24.039000",
-    "text": "which one do we believe that is actually the best one and its actually a very straightforward kind of answer"
-  },
-  {
-    "start": "00:32:24.039000",
-    "end": "00:32:27.960000",
-    "text": "if we draw lets say a horizontal kind of l line"
-  },
-  {
-    "start": "00:32:27.960000",
-    "end": "00:32:46.029000",
-    "text": "the classifier b is offering exactly the same performance as the recall but at much reduced probability of false alarm or false positive rate as compared with classification b and of course in factclassifier c and therefore either we draw a horizontal line or actually you can actually draw a vertical line"
-  },
-  {
-    "start": "00:32:46.029000",
-    "end": "00:32:46.039000",
-    "text": "we can make the same argument"
-  },
-  {
-    "start": "00:32:46.039000",
-    "end": "00:33:08.159000",
-    "text": "a is offered  a much better probability of true positive as compared to b and as comparing to c for the same false negative rate"
-  },
-  {
-    "start": "00:33:08.159000",
-    "end": "00:33:22.549000",
-    "text": "and therefore we can actually write this kind of preference relationship in this specific case"
-  },
-  {
-    "start": "00:33:22.549000",
-    "end": "00:33:31.350000",
-    "text": "so recall the recall and force positive are involved in plotting this kind of curve to give us if you like graphical view of how the classifier isconditions and when we tune this classifier and we choosing the w the specific w start that we have seen earlier we effectively operate at a specific operating point"
-  },
-  {
-    "start": "00:33:31.350000",
-    "end": "00:33:50.039000",
-    "text": "at that point we will be sort of constantly operating and we will in many senses"
-  },
-  {
-    "start": "00:33:50.039000",
-    "end": "00:34:01.279000",
-    "text": "we will need to make different tradeoffs between positives and false positives and true negatives in various applications"
-  },
-  {
-    "start": "00:34:01.279000",
-    "end": "00:34:09.480000",
-    "text": "so let me write this down that eachpoint in the rosunique setting of the thresholdw so that is you know as kindof a short summary ofclassification metrics that will be of interest to us and the receiver operating curve and we will also have another curve called recall versus precision"
-  },
-  {
-    "start": "00:34:09.480000",
-    "end": "00:34:53.960000",
-    "text": "this curve will be introduced in another video and well be discussed"
-  },
-  {
-    "start": "00:34:53.960000",
-    "end": "00:35:16.710000",
-    "text": "then in an early video we saw how maximum likelihood was motivating every the underlying you like objective function of of every prediction problem and so binary classification will not be an exception"
-  },
-  {
-    "start": "00:35:16.710000",
-    "end": "00:35:18.589000",
-    "text": "and we started with the regression problem and we saw how maximal likelihood and crossentropy areultimately connected"
-  },
-  {
-    "start": "00:35:18.589000",
-    "end": "00:35:42.320000",
+    "start": "00:28:08.720000",
+    "end": "00:28:08.720000",
     "text": "now we recognize the functional form of the socall binary crossentropy loss function which is for spe specifically for our binary classification problem and we will be motivating this by recognizing that in regression we had amode which actually was gausian in binary classification"
   },
   {
-    "start": "00:35:42.320000",
-    "end": "00:35:53.359000",
-    "text": "we going to need to actually have a probabilistic model a probability distribution which is really appropriate for our discrete random variables that are the are wise"
+    "start": "00:28:08.720000",
+    "end": "00:28:56.950000",
+    "text": "we going to need to actually have a probabilistic model  a probability distribution which is really appropriate for our discrete random variables that are the are wise so our form of myp model of letssay y given an xcommadiscrete and in fact binary so i have seen already in the discussion of the entropy video coing"
   },
   {
-    "start": "00:35:53.359000",
-    "end": "00:36:06.270000",
-    "text": "so our form of myp model of lets say y given an x comma"
+    "start": "00:28:56.950000",
+    "end": "00:28:56.950000",
+    "text": "and i know that at that point i have quoted beri distribution as the appropriate propability distribution for our model and the beri distribution let me write it with all words overhere is given as yuhat to the power of ya1y the of 1y lets spend some time kind of understanding this if my ground truth is one this pmodel of yi has of ye because the x commaw is simply is zero and therefore this term hole is one so the only thing that remains is y"
   },
   {
-    "start": "00:36:06.270000",
-    "end": "00:36:06.270000",
-    "text": "connected"
+    "start": "00:28:56.950000",
+    "end": "00:29:28.310000",
+    "text": "and in fact this is a very important conclusion in  a sense that from now on in binary classification all i need to produce at the output is this  a single floating point number between zero and one so its a probability so its going to be zero between z and one for sureill be calling this probability when yu is equal to 1 the probability of yi is equal to 1 given qima wi"
   },
   {
-    "start": "00:36:06.270000",
-    "end": "00:36:25.040000",
-    "text": "distinct and in fact binary so i have seen already in the discussion of the entropy video coing"
+    "start": "00:29:28.310000",
+    "end": "00:30:04.480000",
+    "text": "and then it can write it as x themodel and this is actually going to be called the modelposterior probability and we recognize the term posterior already we recognized it when our had this probability review lecture and in that kind of video we have actually seen that posterior it means after we get to observe the ais our data what can we say about our target variable y"
   },
   {
-    "start": "00:36:25.040000",
-    "end": "00:36:37.480000",
-    "text": "and i know that at that point i have quoted beri distribution as the appropriate propability distribution for our model and the beri distribution"
+    "start": "00:30:04.480000",
+    "end": "00:30:24.080000",
+    "text": "in this case so the posterior probability distribution is going to be called yck so thats what our classifier is going to from now on going to be producing and that this posterior being  a probability means that we are haveinfrastructive the ability to provide an uncertainty about our pred prediction we are going to lets say report the 082 as lets say the output of the positive class and"
   },
   {
-    "start": "00:36:37.480000",
-    "end": "00:36:48.960000",
-    "text": "let me write it with all words overhere is given as yuhat to the power of ya1y"
+    "start": "00:30:24.080000",
+    "end": "00:30:45.630000",
+    "text": "this means that we are going to be 82 certain that you have  a positive event at the output of our classif fire and if we have already reported the output of  a positive event then when we are dealing with the negative case our p model over here that we have selected of yu given x comma will be simply be 1 minus y because with y is equal to zero then this becomes one and this becomes one minusyhat"
   },
   {
-    "start": "00:36:48.960000",
-    "end": "00:36:58.119000",
-    "text": "the of 1 j lets spend some time kind of understanding this"
+    "start": "00:30:45.630000",
+    "end": "00:31:57.559000",
+    "text": "so immediately we can actually get the corresponding p model for the c of the negative case in fact i dont need to write anything else in this point maybe i can do maybe i can write p model of z given qx comma w and this was shown to be 1 y so i dont even needto produce vector in the output of my binary classifier"
   },
   {
-    "start": "00:36:58.119000",
-    "end": "00:37:10.150000",
-    "text": "if my ground truth is one this pmodel of yihad of yasorry given"
+    "start": "00:31:57.559000",
+    "end": "00:32:41.669000",
+    "text": "just with one value from that value i can deterministically obtain the other for the positive class just withthe probability of the negative class is 02 okay so thats kindof an important conclusion of this kind  discussion and the beri distribution which is obviously very appropriate for binary events at the 0o one or the socal coin dossing distribution of heads versus tales"
   },
   {
-    "start": "00:37:10.150000",
-    "end": "00:37:14.589000",
-    "text": "because the xcomma w is simply because"
+    "start": "00:32:41.669000",
+    "end": "00:32:41.669000",
+    "text": "and if i remember the the maximum lack kind of discussion and the socalled cross entropy in that kind of cross entropy i had the following formula which is equally applicable to any predictor i had a y cat comma of course okay so thats minus the expectation of x – — ya my examples according to the socall p data high distribution log pmodel of j given x comma w"
   },
   {
-    "start": "00:37:14.589000",
-    "end": "00:37:20.510000",
-    "text": "so this is zero and therefore this term hole isone so the only thing that remains is y and in fact this is a very important conclusion"
+    "start": "00:32:41.669000",
+    "end": "00:33:41.519000",
+    "text": "and this is definitely the result that we have seen earlier and just want to contrast that against you know what we have seen earlier we had an underlying probability distribution where our data is and definitely this p data had distribution is effectively the table that we have seen earlier"
   },
   {
-    "start": "00:37:20.510000",
-    "end": "00:37:20.510000",
-    "text": "in"
+    "start": "00:33:41.519000",
+    "end": "00:33:51.909000",
+    "text": "the distribution that governs the training data or the data that we have recorded with all our kind of ground truths so the bet data highdistribution is present in here so no changes what we have seen earlier its just a different type of data and im actually interested to go ahead and calculate this term over here and this term can be trivially calculated as log of my p model is why to ofy 124144444444444444444444444logo of the product is the summation of the log of the product is used another identity"
   },
   {
-    "start": "00:37:20.510000",
-    "end": "00:37:42.280000",
-    "text": "in binary classification all i need to produce at the output is this  a single floating point number between zero and one"
+    "start": "00:33:51.909000",
+    "end": "00:33:51.909000",
+    "text": "this is y half remember the discussion of the entropy we have seen a sortof identical kind of term in the presentation of the binary kind of entrance graph the coin tossing during the the coin tossesing experiment so lets plug this in into this formula and at the same time we will replace the expectation with  a sample mean"
   },
   {
-    "start": "00:37:42.280000",
-    "end": "00:37:46.480000",
-    "text": "so its a probability so its going to be zero between z and one"
+    "start": "00:33:51.909000",
+    "end": "00:34:42.240000",
+    "text": "so from these two we can conclude that the cross entry the binary cross entry so im just going to put  b in front to distinguish forya minus 1 m summation from i is equal to 1 to m ofyi log of yuhaf plus 1 yuhaf definitely this is  a very easy to evaluate this is definitely ascaler which is indicates to me whether how well am i doing and this is the loss function that is going to govern from now on our binary classification problem and we are needing to use it as an objective function"
   },
   {
-    "start": "00:37:46.480000",
-    "end": "00:37:58.800000",
-    "text": "for sureill be calling this probability when yu is equal to 1 the probability of yi is equal to 1 given qima w"
+    "start": "00:34:42.240000",
+    "end": "00:34:58.160000",
+    "text": "and when we minimize it equivalently we will be reducing the probabilistic distance between the p data hack that is present in my data set that was actually given to usand the p model which as we discussed here is of the beri distribution and now we can just go ahead and plot that in fact let me just go and plot thisterm and this term can be plotted overhere so the xaxis"
   },
   {
-    "start": "00:37:58.800000",
-    "end": "00:38:00.240000",
-    "text": "in fact i can write it as x commumrecognize it when we had this probability review lecture and in that kind of video we have actually seen that posterior"
+    "start": "00:34:58.160000",
+    "end": "00:35:26.040000",
+    "text": "im going to plot it against the yuhat the yi is for the probability of the positive and this is my binary cross entropy in fact i will call this term the socalled inner term to avoid confusion with something that involves an averaging over many of those inner terms for each of these examples and every of our predictionsi have obviously a term over here a real number"
   },
   {
-    "start": "00:38:00.240000",
-    "end": "00:38:12.119000",
-    "text": "it means after we get to observe the ais our data what can we say about our target variable y"
+    "start": "00:35:26.040000",
+    "end": "00:35:46.800000",
+    "text": "i can trivially calculate so let me call it the inner term over here in the yais and if i plot this term then i will get something that is going to look likethis so the probability lets interpret this graph when the yhorse is one means that i am 100 certain that this is positive event that has happened and this means that the probability so this curve corresponds with"
   },
   {
-    "start": "00:38:12.119000",
-    "end": "00:38:18.960000",
-    "text": "in this case so the posterior probability distribution is going to be called yck so thats that is what our classifier is going to from now on going to be producing and that this posterior being  a probability means that we are have inherent the ability to provide an uncertainty about our pred prediction we are going to be producing and thatreport the 082 as lets say the output of the positive class"
+    "start": "00:35:46.800000",
+    "end": "00:37:00.480000",
+    "text": "i forgot to mention that this curve corresponds is plotted when yu is equal to 1 for the specific ground truth when my ground truth agrees with me then im expected to get the inner term to be zero as intuitively understood im 100 in agreement with the ground truth here the ontheother hand when i predicting the y had to be 0 point lets say 05 over here and this means that im predicting the positive to be 005 and in other words im predicting the negative to be 095"
   },
   {
-    "start": "00:38:18.960000",
-    "end": "00:38:45.190000",
-    "text": "and this means that we are going to be 82 certain that we have a positive event at the output of our classif fire and if we have already reported the output of positive event then when we are dealing with the negative case our p model over here that we have selected of yu given x comma w will be simply be 1 minus yi because with yu is equal to zero then this becomes one and this becomes one minusy hat"
+    "start": "00:37:00.480000",
+    "end": "00:37:00.480000",
+    "text": "im predicting that a no attack has happened with 95 confidence then im actually going to and my ground ruth disagreed cu me loss so i can actually sufficient to say here that bcdecisions such as 095 but wrongdecisions and actually can draw also the kind of corresponding carezero and it should be symmetric obviously in the handwritten kindof way"
   },
   {
-    "start": "00:38:45.190000",
-    "end": "00:39:46.589000",
-    "text": "so immediately we can actually get the corresponding p model for"
+    "start": "00:37:00.480000",
+    "end": "00:37:26.630000",
+    "text": "this is they are not symmetric here but this is kinda quite important to realize the behavior of binary cross penalizing confident wrong decisionso now we have everything that we need to draw  a block diagram and this block diagram is applicable in fact to all sorts de predictors and we havealready seen regression now in classification so let me just throw the predictor as this box overhere"
   },
   {
-    "start": "00:39:46.589000",
-    "end": "00:39:48.920000",
-    "text": "as lets say it becomes one or maybe even just get the  80 surethe c of the negative case"
+    "start": "00:37:26.630000",
+    "end": "00:38:45.200000",
+    "text": "we have seen that in the regression setting a linear model  a dot product in other words between the parameter vector and features and we also seeing here  if what the classifier is going to but whatever this classifier is going to so this is either for aggression orclassification and input x is going to come in in general it has many dimensions ayheight is going to be produced at the output and over here were going to have the lets assume that this is now for u"
   },
   {
-    "start": "00:39:48.920000",
-    "end": "00:39:55.760000",
-    "text": "in fact i dont need to write anything else in this point maybe i can do"
+    "start": "00:38:45.200000",
+    "end": "00:38:45.200000",
+    "text": "i mean lets call it a loss function and the loss function will be the mean square error or the crossentropy in fact the we will show that the crossentropy is able to accommodate both mean square error as well and as so also the binary concenter we had just seen so the output of this kind of loss function so this loss function should have some knowledge of the ground ruths ja"
   },
   {
-    "start": "00:39:55.760000",
-    "end": "00:40:04.040000",
-    "text": "maybe i can write p model of y is equal to z given qcomma w and this was shown to be 1 y"
+    "start": "00:38:45.200000",
+    "end": "00:39:10.280000",
+    "text": "as wellwe are going to obtain a scalar number of theloss for and then the scalar number is going to be effectively fed into  a block that it will calculate the values of the gradient of the loss with respect to the parameter vectorw and this is part of the stochastic gr descent algorithm we have seen and the output of this block is going to be called the parameter updatethat we will accept  a learning rate that we actually call ea this will also accept as high parameteractually called mb and it will"
   },
   {
-    "start": "00:40:04.040000",
-    "end": "00:40:09.240000",
-    "text": "so i dont even needto produce vector in the output of my binary classifier"
-  },
-  {
-    "start": "00:40:09.240000",
-    "end": "00:40:25.190000",
-    "text": "just with one value from that value i can deterministically obtain the other for the negative class"
-  },
-  {
-    "start": "00:40:25.190000",
-    "end": "00:40:31.910000",
-    "text": "so if i have produced 08 for the positive class then the probability of the negative class is 02 okay so its kind of an important conclusion of this kind de discussion"
-  },
-  {
-    "start": "00:40:31.910000",
-    "end": "00:40:44.480000",
-    "text": "and the beri distribution which is obviously very appropriate for binary events at the 0o one or the socal coin dossing distribution of heads versus tales"
-  },
-  {
-    "start": "00:40:44.480000",
-    "end": "00:41:05.640000",
-    "text": "and if i remember the the maximum lack kind of discussion and the socalled cross entropy in that kind of crossentropy i had the following formula which is equally applicable to any predictor"
-  },
-  {
-    "start": "00:41:05.640000",
-    "end": "00:41:09.839000",
-    "text": "i had ay cat comma ya is minus the expectation of qy given"
-  },
-  {
-    "start": "00:41:09.839000",
-    "end": "00:41:32.589000",
-    "text": "x commas w and this is definitely the result thatwe have seen earlier and just want to contrast that against"
-  },
-  {
-    "start": "00:41:32.589000",
-    "end": "00:42:07.440000",
-    "text": "you know what we have seen earlier we had an underlying probability distribution where our data is and definitely this pdata had distribution is effectively the table that we have seen earlier the distribution that governs the training data or the data that we have recorded with all our kind of ground truths so no changes what we have seen earlier"
-  },
-  {
-    "start": "00:42:07.440000",
-    "end": "00:42:10.119000",
-    "text": "its just a different type of data and im actually interested in go"
-  },
-  {
-    "start": "00:42:10.119000",
-    "end": "00:42:28.559000",
-    "text": "aheadand calculate this term over here and this term can be trivially calculated as log of my p model"
-  },
-  {
-    "start": "00:42:28.559000",
-    "end": "00:42:51.280000",
-    "text": "is why to of j1y the 12 or log y to the of j3 log of 1 y to the of 1 and this is u of course making the use of the log of the product is the summation of the logs identity"
-  },
-  {
-    "start": "00:42:51.280000",
-    "end": "00:42:54.069000",
-    "text": "and this is uses another identity"
-  },
-  {
-    "start": "00:42:54.069000",
-    "end": "00:43:14.309000",
-    "text": "this is ylogof yah 14 ylogo of 1  for those who remember the discussion of the entropy graph"
-  },
-  {
-    "start": "00:43:14.309000",
-    "end": "00:43:33.160000",
-    "text": "we have seen a sort of identical kind in the presentation of the binary kind coin tossesing during the the coin tossing experiment so lets plug this in into this formula and at the same time we will replace the expectation with a sample mean"
-  },
-  {
-    "start": "00:43:33.160000",
-    "end": "00:43:38.200000",
-    "text": "so from these two we can conclude that the crossentropy is the binary crossepochry"
-  },
-  {
-    "start": "00:43:38.200000",
-    "end": "00:44:09.109000",
-    "text": "so im just going to put yhat commum"
-  },
-  {
-    "start": "00:44:09.109000",
-    "end": "00:44:09.109000",
-    "text": "yminus 1 m summation from i is equal to 1 to m ofyi log of yahat plus 1 yute definitely"
-  },
-  {
-    "start": "00:44:09.109000",
-    "end": "00:44:32.559000",
-    "text": "this is rgularscaler which is indicates to me whether how well am i doing and this is the loss function that is going to govern from now on"
-  },
-  {
-    "start": "00:44:32.559000",
-    "end": "00:44:38.200000",
-    "text": "our binary classification problem and we are needing to use it as an objective function"
-  },
-  {
-    "start": "00:44:38.200000",
-    "end": "00:44:58.040000",
-    "text": "and when we minimize it equivalently we will be reducing the probabilistic distance between the p data hack that is present in my data set that is actually given to me and the p model which as we discussed here is of the beri distribution"
-  },
-  {
-    "start": "00:44:58.040000",
-    "end": "00:45:00.520000",
-    "text": "and now we can just go ahead and plot that in fact letthisterm and this term can be plotted overhere"
-  },
-  {
-    "start": "00:45:00.520000",
-    "end": "00:45:20.119000",
-    "text": "so the xaxis im going to plot it against the yhat"
-  },
-  {
-    "start": "00:45:20.119000",
-    "end": "00:45:27.720000",
-    "text": "the y is for the probability of the positive and this is my binary cross entropy"
-  },
-  {
-    "start": "00:45:27.720000",
-    "end": "00:45:42.119000",
-    "text": "in fact i will call this term the socalled inner term to avoid confusion with something that involves an averaging over many of those inner terms for each of the examples and each of my predictions"
-  },
-  {
-    "start": "00:45:42.119000",
-    "end": "00:45:51.190000",
-    "text": "i have obviously a term over here a real number i can trivially calculateterm then"
-  },
-  {
-    "start": "00:45:51.190000",
-    "end": "00:46:28.800000",
-    "text": "i will get something that is going to look likethis so the probability lets interpret this graph when the y height is one means that i am 100 certain that this is a positive event that has happened and this means that the probability so this curve corresponds with"
-  },
-  {
-    "start": "00:46:28.800000",
-    "end": "00:46:34.319000",
-    "text": "i forgot to mention that this curve corresponds is plotted when yu is equal to 1 for the specific ground truth"
-  },
-  {
-    "start": "00:46:34.319000",
-    "end": "00:46:42.870000",
-    "text": "when my ground truth agrees with me then im expected to get the inner term to be zero as intuitively understood im  100 in agreement with"
-  },
-  {
-    "start": "00:46:42.870000",
-    "end": "00:46:47.119000",
-    "text": "the ground truth here"
-  },
-  {
-    "start": "00:46:47.119000",
-    "end": "00:47:07.680000",
-    "text": "the on the other hand when im predicting the y had to be 0 point lets say 05 over here and this means that im predicting the positive to be 005 and in other words i predicting the negative to be 095"
-  },
-  {
-    "start": "00:47:07.680000",
-    "end": "00:47:16.040000",
-    "text": "im predicting that a no attack has happened with 95 confidence"
-  },
-  {
-    "start": "00:47:16.040000",
-    "end": "00:47:18.880000",
-    "text": "then im actually going to and my ground ruth disagrees with me"
-  },
-  {
-    "start": "00:47:18.880000",
-    "end": "00:47:31.309000",
-    "text": "i am going to incure a huge loss so i can actually sufficient to say here that bcecisions such as 095 but wrongdecisions and actually can draw also the kind of corresponding carezero and it should be symmetric"
-  },
-  {
-    "start": "00:47:31.309000",
-    "end": "00:48:14.040000",
-    "text": "obviously in the handwritten kind of way this is"
-  },
-  {
-    "start": "00:48:14.040000",
-    "end": "00:48:27.870000",
-    "text": "they are not symmetric here but this is kindofquite important to realize the behavior of binary cross penalizing confident wrong decisionso"
-  },
-  {
-    "start": "00:48:27.870000",
-    "end": "00:48:39.520000",
-    "text": "now we have everything that we need to draw a block diagram and this block diagram is applicable in fact to all sorts of predictors"
-  },
-  {
-    "start": "00:48:39.520000",
-    "end": "00:48:52.549000",
-    "text": "and we have already seen regression now in classification so let me just throw the predictor as this box overhere"
-  },
-  {
-    "start": "00:48:52.549000",
-    "end": "00:49:04.480000",
-    "text": "we have seen that in the regression setting and there was no signother words between the parameter vector and features"
-  },
-  {
-    "start": "00:49:04.480000",
-    "end": "00:49:12.200000",
-    "text": "and we also seeing here a classifier but we have not really discussed yet the functional form of what the classifier will actually be"
-  },
-  {
-    "start": "00:49:12.200000",
-    "end": "00:49:27.400000",
-    "text": "but whatever this classifier is going to so this is either for aggression orclassification and inputx is going to come in"
-  },
-  {
-    "start": "00:49:27.400000",
-    "end": "00:49:47.880000",
-    "text": "in general it has many dimensions"
-  },
-  {
-    "start": "00:49:47.880000",
-    "end": "00:49:47.880000",
-    "text": "a y height is goingto be produced at the output and over here were going to have the lets assume that this is now for u i mean lets call it"
-  },
-  {
-    "start": "00:49:47.880000",
-    "end": "00:49:59.720000",
-    "text": "square error or the the cross entropy"
-  },
-  {
-    "start": "00:49:59.720000",
-    "end": "00:50:07.280000",
-    "text": "in fact the we will show that the cross entropy is able to accommodate both mean square error as well and as so also the binary concenter we have just seen"
-  },
-  {
-    "start": "00:50:07.280000",
-    "end": "00:50:38.829000",
-    "text": "so the output of this kindof loss function so this loss function should have some knowledge of the ground ruths j and we are going to obtain a scalar number of thelosses for and then the scalar number is going to be effectively fed into a block that it will calculate the values of the gradient of the loss with respectto the parameter vectorw and this is part of the stochastic gr descent algorithm we have seen"
-  },
-  {
-    "start": "00:50:38.829000",
-    "end": "00:50:49.599000",
-    "text": "and the output of this block is going to be called the parameter updatethat we will accept a learning rate that we actually call ea"
-  },
-  {
-    "start": "00:50:49.599000",
-    "end": "00:51:21.799000",
-    "text": "this will also accept as  a high parameter the mini batch that we have actually called mb and it will the parameter update formula will provide for us and will update for us"
-  },
-  {
-    "start": "00:51:21.799000",
-    "end": "00:51:25.640000",
-    "text": "the vector w of all the parameters involved inside this predictor so this is train and thereforeoptimize any any machine"
-  },
-  {
-    "start": "00:51:25.640000",
-    "end": "00:51:43.480000",
-    "text": "any prediction machine we have seen up to this point"
+    "start": "00:39:10.280000",
+    "end": "00:39:29.040000",
+    "text": "the parameter update formula will provide for us and will update for us the vector w of all those parameters involved inside this predictor so this is a very generic block diagram that we allow us to train and thereforeoptimize any machine any prediction machine we have seen up until this point"
   }
 ]

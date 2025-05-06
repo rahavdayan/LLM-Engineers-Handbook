@@ -74,6 +74,3 @@ def save_to_qdrant():
     # Upload to Qdrant
     client.upsert(collection_name=collection_name, points=points)
     logger.info("Successfully inserted %d subtitle embeddings into Qdrant.", len(points))
-
-
-save_to_qdrant()

@@ -1,382 +1,147 @@
 [
   {
     "start": "00:00:00.000000",
-    "end": "00:00:06.080000",
-    "text": "to start understanding what is really the fundamental operation happen inside those convolutional neuron networks"
-  },
-  {
-    "start": "00:00:06.080000",
-    "end": "00:00:11.320000",
-    "text": "let me just start with a simple problem and this problem goes as follows"
-  },
-  {
-    "start": "00:00:11.320000",
-    "end": "00:00:13.950000",
-    "text": "i have somewhere in this kind of timeaxis"
-  },
-  {
-    "start": "00:00:13.950000",
     "end": "00:00:32.360000",
-    "text": "a signal this is the duration of this signal and the shape of the signal is not really important"
+    "text": "to start understanding what is really the fundamental operation happen inside those convolutional neuron networks let me just start with a simple problem and this problem goes as follows i have somewhere in this kind of timeaxis a signal this is the duration of this signal and the shape of the signal is not really important but what is really important is the assumption that i do know the shape of that signal and lets assume that i have letselect this signal this signal qt and ask you the question what is actually"
   },
   {
     "start": "00:00:32.360000",
-    "end": "00:00:32.360000",
-    "text": "but what is really important is the assumption that i do know the shape of that signal and lets assume that i have"
-  },
-  {
-    "start": "00:00:32.360000",
-    "end": "00:00:35.480000",
-    "text": "letselect this signal this signal qt and ask you the question what is actually"
-  },
-  {
-    "start": "00:00:35.480000",
-    "end": "00:00:40.920000",
-    "text": "the answer comes upwith a method that we can sort of provide the location of that signal"
-  },
-  {
-    "start": "00:00:40.920000",
-    "end": "00:00:47.840000",
-    "text": "where about in this buffer lets say u of the signal is located"
-  },
-  {
-    "start": "00:00:47.840000",
-    "end": "00:00:55.239000",
-    "text": "okay so"
-  },
-  {
-    "start": "00:00:55.239000",
     "end": "00:01:07.400000",
-    "text": "a simple kindof approach that we can think of is the following"
+    "text": "the answer comes upwith a method that we can sort of provide the location of that signal where about in this buffer lets say u of the signal is located okay so a simple kindof approach that we can think of is the following since we know the shape of this kind de signal i can actually start at the beginning of this buffer at this location let say zero and for every position"
   },
   {
     "start": "00:01:07.400000",
     "end": "00:01:21.710000",
-    "text": "since we know the shape of this kind de signal i can actually start at the beginning of this buffer at this location let say zero and for every position"
+    "text": "if you like the hypothesis the you know that the buffer is the signal is located at this specific point and start making an operation that will effectively means with if you want to get your feedback then where aroundtake the dot product between the contents of that buffer and that signal and this means that multiplying every element of this buffer with the amplitude lets say the amplitude was one of the signal and summing over all of the elements and"
   },
   {
     "start": "00:01:21.710000",
-    "end": "00:01:27.720000",
-    "text": "if you like the hypothesis the you know that the buffer is the signal is located at this specific point and start making an operation that will effectively means with if you want to get your feedback then where aroundtake the dot product between the contents of that buffer and that signal"
+    "end": "00:02:07.910000",
+    "text": "so if we do that then its a whole bunch of zeros time one then we will be getting  a result that it will be zero evidently okay so that is us the zero and well be getting in fact all zeros results up to the point where i start having my hypohypo hypothetical kindof a signal be right at the location of that true location of that kindof signals"
   },
   {
-    "start": "00:01:27.720000",
-    "end": "00:01:42.000000",
-    "text": "and this means that multiplying every element of this buffer with the amplitude lets say the amplitude was one of the signal and summing over all of the elements"
-  },
-  {
-    "start": "00:01:42.000000",
-    "end": "00:01:54.920000",
-    "text": "and so if we do that then its a whole bunch of zeros time one then we will be getting a result that it will be zero evidently okay"
-  },
-  {
-    "start": "00:01:54.920000",
-    "end": "00:02:07.920000",
-    "text": "so that is i the zero and well be getting in fact all zeros results up to the point where you start having my hypohypo hypothetical kind  or evenlocation of that true location of that kindof signal"
-  },
-  {
-    "start": "00:02:07.920000",
-    "end": "00:02:39.440000",
-    "text": "so after this point as you can understand we going to have some overlap between this signal and this so we be starting getting some nonzero results out from this of operation and right where exactly the signal is located right under it"
-  },
-  {
-    "start": "00:02:39.440000",
-    "end": "00:02:49.159000",
-    "text": "then we will start getting a pick and then evidentlywell start"
-  },
-  {
-    "start": "00:02:49.159000",
+    "start": "00:02:07.910000",
     "end": "00:02:51.920000",
-    "text": "you know going back to zero and so on and so on"
+    "text": "so after this point as you can understand we going to have some overlap between this signal and this so we be starting getting some nonzero results out from this of operation and right where exactly the signal is located right under it then we will start getting  a pick and then evidentlywell start you know going back to zero and so on and so on"
   },
   {
     "start": "00:02:51.920000",
     "end": "00:02:54.440000",
-    "text": "so this is basically an approach"
+    "text": "so this is basically an approach if we take the ar marx of what this kind lets say the tow the location that sort of indicates the sort of that we have predicted as faras if this kind of signal is concerned"
   },
   {
     "start": "00:02:54.440000",
-    "end": "00:02:57.040000",
-    "text": "if we take the ar marx of what this kind of operation this will bethat sort of indicates the sort of that we have predicted as faras if this kind signal is concerned"
-  },
-  {
-    "start": "00:02:57.040000",
-    "end": "00:03:29.000000",
-    "text": "so what we just did is an example of what we call onedimensional correlation operation crosscorrelation operation because we are trying to correlate a hypothetical signal located in this hypoth over here against some other signal the x oft"
-  },
-  {
-    "start": "00:03:29.000000",
     "end": "00:03:31.680000",
-    "text": "so i will actually call this simplistically"
+    "text": "so what we just did is an example of what we call onedimensional correlation operation crosscorrelation operation because we are trying to correlate  a hypothetical signal located in this hypoth over here against some other signal the x oft so i will actually call this simplistically"
   },
   {
     "start": "00:03:31.680000",
-    "end": "00:03:43.789000",
-    "text": "let say y of t and y o and this kind of correlation operation is ableto retrieve for me in this simple onesingle dimensional kind of space"
+    "end": "00:03:38.040000",
+    "text": "let me say y of t im actually correlating x of t and y of t the simplely and  the sort ofretrace for me in this simple oneone dimensional kind of space the location of x oft and this is exactly what has been done in a kind of  a twodimensional and threedimensional kind of space inside the convolution kind of neuron network"
   },
   {
-    "start": "00:03:43.789000",
-    "end": "00:04:02.079000",
-    "text": "the location of xoft and this is exactly what has been done in a kind of a twodimensional and threedimensional kind of space inside the convolution kind of neuron network"
+    "start": "00:03:38.040000",
+    "end": "00:04:25.510000",
+    "text": "in fact now what we will do is we will expand into the another example of where we have now this taxi image and we try to understand how we will be ableto detect the presence of that kind de taxi in that image but before we go there i wanted to actually share with yousome details in our site where we have"
   },
   {
-    "start": "00:04:02.079000",
-    "end": "00:04:27.430000",
-    "text": "in fact now what we will do is we will expand into the another example of where we have now this taxi image and we try to understand how we will be able to detect the presence of that kind de taxi in that image"
-  },
-  {
-    "start": "00:04:27.430000",
-    "end": "00:04:27.440000",
-    "text": "but before we go there i wanted to actually share with you some details the placeconceivingly the true sort of operation of what is actually called convolution is implemented inside the pytor tensor fls and so on"
-  },
-  {
-    "start": "00:04:27.440000",
+    "start": "00:04:25.510000",
     "end": "00:04:55.240000",
-    "text": "all these kindof machine learning frameworks as correlation operations and with the exception that we actually flip the in in the time domain that signal y oft"
+    "text": "if you like an american example conf confusingly the true sort of operation of what is actually called convolution is implemented inside the pytor tensor fls and so on all these kindof machine learning frameworks as correlation operations and with the exception that we actually flip the ininthe time domain that signal y oft we are"
   },
   {
     "start": "00:04:55.240000",
-    "end": "00:05:11.870000",
-    "text": "we are you know the two operations as it actually clearly shown in your in your sl later on the two operations of convolution and cor crosscorrelation result into identical results and for the purposes of our purposes from a pure"
+    "end": "00:05:05.189000",
+    "text": "you know the two operations as it actually clearly shown in your inyour sl later on the two operations of convolution and cor crosscorrelation resultin identical results and for the purposes of our purposes from a pure implementation efficiency c perspective we always prefer to refer to to implement them as crosscorrespondence"
   },
   {
-    "start": "00:05:11.870000",
-    "end": "00:05:17.520000",
-    "text": "the only thing i can do was to beimplementation efficiency c perspective"
+    "start": "00:05:05.189000",
+    "end": "00:05:44.639000",
+    "text": "despite the fact that we are refer to these as convolution operations so let me go into the following kind of discussion now where we have we are going back to that kind of  a taxi image and let me just write over here if i kind try to squeeze it so this is our image that we have seen earlier with this yellow cab inmiddle and here i have right in the middle a kind of a taxi"
   },
   {
-    "start": "00:05:17.520000",
-    "end": "00:05:28.160000",
-    "text": "we always prefer to refer to to implement them as cross correlation despite the fact that we are referto refer to them as convolution operations"
+    "start": "00:05:44.639000",
+    "end": "00:06:43.120000",
+    "text": "okay soall right and i ask you exactly the same question how we can potentially detect this kindof taxi in this kindimage okay all right and maybe the i mean if we have known the exact shape of this object like we have assumed earlier then the operation actually would be straightforward well take this template again well call it j now and we will start sliding this kind type across this kind"
   },
   {
-    "start": "00:05:28.160000",
-    "end": "00:05:29.919000",
-    "text": "so let me go into the following kind of discussion now where we have"
+    "start": "00:06:43.120000",
+    "end": "00:06:47.909000",
+    "text": "model image to be able to at some point wherethe template is exactly present right on top of that u object in the image x we will then declare that thats basically the location of that of of that object"
   },
   {
-    "start": "00:05:29.919000",
-    "end": "00:05:41.600000",
-    "text": "we are going back to that kind of a taxi image and let my just write over here if i kind of try to squeeze it"
+    "start": "00:06:47.909000",
+    "end": "00:07:30.280000",
+    "text": "the problem however is that in this kindof approach we have first assume that we will know exactly the shape of that object which is not realistic because the object is definitely going to vary quite a lot let say the object may be rotated translated in sort or or being sort of because of the lighting condition maybe not sorting very evident its exact shape its shadowed for example or udested by other objects and the other assumption is that in terms of computational efficiency the larger our kindof prototype is in terms de number of pixels the more expensive this kind of operation becomes so"
   },
   {
-    "start": "00:05:41.600000",
-    "end": "00:05:54.319000",
-    "text": "so this is our image that we have seen earlier with this yellow cab in the middle and here i have right in the middle a kind"
+    "start": "00:07:30.280000",
+    "end": "00:08:10.629000",
+    "text": "in order to solve these two problems what we will do what we would suggest is we will not abandon this kind of sliding operation that we will called cross correlation a bit earlier but if in fact what we will actually do now is well use a much small prototype and we are now ph the problem as to what is really the contents of that sortof prototype that we will be calling from now on a kernel so let me just draw the kernel over here and maybe i can start answering the question as to what should be the the contents of this kernel that will be ableto detect this cab over here all right"
   },
   {
-    "start": "00:05:54.319000",
-    "end": "00:05:54.319000",
-    "text": "okay soall"
+    "start": "00:08:10.629000",
+    "end": "00:08:47.680000",
+    "text": "so this image is extremely simple in fact it has zeros in these pixels and all the other pixels which we have not drawn anything are 255 so and zero corresponds to black so since i have a black and white image i can suggest that maybe if you can u have kel whos pixels so this is  a kernel which is the size of that is not necessarily accidental"
   },
   {
-    "start": "00:05:54.319000",
-    "end": "00:06:14.319000",
-    "text": "and you know exactly the same question how can be done possibly detect this kind of taxi in this kindof image okay all right"
+    "start": "00:08:47.680000",
+    "end": "00:09:42.720000",
+    "text": "its 3x3 in this case and if i locate over here in this pixels i made them letll say zeros and over here i made them 255 then you can all understand that as im sliding around this kindof kernel i will definitely go and at some point hit this location overhere with these with it then we are gettingsome definitely significant peak"
   },
   {
-    "start": "00:06:14.319000",
-    "end": "00:06:34.639000",
-    "text": "and maybe the i mean if we have known the exact shape of this object like we have assumed earlier then the operation actually would be straightforward"
+    "start": "00:09:42.720000",
+    "end": "00:10:13.800000",
+    "text": "if i may call it like that out of my crosscorrelation operation so well see the details the mathematical details of that crosscorrelation operation shortly but thats basically what is is going to happen then and so exactly the same thing will actually happen in this location and potentially in this type of locations and so on"
   },
   {
-    "start": "00:06:34.639000",
-    "end": "00:06:38.919000",
-    "text": "well take this template again"
+    "start": "00:10:13.800000",
+    "end": "00:10:27.470000",
+    "text": "but i dont think that we have the complete story yet because i can suggest an additional kind ofkernel again it will be 3x3 and this kernel if it issort of programmed to contain this type  information where now the black pixels are like this and the whites are over there"
   },
   {
-    "start": "00:06:38.919000",
-    "end": "00:06:54.960000",
-    "text": "well call it yu now"
+    "start": "00:10:27.470000",
+    "end": "00:11:10.639000",
+    "text": "theyre kinda a diagonally then we will be able pick up probably this feature over here where the wind screen is and so on and so on so we can actually suggest other kernels as well where we now have the other diagonal these wheels can be detected by having some something else"
   },
   {
-    "start": "00:06:54.960000",
-    "end": "00:06:59.110000",
-    "text": "and we will start sliding this kind type of template across this kindimage to be able to at some point where the template is exactly present right on top of that u object in the image x"
+    "start": "00:11:10.639000",
+    "end": "00:11:17.480000",
+    "text": "some other kind ofkernel where maybe these guys will be needing to be sortof coloredwith 255 and zeros and as you can understand all of these kernels if they are positioned at some point in this kind of image and ill be calling now from now on this aggregation of kernels as afilter"
   },
   {
-    "start": "00:06:59.110000",
-    "end": "00:07:05.000000",
-    "text": "we will then declare that thats basically the locationthat object"
-  },
-  {
-    "start": "00:07:05.000000",
-    "end": "00:07:20.639000",
-    "text": "the problem however is that in this kind of approach we have first assume that we will know exactly the shape of that object which is not realistic because it is definitely going to vary quite a lot"
-  },
-  {
-    "start": "00:07:20.639000",
-    "end": "00:07:36.000000",
-    "text": "lets say the object may be rotated translated in sortof or being sortof because of the lighting condition maybe not sortvery evident"
-  },
-  {
-    "start": "00:07:36.000000",
-    "end": "00:07:38.879000",
-    "text": "its exact shape its shadowed for example or uded by other objects"
-  },
-  {
-    "start": "00:07:38.879000",
-    "end": "00:07:47.430000",
-    "text": "and the other assumption is that in terms of computational efficiency the larger our kind ofprototype is in terms of number of pixels"
-  },
-  {
-    "start": "00:07:47.430000",
-    "end": "00:08:21.599000",
-    "text": "the more expensive this kindof operation becomes so in order to solve these two problems what we will do what we would suggest is that we will not abandon this kind sliding operation that we will called cross correlation a bit earlier but if in fact what we will actually do now is well use — ph – the problem as to what is really the contents of that sort of prototype that we will be calling from now on"
-  },
-  {
-    "start": "00:08:21.599000",
-    "end": "00:08:38.440000",
-    "text": "a kernel so let me just drawover here and maybe i can start answering the question as to what should be the contents of this kernel that will be ableto detect this cab over here all right"
-  },
-  {
-    "start": "00:08:38.440000",
-    "end": "00:08:41.560000",
-    "text": "so this image is extremely simple"
-  },
-  {
-    "start": "00:08:41.560000",
-    "end": "00:08:54.480000",
-    "text": "in fact it has zeros in these pixels and all the other pixels which we have not drawn anything are 255 so 255 corresponds to pure white and zero corresponds to black"
-  },
-  {
-    "start": "00:08:54.480000",
-    "end": "00:09:12.560000",
-    "text": "so since i have a black and white image i can suggest that maybe if i can u have kel whos pixels so this isaccidental"
-  },
-  {
-    "start": "00:09:12.560000",
-    "end": "00:09:24.680000",
-    "text": "its 3x3 in this case and if i locate over here in this pixels i made them"
-  },
-  {
-    "start": "00:09:24.680000",
-    "end": "00:09:57.320000",
-    "text": "letseake zeros and over here i made them 255 then you can all understand that as im sliding around this kind of kernel i will definitely go and at some point hit this location overhere with this kernel and at that moment in that location then i will be getting some definitely significant peak if we may call it like that out of my crosscorrelation operation so well see the detailsbut thats basically what is is going to happen then and so exactly the same thing will actually happen in this location and potentially in this type of locations and so on"
-  },
-  {
-    "start": "00:09:57.320000",
-    "end": "00:10:27.480000",
-    "text": "but i dont think that we have the complete story yet because i can suggest an additional kind ofkernel again it will be 3x3 and this kernel"
-  },
-  {
-    "start": "00:10:27.480000",
-    "end": "00:10:44.399000",
-    "text": "if it is sortof programmed to contain this type of information where now the black pixels are like this and the whites are over there theyre kinda a diagonally then well be able pick up probably this feature over herethe wind screen is and so on and so on"
-  },
-  {
-    "start": "00:10:44.399000",
-    "end": "00:11:00.000000",
-    "text": "so we can actually suggest other kernels as well"
-  },
-  {
-    "start": "00:11:00.000000",
-    "end": "00:11:27.240000",
-    "text": "where we now have the other diagonal these wheels can be detected by having some something else some other kind ofkernel where maybe these guys will be need to be sortof colored like this colored in quotes or program like this with 255 and zeros"
-  },
-  {
-    "start": "00:11:27.240000",
-    "end": "00:11:39.160000",
-    "text": "and as you can understand all of these kernels if they are positioned at certain point in in this kind of image and ill be calling now from now onstructure that it will have 3x3 lets say spatial coordinates so this is the 3x3extent and it would have some kind of a depth d"
-  },
-  {
-    "start": "00:11:39.160000",
-    "end": "00:12:17.710000",
-    "text": "and this depth lets write"
-  },
-  {
-    "start": "00:12:17.710000",
+    "start": "00:11:17.480000",
     "end": "00:12:24.240000",
-    "text": "depth is of course the number of kels that i employ in this filter"
+    "text": "so filter for me will be this kindofathreedimensional structure that it will have 3x3 lets say spatial coordinates so this is the 3x3extent and it would have some kind of a depth d and this depth lets write depth is of course the number of kels that i employ in this filter okay so over here that that is basically structure that i will see will be a fairly"
   },
   {
     "start": "00:12:24.240000",
-    "end": "00:12:27.560000",
-    "text": "okay so over here that that is basically"
-  },
-  {
-    "start": "00:12:27.560000",
-    "end": "00:12:30.320000",
-    "text": "a structure that i will see will be  a fairly"
-  },
-  {
-    "start": "00:12:30.320000",
-    "end": "00:12:37.040000",
-    "text": "i call it useful for me to be able to detect now pixels"
-  },
-  {
-    "start": "00:12:37.040000",
-    "end": "00:12:40.360000",
-    "text": "sorry features from images"
-  },
-  {
-    "start": "00:12:40.360000",
-    "end": "00:12:49.800000",
-    "text": "okay and now lets see the mathematical description of what we have just described let us go back to the site and on that site you have the"
-  },
-  {
-    "start": "00:12:49.800000",
-    "end": "00:12:57.069000",
-    "text": "so letmsocalled twodimensional"
-  },
-  {
-    "start": "00:12:57.069000",
     "end": "00:13:01.480000",
-    "text": "the extension of the socalled two dimensional crosscorrelation operation and its ex actually shown here in this kind image"
+    "text": "i call it useful for me to be ableto detect now pixels sorry features from images okay and now lets see the mathematical description of what we have just described let me go back to the site and in that site you have the socalled twodimensional the extension of the socalled twodimensional crosscorrelation operation and its ex actually shown here in this kind of image"
   },
   {
     "start": "00:13:01.480000",
-    "end": "00:13:26.160000",
-    "text": "this in this picture so we have an input image of 3x4 pixels and we have a kernel of 2x2 in this case and the kel is going to be positioned on all possible locations in this image in this input image"
+    "end": "00:13:11.040000",
+    "text": "this in this picture so we have an input image of 3x4 pixels and we havethis case and the kel is going to be positioned on all possible locations in this image in this input image so in this specific case it is position at this moment in time this location over here and we are going to be forming the dot product between the kernel and the input image and evidently the dot product is a w b e i o i o i o i o i o i o i o i o i o i o i o i o i o i o i o i o i o i o i o"
   },
   {
-    "start": "00:13:26.160000",
-    "end": "00:13:35.720000",
-    "text": "so in this specific case it is position at this moment in time this location over here and we are going to be forming the dot product between the kernel and the outputproduct is a wbxeyfz and that will actually be a scalar"
+    "start": "00:13:11.040000",
+    "end": "00:13:19.269000",
+    "text": "i will give us the feature value extracted featurevalue out of that operation and they will actually be a scalar that she has been going to slidethe kernel into another location bccfg well do the dot product ccdh another dot product with it and to cut a long story short we are going to be getting"
   },
   {
-    "start": "00:13:35.720000",
-    "end": "00:13:58.000000",
-    "text": "that it will give us the feature value extracted feature value out of that operation"
+    "start": "00:13:19.269000",
+    "end": "00:13:54.600000",
+    "text": "a 2x3 output image and from now on well be calling this output images input and output images feature maps because they are mapping the features that we have extracted with"
   },
   {
-    "start": "00:13:58.000000",
-    "end": "00:14:02.040000",
-    "text": "and we will do exactly the same thing over and over again"
+    "start": "00:13:54.600000",
+    "end": "00:14:41.990000",
+    "text": "with the usage of kernels here we see just  a single kernel but in general were going to have multiple kernels be involved in the shape and form of filters in in these operations and sobasically this is what we will be doing from now on and we will be sort of need to discuss next"
   },
   {
-    "start": "00:14:02.040000",
-    "end": "00:14:05.560000",
-    "text": "we were going to slide the kernel into another location bccffg"
-  },
-  {
-    "start": "00:14:05.560000",
-    "end": "00:14:12.680000",
-    "text": "well do the dot product ccdh another dot product with it"
-  },
-  {
-    "start": "00:14:12.680000",
-    "end": "00:14:25.639000",
-    "text": "and to cut a long story short we are going to be getting 2x3 output image and from now on well be calling this output images input and output images adistribution maps because they are mapping"
-  },
-  {
-    "start": "00:14:25.639000",
-    "end": "00:14:28.189000",
-    "text": "the features that we have been using these inhave extracted with with the usage of kernels"
-  },
-  {
-    "start": "00:14:28.189000",
-    "end": "00:14:42.000000",
-    "text": "here we see just a single kernel but in general were going to have multiple kernels be involved in the shape and form of filters in in these operations"
-  },
-  {
-    "start": "00:14:42.000000",
-    "end": "00:14:47.600000",
-    "text": "and so basically this is what we will be doing from now on"
-  },
-  {
-    "start": "00:14:47.600000",
+    "start": "00:14:41.990000",
     "end": "00:15:10.399000",
-    "text": "and we will be sortof needing to discuss next some architectural elements of you know this that are sort of encompassing this operation over here but also enhance it with further correlation type of structures inside convolution your networks"
+    "text": "some architectural elements of you know this that are sortofencompassing this operation over here but also enhance it with further correlation type of structures inside convolution your networks"
   }
 ]

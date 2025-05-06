@@ -68,7 +68,7 @@ def merge_all_videos_subtitles(subtitles_dir: Path):
     return merged_results
 
 
-def overlapping_chunks(text, chunk_size=75, overlap=0):
+def overlapping_chunks(text, chunk_size=150, overlap=0):
     chunks = []
     start = 0
     while start < len(text):
@@ -141,16 +141,5 @@ def get_topics() -> None:
 
     # Save topic model to current dir
     topic_model.save(str(script_dir / "topic_model"))
-    embedding_model.save(str(script_dir / "embedding_model"))
-
-    # Save data as JSON
-    with (script_dir / "topics.json").open("w", encoding="utf-8") as f:
-        json.dump(topics, f, indent=2)
-
-    with (script_dir / "probs.json").open("w", encoding="utf-8") as f:
-        json.dump([float(p) if p is not None else None for p in probs], f, indent=2)
 
     logger.info("Saved all files to %s", script_dir)
-
-
-get_topics()

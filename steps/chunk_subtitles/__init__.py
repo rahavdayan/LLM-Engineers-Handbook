@@ -1,3 +1,4 @@
-from .chunk import chunk, get_topics, save_to_qdrant
+from .chunk import chunk
+from .get_topics import get_topics
 
-__all__ = ["chunk", "get_topics", "save_to_qdrant"]
+__all__ = ["chunk", "get_topics"]

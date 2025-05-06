@@ -89,6 +89,3 @@ def save_video():
         idx += 1
 
     logger.info("🎯 Step complete. Subtitles saved for %d videos.", idx - 1)
-
-
-save_video()

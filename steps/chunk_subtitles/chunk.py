@@ -67,7 +67,7 @@ def recursive_merge_subtitle_texts(subtitle_texts):
     return recursive_merge_subtitle_texts(merged)
 
 
-def group_subtitles_by_char_limit(subtitles, max_chars=512):
+def group_subtitles_by_char_limit(subtitles, max_chars=500):
     """
     Groups subtitles into chunks based on a maximum character limit.
     Tracks original subtitle data for each chunk. Timestamps are now stored as timedeltas.
@@ -160,7 +160,7 @@ def get_word_timings(subtitle, marker_length=10):
 
 
 def separate_into_chunks(
-    combined_subtitles, sents_lst, topic_model, embedding_model, max_chars=150, time_jump_threshold=10
+    combined_subtitles, sents_lst, topic_model, embedding_model, min_chars=400, max_chars=600, time_jump_threshold=10
 ):
     chunks = []
     current_chunk = []
@@ -175,8 +175,9 @@ def separate_into_chunks(
         current_topic = topics[i]
 
         # Decide whether to start a new chunk
-        if (current_length + len(sent_text) + 1 > max_chars) or (
-            prev_topic is not None and current_topic != prev_topic
+        if (current_length + len(sent_text) + 1 > min_chars) and (
+            (current_length + len(sent_text) + 1 > max_chars)
+            or (prev_topic is not None and current_topic != prev_topic)
         ):
             if current_chunk:
                 chunks.append(" ".join(current_chunk))
@@ -360,6 +361,3 @@ def chunk():
                 output_dir,
                 logger,
             )
-
-
-chunk()

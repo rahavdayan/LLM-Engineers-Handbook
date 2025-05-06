@@ -49,6 +49,10 @@ pytube = "^15.0.0"
 pydantic = ">=2.8,<2.9"
 ffmpeg-python = "^0.2.0"
 yt-dlp = "^2025.4.30"
+transformers = "^4.51.3"
+tqdm = "^4.67.1"
+python-dotenv = "^1.1.0"
+huggingface-hub = "^0.30.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -75,8 +79,7 @@ build-backend = "poetry.core.masonry.api"
 # ----------------------------------
 
 [tool.poe.tasks]
-download-huggingface-video = "poetry run python -m tools.run_download_huggingface_video --no-cache"
-chunk-subtitles = "poetry run python -m tools.run_chunk_subtitles --no-cache"
+populate-qdrant = "poetry run python -m tools.run_save_vectors --no-cache"
 
 # Utility pipelines
 run-export-artifact-to-json-pipeline = "poetry run python -m tools.run --no-cache --run-export-artifact-to-json"
