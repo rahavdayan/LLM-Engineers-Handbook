@@ -11,7 +11,7 @@ It may take anywhere from a few seconds to a few minutes to receive a response.
 
 ## Quickstart
 
-This repository is a fork of the textbook's repository, `LLM-Engineers-Handbook`. Here's how to get started once you clone the repo:
+This repository is a fork of the original ```LLM-Engineers-Handbook``` textbook repository. After cloning the repo, make sure you have all the required dependencies from the original project installed. In addition, follow the steps below to get started with the specific additions for this project.
 
 ### 1. Set up Environment Variables
 
@@ -33,7 +33,25 @@ pip install ollama
 ```
 
 ### 3. Install Ollama and pull the Llama 3.1 model
-You need to [install Ollama](https://ollama.com/download) for your operating system. Then run:
+You need to [install Ollama](https://ollama.com/download) for your operating system.
+
+Ollama may start automatically in the background (especially on macOS if installed via the desktop app). Before starting it manually, check if it's already running by visiting:
+
+[http://127.0.0.1:11434](http://127.0.0.1:11434)
+
+If the server is running, you'll see a JSON response like:
+
+```json
+{ "status": "ok" }
+```
+
+If you don't see that response or the page fails to load, start the Ollama server manually by running:
+
+```bash
+ollama serve
+```
+
+After you get the server running, run the following:
 ```bash
 ollama pull llama3.1:8b
 ```
@@ -48,12 +66,7 @@ poe local-infrastructure-up
 poe populate-qdrant
 ```
 
-### 6. Add the videos to the repository
-My scripts work by downloading the videos from YouTube, then slicing them. It appears that if I upload them to YouTube, it cuts them off at ~5 minutes. If the professor posts them to YouTube I will update the links in my code. For now, download and extract the zipped videos from [here](https://drive.google.com/file/d/1SI2y67vcLFgs1g2tg_IvZcm094OoZwkZ/view?usp=sharing) and put them into the `videos` folder in the root (it is in `.gitignore`).
-
-If displaying the videos becomes an issue, let me know.
-
-### 7. Run the Gradio app
+### 6. Run the Gradio app
 Open and run the `gradio.ipynb` notebook in the root directory. You can either:
 
 - Use the embedded Gradio interface within the notebook, or
@@ -62,7 +75,7 @@ Open and run the `gradio.ipynb` notebook in the root directory. You can either:
 ## Components
 
 **`save_video.py`**  
-This script downloads lecture videos from the Hugging Face dataset and extracts subtitle data. It stores each subtitle entry with its corresponding start and end timestamps for later alignment.
+This script downloads lecture videos from the Hugging Face dataset and extracts subtitle data. It stores each subtitle text with its corresponding start and end timestamps for later alignment.
 
 **`get_topics.py`**  
 All subtitle files are merged into a single corpus and split into equal-length blocks (150 characters each). These are encoded using a sentence-transformer model and passed to BERTopic for topic modeling. The trained topic model is saved for downstream use.

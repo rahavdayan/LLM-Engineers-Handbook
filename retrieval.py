@@ -60,17 +60,22 @@ def get_video_segment(FROM, TO, video_idx):
     end_time = datetime.strptime(TO, fmt)
     base_duration = (end_time - start_time).total_seconds()
 
+    # Extend to 20 seconds if shorter
+    min_duration = 20
+    if base_duration < min_duration:
+        base_duration = min_duration
+
     # Check and download video if not already downloaded
     if not video_filename.exists():
         video_urls = {
-            1: "https://youtu.be/_ekbcOBkMJU",
-            2: "https://youtu.be/wOG5vNOTBsk",
-            3: "https://youtu.be/xekV8aRFGuo",
-            4: "https://youtu.be/m8c9hNEmJyc",
-            5: "https://youtu.be/AqZQf1hiNok",
-            6: "https://youtu.be/s7jDDNPNajI",
-            7: "https://youtu.be/4XFANU-qJYE",
-            8: "https://youtu.be/_xDS9TJXrEA",
+            1: "https://youtu.be/XDW23i4xes0",
+            2: "https://youtu.be/BsnqUV4yIL4",
+            3: "https://youtu.be/hkcxTPL0sEE",
+            4: "https://youtu.be/5FD0ZH6mGMs",
+            5: "https://youtu.be/BdWI6DtCp4U",
+            6: "https://youtu.be/ANeUQss6aTY",
+            7: "https://youtu.be/RP3p2aQIORM",
+            8: "https://youtu.be/8w4WKxd7GEc",
         }
 
         youtube_url = video_urls.get(video_idx)
