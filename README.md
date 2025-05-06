@@ -44,7 +44,10 @@ poe local-infrastructure-up
 poe populate-qdrant
 ```
 
-### 5. Run the Gradio app
+### 5. Add the videos to the repository
+My scripts work by downloading the videos from YouTube, then slicing them. It appears that if I upload them to YouTube, it cuts them off at ~5 minutes. If the professor posts them to YouTube I will update the links in my code. For now, download and extract the zipped videos from [here](https://drive.google.com/file/d/14MgL2nY9Fd_Q8emn3kCq9n4jL07AZkEM/view?usp=sharing) and put them into the `videos` folder in the root (it is in `.gitignore`).
+
+### 6. Run the Gradio app
 Open and run the `gradio.ipynb` notebook in the root directory. You can either:
 
 - Use the embedded Gradio interface within the notebook, or
